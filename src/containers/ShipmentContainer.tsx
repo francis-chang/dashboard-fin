@@ -1,20 +1,12 @@
 import React from "react";
-import styled from "styled-components";
-
-const ShipmentGridPlacement = styled.div`
-    grid-column-start: 2;
-    background-color: #eee;
-    height: 100%;
-`;
-
-const ShipmentGrid = styled.div``;
+import { DashboardPlacement, ShipmentGrid } from "./ContainerStyles";
 
 const ShipmentContainer: React.FC = () => {
     return (
-        <ShipmentGridPlacement>
+        <DashboardPlacement>
             <ShipmentGrid />
             This is the shipment grid
-        </ShipmentGridPlacement>
+        </DashboardPlacement>
     );
 };
 
