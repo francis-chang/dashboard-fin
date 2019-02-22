@@ -6,31 +6,56 @@ import styled from "styled-components";
 
 export const NavBarOnGrid = styled.div`
     grid-column-start: 1;
-    background-color: #373745;
+    background-color: #182a34;
 `;
 
 export const TopNavigation = styled.div`
-    height: 20%;
+    height: 10rem;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
+`;
+
+export const MidNavigation = styled.div`
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 `;
 
 export const NavigationButton = styled.div`
     font-size: 2.2rem;
-    color: #f1f1f4;
     cursor: pointer;
-    margin: 1rem 0rem;
+    color: #dce8ef;
+    padding: 1rem 0rem;
     text-align: center;
+
+    &:hover {
+        background-color: #284557;
+        transition-duration: 250ms;
+    }
 `;
+
+export const NavigationButtonDash = styled.div`
+    font-size: 2.2rem;
+    cursor: pointer;
+    padding: 1rem 0rem;
+    text-align: center;
+
+    &:hover {
+        background-color: #284557;
+        transition-duration: 250ms;
+    }
+`;
+
+//NavigationButton-active is in Global Style
 
 /*
     HOME NAV BAR
 */
 
 export const SlidingNavBar = styled.div`
-    width: 90%;
+    width: 100%;
     height: 100%;
-    background-color: orange;
-    border: 4px solid black;
+    background-color: #203746;
 `;

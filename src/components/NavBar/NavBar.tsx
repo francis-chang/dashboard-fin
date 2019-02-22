@@ -1,16 +1,24 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faCog, faHome } from "@fortawesome/free-solid-svg-icons";
+import {
+    faChartBar,
+    faCog,
+    faGlobeAmericas,
+    faHome
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "@reach/router";
 import React, { useState } from "react";
 import {
+    MidNavigation,
     NavBarOnGrid,
     NavigationButton,
+    NavigationButtonDash,
     TopNavigation
 } from "../ComponentStyles";
 import HomeNav from "./HomeNav";
 import SettingsNav from "./SettingsNav";
 
-library.add(faCog, faHome);
+library.add(faCog, faHome, faGlobeAmericas, faChartBar);
 
 const NavBar: React.FC = () => {
     /*
@@ -39,6 +47,16 @@ const NavBar: React.FC = () => {
         setSettingsClick(!isSettingsOpen);
     };
 
+    /*
+        Deals with the active style of links
+    */
+
+    const isActive = ({ isCurrent }: { isCurrent: boolean }) => {
+        return isCurrent
+            ? { className: "navigationButton-active" }
+            : { className: "navigationButton-non" };
+    };
+
     return (
         <>
             <NavBarOnGrid>
@@ -50,6 +68,18 @@ const NavBar: React.FC = () => {
                         <FontAwesomeIcon icon="cog" />
                     </NavigationButton>
                 </TopNavigation>
+                <MidNavigation>
+                    <Link to="/tracking" getProps={isActive}>
+                        <NavigationButtonDash>
+                            <FontAwesomeIcon icon="globe-americas" />
+                        </NavigationButtonDash>
+                    </Link>
+                    <Link to="/finance" getProps={isActive}>
+                        <NavigationButtonDash>
+                            <FontAwesomeIcon icon="chart-bar" />
+                        </NavigationButtonDash>
+                    </Link>
+                </MidNavigation>
             </NavBarOnGrid>
             <HomeNav isOpen={isHomeOpen} />
             <SettingsNav isOpen={isSettingsOpen} />

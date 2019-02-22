@@ -9,7 +9,8 @@ const SettingsNav: React.FC<PropsForOpenNav> = ({ isOpen }) => {
         left: "5.5rem",
         width: isOpen ? "15rem" : "0%",
         height: "100%",
-        overflow: "hidden"
+        overflow: "hidden",
+        zIndex: isOpen ? 0 : 2
     });
 
     return (
