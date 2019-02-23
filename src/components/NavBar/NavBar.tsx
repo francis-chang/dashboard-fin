@@ -81,8 +81,8 @@ const NavBar: React.FC = () => {
                     </Link>
                 </MidNavigation>
             </NavBarOnGrid>
-            <HomeNav isOpen={isHomeOpen} />
-            <SettingsNav isOpen={isSettingsOpen} />
+            <HomeNav isOpen={isHomeOpen} setClick={setHomeClick} />
+            <SettingsNav isOpen={isSettingsOpen} setClick={setSettingsClick} />
         </>
     );
 };
