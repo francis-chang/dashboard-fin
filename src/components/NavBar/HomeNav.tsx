@@ -1,12 +1,22 @@
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { animated, useSpring } from "react-spring";
-import { SlidingNavBar } from "../ComponentStyles";
+import {
+    NavBarTitle,
+    NavBarTitleBar,
+    NavBarTitleExit,
+    SlidingNavBar
+} from "../ComponentStyles";
+
+library.add(faTimes);
 
 const HomeNav: React.FC<PropsForOpenNav> = ({ isOpen }) => {
     const animateHomeNav = useSpring({
         position: "absolute",
         top: "0rem",
-        left: "5.5rem",
+        left: "4.3rem",
         width: isOpen ? "15rem" : "0%",
         height: "100%",
         overflow: "hidden",
@@ -15,7 +25,14 @@ const HomeNav: React.FC<PropsForOpenNav> = ({ isOpen }) => {
 
     return (
         <animated.div style={animateHomeNav}>
-            <SlidingNavBar>Home</SlidingNavBar>
+            <SlidingNavBar>
+                <NavBarTitleBar>
+                    <NavBarTitle>Home</NavBarTitle>
+                    <NavBarTitleExit>
+                        <FontAwesomeIcon icon="times" />
+                    </NavBarTitleExit>
+                </NavBarTitleBar>
+            </SlidingNavBar>
         </animated.div>
     );
 };

@@ -6,7 +6,7 @@ const SettingsNav: React.FC<PropsForOpenNav> = ({ isOpen }) => {
     const animateHomeNav = useSpring({
         position: "absolute",
         top: "0rem",
-        left: "5.5rem",
+        left: "4.3rem",
         width: isOpen ? "15rem" : "0%",
         height: "100%",
         overflow: "hidden",

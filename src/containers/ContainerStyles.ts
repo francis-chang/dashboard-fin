@@ -5,10 +5,17 @@ import styled, { createGlobalStyle } from "styled-components";
 */
 
 export const Global = createGlobalStyle`
+
+    @font-face {
+        font-family: Chivo;
+        src: url('./assets/fonts/Chivo/Chivo-Regular.ttf');
+    }
     body{
         margin: 0;
         padding: 0;
         font-size: 16px;
+        font-family: Chivo;
+        -webkit-font-smoothing: antialiased;
     }
 
     .navigationButton-active{
@@ -18,6 +25,8 @@ export const Global = createGlobalStyle`
     .navigationButton-non{
         color: #dce8ef;
     }
+    
+
 `;
 
 /*
@@ -28,7 +37,7 @@ export const Grid = styled.div`
     display: grid;
     width: 100vw;
     height: 100vh;
-    grid-template-columns: 5.5rem auto;
+    grid-template-columns: 4.3rem auto;
 `;
 
 /*

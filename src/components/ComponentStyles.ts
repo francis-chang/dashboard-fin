@@ -51,11 +51,33 @@ export const NavigationButtonDash = styled.div`
 //NavigationButton-active is in Global Style
 
 /*
-    HOME NAV BAR
+    NAV BAR
 */
 
 export const SlidingNavBar = styled.div`
     width: 100%;
     height: 100%;
     background-color: #203746;
+    padding: 0.5rem 1rem;
+    color: #dce8ef;
+    box-sizing: border-box;
+    user-select: none;
+`;
+
+export const NavBarTitleBar = styled.div`
+    width: 100%;
+    display: flex;
+    border-bottom: 0.3rem solid #dce8ef;
+    align-items: center;
+    justify-content: space-between;
+`;
+
+export const NavBarTitle = styled.div`
+    text-align: center;
+    font-size: 2.2rem;
+`;
+
+export const NavBarTitleExit = styled.div`
+    font-size: 1.5rem;
+    padding-right: 0.2rem;
 `;
