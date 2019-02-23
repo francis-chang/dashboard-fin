@@ -70,7 +70,7 @@ export const NavBarTitleContainer = styled.div`
 `;
 
 export const NavBarTitleBar = styled.div`
-    padding: 0.5rem 1rem;
+    padding: 0.6rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -101,7 +101,7 @@ export const NavBarSelection = styled.div`
     background-color: #182a34;
     /* border-bottom: 0.1rem solid #dce8ef; */
     align-items: center;
-    padding-left: 0.3rem;
+    padding-left: 0.7rem;
     cursor: pointer;
 
     &:hover {
@@ -116,7 +116,7 @@ export const NavBarSelectionWDropDown = styled.div`
     width: 100%;
     background-color: #182a34;
     align-items: center;
-    padding-left: 0.3rem;
+    padding-left: 0.7rem;
     justify-content: space-between;
     cursor: pointer;
 

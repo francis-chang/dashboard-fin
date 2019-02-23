@@ -26,7 +26,7 @@ const NavBarDropdown: React.FC<PropsForNavDropdown> = ({ text }) => {
                 <div className="dropdown-text">{text}</div>
                 <FontAwesomeIcon
                     className="arrow-down"
-                    style={{ paddingRight: "1rem" }}
+                    style={{ paddingRight: "1.5rem" }}
                     icon={isOpen ? "arrow-circle-up" : "arrow-circle-down"}
                 />
             </NavBarSelectionWDropDown>
