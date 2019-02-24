@@ -16,6 +16,13 @@ import NavBarDropdown from "./NavBarDropdown";
 library.add(faTimes);
 
 const HomeNav: React.FC<PropsForOpenNav> = ({ isOpen, setClick }) => {
+    /*
+        Translates the sliding navigation
+        Math: 
+        SlidingNavBar is 18 rem
+        NavBar is 4.3rem via grid styles
+        18 - 4.3 = 13.7
+    */
     const animateHomeNav = useSpring({
         position: "absolute",
         top: "0rem",
@@ -29,9 +36,9 @@ const HomeNav: React.FC<PropsForOpenNav> = ({ isOpen, setClick }) => {
         <animated.div style={animateHomeNav}>
             <SlidingNavBar>
                 <NavBarTitleContainer>
-                    <NavBarTitleBar>
+                    <NavBarTitleBar onClick={() => setClick(false)}>
                         <NavBarTitle>HOME</NavBarTitle>
-                        <NavBarTitleExit onClick={() => setClick(false)}>
+                        <NavBarTitleExit className="nav-exit">
                             <FontAwesomeIcon icon="times" />
                         </NavBarTitleExit>
                     </NavBarTitleBar>

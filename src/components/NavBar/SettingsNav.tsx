@@ -29,9 +29,9 @@ const SettingsNav: React.FC<PropsForOpenNav> = ({ isOpen, setClick }) => {
         <animated.div style={animateSettingsNav}>
             <SlidingNavBar>
                 <NavBarTitleContainer>
-                    <NavBarTitleBar>
+                    <NavBarTitleBar onClick={() => setClick(false)}>
                         <NavBarTitle>SETTINGS</NavBarTitle>
-                        <NavBarTitleExit onClick={() => setClick(false)}>
+                        <NavBarTitleExit className="nav-exit">
                             <FontAwesomeIcon icon="times" />
                         </NavBarTitleExit>
                     </NavBarTitleBar>

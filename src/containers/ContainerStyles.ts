@@ -1,6 +1,19 @@
 import styled, { createGlobalStyle } from "styled-components";
 
 /*
+    #182a34 - DARKEST PRUSSIAN BLUE
+    #203746 - DARK PRUSSIAN BLUE
+    #284557 - PRUSSIAN BLUE
+    #b9d0df - SKY BLUE
+    #dce8ef - OFF WHITE BLUE
+    #eef3f7 - ICE WHITE
+
+    #ff5050 - EXIT RED
+
+    #00cc66 - OKAY GREEN
+*/
+
+/*
     GLOBAL STYLES
 */
 
@@ -58,8 +71,8 @@ export const DashboardPlacement = styled.div`
 
 export const ShipmentGrid = styled.div`
     display: grid;
-    grid-template-columns: 65vw auto;
-    grid-template-rows: 34vw auto;
+    grid-template-columns: 60vw auto;
+    grid-template-rows: 36vw auto;
     width: 100%;
     height: 100%;
 `;

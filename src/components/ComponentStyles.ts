@@ -1,6 +1,19 @@
 import styled from "styled-components";
 
 /*
+    #182a34 - DARKEST PRUSSIAN BLUE
+    #203746 - DARK PRUSSIAN BLUE
+    #284557 - PRUSSIAN BLUE
+    #b9d0df - SKY BLUE
+    #dce8ef - OFF WHITE BLUE
+    #eef3f7 - ICE WHITE
+
+    #ff5050 - EXIT RED
+
+    #00cc66 - OKAY GREEN
+*/
+
+/*
     NAVBAR
 */
 
@@ -69,6 +82,13 @@ export const NavBarTitleBar = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    cursor: pointer;
+
+    &:hover > .nav-exit {
+        transform: rotate(90deg);
+        color: #ff5050;
+        transition-duration: 350ms;
+    }
 `;
 
 export const NavBarTitle = styled.div`
@@ -80,12 +100,6 @@ export const NavBarTitleExit = styled.div`
     font-size: 1.8rem;
     cursor: pointer;
     padding: 0.2rem;
-
-    &:hover {
-        transform: rotate(90deg);
-        color: #ff5050;
-        transition-duration: 350ms;
-    }
 `;
 
 export const NavBarSelection = styled.div`
@@ -147,5 +161,4 @@ export const NavBarSelectionDrop = styled.div`
 export const MapOnGrid = styled.div`
     grid-row-start: 1;
     grid-column-start: 1;
-    background-color: #eee;
 `;
