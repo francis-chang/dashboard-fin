@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import List from "../components/Map/List";
+import ListAndInfo from "../components/Map/ListAndInfo";
 import Map from "../components/Map/Map";
 import { MapContext } from "../components/Map/MapContext";
 import { DashboardPlacement, ShipmentGrid } from "./ContainerStyles";
@@ -22,7 +22,7 @@ const ShipmentContainer: React.FC = () => {
                     value={{ currentShipment, setCurrentShipment, date }}
                 >
                     <Map />
-                    <List />
+                    <ListAndInfo />
                 </MapContext.Provider>
             </ShipmentGrid>
         </DashboardPlacement>

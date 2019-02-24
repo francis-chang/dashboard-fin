@@ -47,4 +47,5 @@ type Shipment = {
     progress: number;
     flightDuration: number;
     flightInitialSpeed: number;
+    eta: string;
 };

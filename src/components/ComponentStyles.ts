@@ -8,9 +8,11 @@ import styled from "styled-components";
     #dce8ef - OFF WHITE BLUE
     #eef3f7 - ICE WHITE
 
-    #ff5050 - EXIT RED
+    #ff5050 - NEGATIVE RED
 
-    #00cc66 - OKAY GREEN
+    #ffb366 - WARNING ORANGE
+    
+    #00cc66 - POSITIVE GREEN
 */
 
 /*
@@ -161,7 +163,7 @@ export const NavBarSelectionDrop = styled.div`
 export const MapOnGrid = styled.div`
     grid-row-start: 1;
     grid-column-start: 1;
-    background-color: #203746;
+    background-color: #eef3f7;
 `;
 
 /*
@@ -177,6 +179,7 @@ export const ListAndInfoOnGrid = styled.div`
 
 export const ListOnGrid = styled.div`
     height: 60%;
+    max-height: 60%;
     background-color: #182a34;
     color: #eef3f7;
     display: flex;
@@ -187,17 +190,17 @@ export const ListTitle = styled.div`
     background-color: #203746;
     width: 100%;
     border-bottom: 0.3rem solid #dce8ef;
-    padding: 0.2rem;
+    padding: 0.5rem;
     display: flex;
     align-items: center;
-    font-size: 3rem;
+    font-size: 2.3rem;
     box-sizing: border-box;
 `;
 
 export const ListBody = styled.div`
+    cursor: pointer;
     width: 100%;
     box-sizing: border-box;
-    font-size: 1.2rem;
     overflow-y: scroll;
     overflow-x: hidden;
 `;
@@ -207,10 +210,46 @@ export const ListBody = styled.div`
 */
 
 export const ListingBody = styled.div`
+    height: 5rem;
     width: 100%;
     display: flex;
-    padding: 0.3rem;
+    padding: 0.3rem 1rem;
     box-sizing: border-box;
+    border-bottom: 0.5px solid #203746;
+    align-items: center;
+`;
+
+export const ListingTitle = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+`;
+
+export const ListingTitleName = styled.div`
+    font-size: 1.5rem;
+`;
+export const ListingTitleID = styled.div`
+    font-size: 1rem;
+    color: #b9d0df;
+`;
+
+export const ListingFromTo = styled.div`
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 20%;
+`;
+
+export const ListingFrom = styled.div`
+    padding: 0.5rem;
+    font-size: 1.3rem;
+`;
+
+export const ListingETA = styled.div`
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
 
 /*
@@ -218,5 +257,6 @@ export const ListingBody = styled.div`
 */
 export const InfoOnGrid = styled.div`
     height: 40%;
-    background-color: green;
+    background-color: #182a34;
+    color: #eef3f7;
 `;

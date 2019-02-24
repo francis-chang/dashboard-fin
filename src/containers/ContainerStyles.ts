@@ -8,9 +8,11 @@ import styled, { createGlobalStyle } from "styled-components";
     #dce8ef - OFF WHITE BLUE
     #eef3f7 - ICE WHITE
 
-    #ff5050 - EXIT RED
+    #ff5050 - NEGATIVE RED
 
-    #00cc66 - OKAY GREEN
+    #ffb366 - WARNING ORANGE
+    
+    #00cc66 - POSITIVE GREEN
 */
 
 /*
@@ -46,9 +48,9 @@ export const Global = createGlobalStyle`
     }
 
     .states{
-        fill: #182a34;
+        fill: #dce8ef;
         stroke-width: 1.5px;
-        stroke: #eef3f7;
+        stroke: #203746;
     }
 
     

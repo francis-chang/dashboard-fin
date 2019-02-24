@@ -10,20 +10,24 @@ import {
 import Listing from "./Listing";
 import { MapContext } from "./MapContext";
 
-const List: React.FC = () => {
+const ListAndInfo: React.FC = () => {
     const { currentShipment, setCurrentShipment } = useContext(MapContext);
     return (
         <ListAndInfoOnGrid>
             <ListOnGrid>
                 <ListTitle>SHIPMENTS</ListTitle>
-                {SHIPMENTDATA.map(shipment => (
-                    <Listing key={shipment.id} shipment={shipment} />
-                ))}
-                <ListBody />
+
+                <ListBody>
+                    {SHIPMENTDATA.map(shipment => (
+                        <Listing key={shipment.id} shipment={shipment} />
+                    ))}
+                </ListBody>
             </ListOnGrid>
-            <InfoOnGrid />
+            <InfoOnGrid>
+                <ListTitle>INFO</ListTitle>
+            </InfoOnGrid>
         </ListAndInfoOnGrid>
     );
 };
 
-export default List;
+export default ListAndInfo;

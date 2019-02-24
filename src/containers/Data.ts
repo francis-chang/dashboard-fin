@@ -45,63 +45,69 @@ export const DESTINATIONLIST = [
 
 export const SHIPMENTDATA = [
     {
-        name: "shipmentOne",
-        id: "COOL-1234",
+        name: "FLEX-7DJ43",
+        id: "tNO6KHlKFv",
         from: DESTINATIONLIST[1],
         to: DESTINATIONLIST[5],
         descr: "LAX/JFK",
         progress: 0.4,
         flightDuration: 320,
-        flightInitialSpeed: 340
+        flightInitialSpeed: 340,
+        eta: "on time"
     },
     {
-        name: "shipmentTwo",
-        id: "COOL-2345",
+        name: "AAPL-247D3",
+        id: "8Gu11LV3D5",
         from: DESTINATIONLIST[1],
         to: DESTINATIONLIST[2],
         descr: "LAX/ORD",
         progress: 0.7,
         flightDuration: 245,
-        flightInitialSpeed: 340
+        flightInitialSpeed: 340,
+        eta: "delayed"
     },
     {
-        name: "shipmentThree",
-        id: "COOL-3456",
+        name: "MINERVA-227JD",
+        id: "QA7NVuLzgB",
         from: DESTINATIONLIST[6],
         to: DESTINATIONLIST[0],
         descr: "SEA/ATL",
         progress: 0.2,
         flightDuration: 280,
-        flightInitialSpeed: 310
+        flightInitialSpeed: 310,
+        eta: "on time"
     },
     {
-        name: "shipmentFour",
-        id: "COOL-4567",
+        name: "EVERGREEN-VX347",
+        id: "ju4j5tQ7De",
         from: DESTINATIONLIST[5],
         to: DESTINATIONLIST[2],
         descr: "JFK/ORD",
         progress: 0.4,
         flightDuration: 175,
-        flightInitialSpeed: 350
+        flightInitialSpeed: 350,
+        eta: "on time"
     },
     {
-        name: "shipmentFive",
-        id: "COOL-5678",
+        name: "MSFT-785GT",
+        id: "77rZUdtLoY",
         from: DESTINATIONLIST[5],
         to: DESTINATIONLIST[4],
         descr: "JFK/DEN",
         progress: 0,
         flightDuration: 295,
-        flightInitialSpeed: 310
+        flightInitialSpeed: 310,
+        eta: "on time"
     },
     {
-        name: "shipmentSix",
-        id: "COOL-6789",
+        name: "PALANTIR-D7554",
+        id: "lNtJq1lJkR",
         from: DESTINATIONLIST[3],
         to: DESTINATIONLIST[2],
         descr: "DEN/ORD",
         progress: 0,
         flightDuration: 145,
-        flightInitialSpeed: 0
+        flightInitialSpeed: 0,
+        eta: "canceled"
     }
 ];
