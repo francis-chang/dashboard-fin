@@ -35,6 +35,7 @@ export const Global = createGlobalStyle`
         background-color: #b9d0df;
         color: #284557;
     }
+
     .navigationButton-non{
         color: #dce8ef;
 
@@ -42,7 +43,16 @@ export const Global = createGlobalStyle`
             background-color: #284557;
             transition-duration: 250ms;
         }
-    }`;
+    }
+
+    .states{
+        fill: #182a34;
+        stroke-width: 1.5px;
+        stroke: #eef3f7;
+    }
+
+    
+`;
 
 /*
     PARENT GRID

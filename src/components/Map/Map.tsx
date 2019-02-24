@@ -42,10 +42,20 @@ const Map: React.FC = () => {
     }
 
     useEffect(() => {
+        /**
+         * If the element is not selected by d3 nor if there is the Map Object
+         * select the selection and store it in state
+         * fetch the map and store that in state as well
+         */
         if (!mapSelection && !usMap) {
             setMapSelection(select(mapRef.current));
             fetchMap();
         }
+        /**
+         * if there is a reference to the svg and if a geoPath is not yet projected
+         * figure out the dimensions needed, and set that with projection and scale
+         * then set the property "path" with the geoPath
+         */
         if (!path && svgContainerRef.current) {
             const width = svgContainerRef.current.getBoundingClientRect().width;
             const height = svgContainerRef.current.getBoundingClientRect()
@@ -55,6 +65,11 @@ const Map: React.FC = () => {
             const projectedPath = geoPath().projection(projection);
             path = projectedPath;
         }
+        /**
+         * finally draw the map once path is available
+         * at the end of drawMap function,
+         * it will set the mapDrawn to true to prevent rerenders
+         */
         if (!mapDrawn && path) {
             drawMap();
         }

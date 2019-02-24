@@ -161,4 +161,62 @@ export const NavBarSelectionDrop = styled.div`
 export const MapOnGrid = styled.div`
     grid-row-start: 1;
     grid-column-start: 1;
+    background-color: #203746;
+`;
+
+/*
+    List Styles
+*/
+
+export const ListAndInfoOnGrid = styled.div`
+    grid-row-start: 1;
+    grid-column-start: 2;
+    display: flex;
+    flex-direction: column;
+`;
+
+export const ListOnGrid = styled.div`
+    height: 60%;
+    background-color: #182a34;
+    color: #eef3f7;
+    display: flex;
+    flex-direction: column;
+`;
+
+export const ListTitle = styled.div`
+    background-color: #203746;
+    width: 100%;
+    border-bottom: 0.3rem solid #dce8ef;
+    padding: 0.2rem;
+    display: flex;
+    align-items: center;
+    font-size: 3rem;
+    box-sizing: border-box;
+`;
+
+export const ListBody = styled.div`
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1.2rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+`;
+
+/*
+    Listing Styles
+*/
+
+export const ListingBody = styled.div`
+    width: 100%;
+    display: flex;
+    padding: 0.3rem;
+    box-sizing: border-box;
+`;
+
+/*
+    Info Styles
+*/
+export const InfoOnGrid = styled.div`
+    height: 40%;
+    background-color: green;
 `;
