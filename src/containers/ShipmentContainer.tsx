@@ -1,11 +1,13 @@
 import React from "react";
+import Map from "../components/Map/Map";
 import { DashboardPlacement, ShipmentGrid } from "./ContainerStyles";
 
 const ShipmentContainer: React.FC = () => {
     return (
         <DashboardPlacement>
-            <ShipmentGrid />
-            This is the shipment grid
+            <ShipmentGrid>
+                <Map />
+            </ShipmentGrid>
         </DashboardPlacement>
     );
 };

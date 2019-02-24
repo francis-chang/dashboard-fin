@@ -19,15 +19,17 @@ export const Global = createGlobalStyle`
     }
 
     .navigationButton-active{
-        background-color: #284557;
-        color: #ffb366;
+        background-color: #b9d0df;
+        color: #284557;
     }
     .navigationButton-non{
         color: #dce8ef;
-    }
-    
 
-`;
+        &:hover {
+            background-color: #284557;
+            transition-duration: 250ms;
+        }
+    }`;
 
 /*
     PARENT GRID
@@ -54,4 +56,10 @@ export const DashboardPlacement = styled.div`
     SHIPMENT CONTAINER STYLES
 */
 
-export const ShipmentGrid = styled.div``;
+export const ShipmentGrid = styled.div`
+    display: grid;
+    grid-template-columns: 65vw auto;
+    grid-template-rows: 34vw auto;
+    width: 100%;
+    height: 100%;
+`;

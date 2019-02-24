@@ -37,7 +37,7 @@ const SettingsNav: React.FC<PropsForOpenNav> = ({ isOpen, setClick }) => {
                     </NavBarTitleBar>
                 </NavBarTitleContainer>
 
-                <NavBarDropdown text="Sed do Eiusmod" />
+                <NavBarDropdown text="Sed do Eiusmod" isNavOut={isOpen} />
                 <NavBarSelection>Change Password</NavBarSelection>
                 <NavBarSelection>Billing and Payment</NavBarSelection>
                 <NavBarSelection>History</NavBarSelection>

@@ -37,9 +37,12 @@ const HomeNav: React.FC<PropsForOpenNav> = ({ isOpen, setClick }) => {
                     </NavBarTitleBar>
                 </NavBarTitleContainer>
 
-                <NavBarDropdown text="Lorem Ipsum" />
+                <NavBarDropdown text="Lorem Ipsum" isNavOut={isOpen} />
                 <NavBarSelection>Dolor sit Amet</NavBarSelection>
-                <NavBarDropdown text="Consectetur Adipiscing" />
+                <NavBarDropdown
+                    text="Consectetur Adipiscing"
+                    isNavOut={isOpen}
+                />
                 <NavBarSelection>Log out</NavBarSelection>
             </SlidingNavBar>
         </animated.div>

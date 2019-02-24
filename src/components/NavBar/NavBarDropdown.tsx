@@ -4,7 +4,7 @@ import {
     faArrowCircleUp
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { animated, useSpring } from "react-spring";
 import {
     NavBarSelectionDrop,
@@ -13,8 +13,14 @@ import {
 
 library.add(faArrowCircleDown, faArrowCircleUp);
 
-const NavBarDropdown: React.FC<PropsForNavDropdown> = ({ text }) => {
+const NavBarDropdown: React.FC<PropsForNavDropdown> = ({ text, isNavOut }) => {
     const [isOpen, setOpen] = useState(false);
+
+    useEffect(() => {
+        if (!isNavOut) {
+            setOpen(false);
+        }
+    }, [isNavOut]);
 
     const animateDropdown = useSpring({
         height: isOpen ? "12rem" : "0rem",

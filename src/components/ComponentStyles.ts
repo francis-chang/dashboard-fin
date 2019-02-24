@@ -41,11 +41,6 @@ export const NavigationButtonDash = styled.div`
     cursor: pointer;
     padding: 1rem 0rem;
     text-align: center;
-
-    &:hover {
-        background-color: #284557;
-        transition-duration: 250ms;
-    }
 `;
 
 //NavigationButton-active is in Global Style
@@ -94,7 +89,7 @@ export const NavBarTitleExit = styled.div`
 `;
 
 export const NavBarSelection = styled.div`
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     height: 3rem;
     display: flex;
     width: 100%;
@@ -110,7 +105,7 @@ export const NavBarSelection = styled.div`
 `;
 
 export const NavBarSelectionWDropDown = styled.div`
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     height: 3rem;
     display: flex;
     width: 100%;
@@ -143,4 +138,14 @@ export const NavBarSelectionDrop = styled.div`
     &:hover {
         text-decoration: underline;
     }
+`;
+
+/*
+    Map Styles
+*/
+
+export const MapOnGrid = styled.div`
+    grid-row-start: 1;
+    grid-column-start: 1;
+    background-color: #eee;
 `;

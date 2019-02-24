@@ -9,4 +9,5 @@ interface PropsForOpenNav {
 
 interface PropsForNavDropdown {
     text: string;
+    isNavOut: boolean;
 }
