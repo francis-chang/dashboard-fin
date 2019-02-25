@@ -1,11 +1,24 @@
+import { easeLinear } from "d3-ease";
 import { json } from "d3-fetch";
 import { geoAlbers, geoPath, GeoProjection } from "d3-geo";
-import { select } from "d3-selection";
-import React, { useEffect, useRef, useState } from "react";
+import { event, select } from "d3-selection";
+import "d3-transition";
+import { zoom, zoomIdentity } from "d3-zoom";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { feature } from "topojson";
 import { MapOnGrid } from "../ComponentStyles";
+import { MapContext } from "./MapContext";
 
 const Map: React.FC = () => {
+    /**
+     *
+     */
+    const {
+        shipments,
+        filteredShipments,
+        setCurrentShipment,
+        currentShipment
+    } = useContext(MapContext);
     /*
         mapRef is used to apppend the map
         svgContainerRef is used to calculate width and height
@@ -18,10 +31,16 @@ const Map: React.FC = () => {
         usMap is the json object of the us map
         //maybe its not performant to put the whole json in state
         mapDrawn is used for state rendering to check if map is rendered
+        shipmentsDrawn is used for stateful rendering to chick if shipments have been drawn
     */
     const [mapSelection, setMapSelection] = useState<SVGSelection>(null);
     const [usMap, setMap] = useState<any>(null);
     const [mapDrawn, setMapDrawn] = useState(false);
+    const [shipmentsDrawn, setShipmentsDrawn] = useState(false);
+
+    // a conditional to track if a shipment needs to be followed
+    // no need for this to be a state
+    let follow: boolean = false;
 
     /*
         projection and paths
@@ -30,6 +49,8 @@ const Map: React.FC = () => {
     */
     const projection: GeoProjection = geoAlbers();
     let path: SVGGeoPath = null;
+
+    let currentCoordinates: number[] | null = null;
 
     async function fetchMap() {
         const mapRequest = json("assets/us.json");
@@ -73,6 +94,12 @@ const Map: React.FC = () => {
         if (!mapDrawn && path) {
             drawMap();
         }
+
+        if (!shipmentsDrawn) {
+            drawShipments();
+        }
+        filterDrawnShipments();
+        zoomToCurrentShipment();
     });
 
     const drawMap = () => {
@@ -89,6 +116,189 @@ const Map: React.FC = () => {
                 .attr("d", path);
 
             setMapDrawn(true);
+        }
+    };
+
+    const zoomed = (): void => {
+        const translate = `translate(${event.transform.x}, ${
+            event.transform.y
+        })`;
+        const scale = `scale(${event.transform.k}, ${event.transform.k})`;
+        const transformStr = `${translate} ${scale}`;
+        mapSelection!.attr("transform", transformStr);
+    };
+    const zBehavior = zoom().on("zoom", zoomed);
+
+    const transform = () => {
+        if (currentCoordinates && svgContainerRef.current) {
+            const width = svgContainerRef.current.getBoundingClientRect().width;
+            const height = svgContainerRef.current.getBoundingClientRect()
+                .height;
+            return zoomIdentity
+                .translate(width / 2, height / 2)
+                .scale(4)
+                .translate(-currentCoordinates[0], -currentCoordinates[1]);
+        }
+        return zoomIdentity.scale(1);
+    };
+
+    const zoomToCurrentShipment = () => {
+        if (currentShipment && mapSelection) {
+            let currentNode = mapSelection
+                .select(`.${currentShipment.id}`)
+                .attr("transform");
+            let leftIndex = currentNode.indexOf(",");
+            let x = +currentNode.slice(10, leftIndex);
+            let y = +currentNode.slice(leftIndex + 1, currentNode.length - 1);
+            currentCoordinates = [x, y];
+            follow = true;
+            mapSelection
+                .transition()
+                .duration(1000)
+                .call(zBehavior.transform as any, transform)
+                .on("end", () => {
+                    mapSelection.call(followShipment);
+                });
+        } else if (mapSelection) {
+            mapSelection
+                .transition()
+                .duration(1000)
+                .call(zBehavior.transform as any, transform);
+        }
+    };
+
+    const followShipment = () => {
+        if (currentShipment && mapSelection && follow) {
+            let currentNode = mapSelection
+                .select(`.${currentShipment.id}`)
+                .attr("transform");
+            let leftIndex = currentNode.indexOf(",");
+            let x = +currentNode.slice(10, leftIndex);
+            let y = +currentNode.slice(leftIndex + 1, currentNode.length - 1);
+            currentCoordinates = [x, y];
+            mapSelection
+                .transition()
+                .delay(3000)
+                .duration(100)
+                .call(zBehavior.transform as any, transform)
+                .on("end", () => {
+                    if (follow && currentCoordinates) {
+                        mapSelection.call(followShipment);
+                    }
+                });
+        }
+    };
+
+    const getFlightPath = (from: number[], to: number[]) => {
+        return {
+            type: "FeatureCollection",
+            features: [
+                {
+                    type: "Feature",
+                    geometry: {
+                        type: "LineString",
+                        coordinates: [from, to]
+                    },
+                    properties: {}
+                }
+            ]
+        };
+    };
+
+    function translateAlong(path: SVGPathElement, prog: number, id: string) {
+        return function() {
+            var l = path.getTotalLength();
+            return function(t: number) {
+                var calc = t * (1 - prog) + prog;
+                var p = path.getPointAtLength(calc * l);
+                // setCoordinates({ ...currentCoordinates, [id]: [p.x, p.y] });
+                return `translate(${p.x}, ${p.y})`;
+            };
+        };
+    }
+
+    const filterDrawnShipments = () => {
+        if (mapSelection && usMap && !currentShipment) {
+            shipments.forEach((shipment, i) => {
+                let contains = false;
+                filteredShipments.forEach(filShipment => {
+                    if (shipment.id === filShipment.id) {
+                        contains = true;
+                    }
+                });
+                if (!contains) {
+                    mapSelection
+                        .select(`.flight-path${i}`)
+                        .attr("opacity", "0.3");
+                    mapSelection
+                        .select(`.${shipment.id}`)
+                        .attr("opacity", "0.3");
+                } else {
+                    mapSelection
+                        .select(`.flight-path${i}`)
+                        .attr("opacity", "1");
+                    mapSelection.select(`.${shipment.id}`).attr("opacity", "1");
+                }
+            });
+        } else if (mapSelection && usMap && currentShipment) {
+            shipments.forEach((shipment, i) => {
+                if (shipment.id !== currentShipment.id) {
+                    mapSelection
+                        .select(`.flight-path${i}`)
+                        .attr("opacity", "0.3");
+                    mapSelection
+                        .select(`.${shipment.id}`)
+                        .attr("opacity", "0.3");
+                } else {
+                    mapSelection
+                        .select(`.flight-path${i}`)
+                        .attr("opacity", "1");
+                    mapSelection.select(`.${shipment.id}`).attr("opacity", "1");
+                }
+            });
+        }
+    };
+
+    const drawShipments = () => {
+        if (mapSelection && usMap) {
+            shipments.map((shipment, i) => {
+                let pathFeatures = getFlightPath(
+                    shipment.from.lnglat,
+                    shipment.to.lnglat
+                ).features;
+
+                let flightPath = mapSelection
+                    .selectAll(`.flight-path${i}`)
+                    .data(pathFeatures)
+                    .enter()
+                    .append("path")
+                    .attr("class", `flight-path flight-path${i}`)
+                    .attr("d", path as any);
+
+                let circle = mapSelection
+                    .append("circle")
+                    .attr("class", `shipment-circle ${shipment.id}`)
+                    .attr("r", "4px");
+
+                let remaining = 1 - shipment.progress;
+                let minRemaining = remaining * shipment.flightDuration;
+                let msRemaining = Math.floor(minRemaining * 60000);
+
+                circle
+                    .transition()
+                    .duration(msRemaining)
+                    .ease(easeLinear)
+                    .attrTween(
+                        "transform",
+                        translateAlong(
+                            flightPath.node(),
+                            shipment.progress,
+                            shipment.id
+                        )
+                    );
+            });
+
+            setShipmentsDrawn(true);
         }
     };
 

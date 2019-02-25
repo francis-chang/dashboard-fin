@@ -20,6 +20,10 @@ interface PropsForListing {
     shipment: Shipment;
 }
 
+interface PropsForFilterList {
+    setMouseClicked: (b: boolean) => void;
+}
+
 /*
     TYPINGS FOR D3 SELECTIONS
 */

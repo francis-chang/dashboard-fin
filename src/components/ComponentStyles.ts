@@ -4,7 +4,8 @@ import styled from "styled-components";
     #182a34 - DARKEST PRUSSIAN BLUE
     #203746 - DARK PRUSSIAN BLUE
     #284557 - PRUSSIAN BLUE
-    #b9d0df - SKY BLUE
+    #49779c - MID BLUE 
+    #b9d0df - SKY BLUE  
     #dce8ef - OFF WHITE BLUE
     #eef3f7 - ICE WHITE
 
@@ -184,6 +185,7 @@ export const ListOnGrid = styled.div`
     color: #eef3f7;
     display: flex;
     flex-direction: column;
+    position: relative;
 `;
 
 export const ListTitle = styled.div`
@@ -194,30 +196,33 @@ export const ListTitle = styled.div`
     display: flex;
     align-items: center;
     font-size: 2.3rem;
+    min-height: 3.3rem;
+    max-height: 3.3rem;
     box-sizing: border-box;
+    cursor: pointer;
+    overflow: hidden;
+    user-select: none;
 `;
 
 export const ListBody = styled.div`
-    cursor: pointer;
     width: 100%;
+    height: 100%;
     box-sizing: border-box;
+    position: relative;
     overflow-y: scroll;
     overflow-x: hidden;
+`;
+
+export const ListBodyInner = styled.div`
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
 `;
 
 /*
     Listing Styles
 */
-
-export const ListingBody = styled.div`
-    height: 5rem;
-    width: 100%;
-    display: flex;
-    padding: 0.3rem 1rem;
-    box-sizing: border-box;
-    border-bottom: 0.5px solid #203746;
-    align-items: center;
-`;
 
 export const ListingTitle = styled.div`
     display: flex;

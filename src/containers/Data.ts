@@ -57,7 +57,7 @@ export const SHIPMENTDATA = [
     },
     {
         name: "AAPL-247D3",
-        id: "8Gu11LV3D5",
+        id: "Gu11LV3D58",
         from: DESTINATIONLIST[1],
         to: DESTINATIONLIST[2],
         descr: "LAX/ORD",
@@ -90,7 +90,7 @@ export const SHIPMENTDATA = [
     },
     {
         name: "MSFT-785GT",
-        id: "77rZUdtLoY",
+        id: "rZUdtLoY77",
         from: DESTINATIONLIST[5],
         to: DESTINATIONLIST[4],
         descr: "JFK/DEN",

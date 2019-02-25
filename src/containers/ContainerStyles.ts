@@ -4,9 +4,11 @@ import styled, { createGlobalStyle } from "styled-components";
     #182a34 - DARKEST PRUSSIAN BLUE
     #203746 - DARK PRUSSIAN BLUE
     #284557 - PRUSSIAN BLUE
+    #49779c - MEDIUM BLUE
     #b9d0df - SKY BLUE
     #dce8ef - OFF WHITE BLUE
     #eef3f7 - ICE WHITE
+    
 
     #ff5050 - NEGATIVE RED
 
@@ -53,6 +55,16 @@ export const Global = createGlobalStyle`
         stroke: #203746;
     }
 
+    .flight-path{
+        fill: none;
+        stroke: #182a34;
+        stroke-width: 2px;
+        stroke-dasharray: 5;
+    }
+
+    .shipment-circle{
+        fill: orange;
+    }
     
 `;
 
