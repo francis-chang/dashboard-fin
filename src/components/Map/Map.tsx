@@ -9,6 +9,7 @@ import { animated, useSpring } from "react-spring";
 import { feature } from "topojson";
 import { MapOnGrid } from "../ComponentStyles";
 import { MapContext } from "./MapContext";
+import MapInfo from "./MapInfo";
 
 const Map: React.FC = () => {
     /**
@@ -344,17 +345,18 @@ const Map: React.FC = () => {
         position: "absolute",
         left: "0rem",
         bottom: "0rem",
-        backgroundColor: "#182a34",
-        opacity: 0.7
+        backgroundColor: "rgba(24, 42, 52, 0.8)"
     });
 
     return (
-        <MapOnGrid>
+        <MapOnGrid id="mapOnGrid">
             <svg width="100%" height="100%" ref={svgContainerRef}>
                 <g ref={mapRef} />
             </svg>
 
-            <animated.div style={animateInfo} />
+            <animated.div style={animateInfo}>
+                <MapInfo />
+            </animated.div>
         </MapOnGrid>
     );
 };

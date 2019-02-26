@@ -73,7 +73,6 @@ export const Global = createGlobalStyle`
 
     .shipment-circle{
         fill: #ffb366;
-
         cursor: pointer;
     }
 
@@ -82,6 +81,18 @@ export const Global = createGlobalStyle`
         stroke: #182a34;
         stroke-width: 3px;
         stroke-linecap: round;
+    }
+
+    .odom-background{
+        fill: none;
+        stroke: #f1f1f4;
+        stroke-width: 5px;
+        shape-rendering: auto;
+    }
+
+    .odom-foreground {
+        fill: orange;
+        shape-rendering: auto;
     }
     
 `;

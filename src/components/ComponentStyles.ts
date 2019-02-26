@@ -256,3 +256,19 @@ export const InfoOnGrid = styled.div`
     background-color: #182a34;
     color: #eef3f7;
 `;
+
+/*
+    Map info styles
+*/
+
+export const MapInfoContainer = styled.div`
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+`;
+
+export const OdomContainer = styled.div`
+    width: 23%;
+    height: 100%;
+`;
