@@ -172,16 +172,13 @@ export const MapOnGrid = styled.div`
     List Styles
 */
 
-export const ListAndInfoOnGrid = styled.div`
+export const ListOnGrid = styled.div`
     grid-row-start: 1;
     grid-column-start: 2;
     display: flex;
     flex-direction: column;
-`;
-
-export const ListOnGrid = styled.div`
-    height: 60%;
-    max-height: 60%;
+    height: 100%;
+    max-height: 100%;
     background-color: #182a34;
     color: #eef3f7;
     display: flex;
@@ -212,13 +209,6 @@ export const ListBody = styled.div`
     position: relative;
     overflow-y: scroll;
     overflow-x: hidden;
-`;
-
-export const ListBodyInner = styled.div`
-    width: 100%;
-    position: absolute;
-    top: 0px;
-    left: 0px;
 `;
 
 /*
