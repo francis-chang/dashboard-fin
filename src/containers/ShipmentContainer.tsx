@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Fulfillment from "../components/Map/Fulfillment";
 import List from "../components/Map/List";
 import Map from "../components/Map/Map";
 import { MapContext } from "../components/Map/MapContext";
@@ -34,6 +35,7 @@ const ShipmentContainer: React.FC = () => {
                 >
                     <Map />
                     <List />
+                    <Fulfillment />
                 </MapContext.Provider>
             </ShipmentGrid>
         </DashboardPlacement>

@@ -85,14 +85,34 @@ export const Global = createGlobalStyle`
 
     .odom-background{
         fill: none;
-        stroke: #f1f1f4;
+        stroke: #eef3f7;
         stroke-width: 5px;
         shape-rendering: auto;
     }
 
     .odom-foreground {
-        fill: orange;
+        fill: #ffb366;
         shape-rendering: auto;
+    }
+
+    .odom-label{
+        font-size: 1.8rem;
+        fill: #eef3f7;
+        text-anchor: middle;
+    }
+
+    .y-axis{
+        color: #eef3f7;
+    }
+    
+    .alt-rect-outer{
+        fill: none;
+        stroke: #eef3f7;
+        stroke-width: 5px;
+    }
+
+    .alt-rect-inner{
+        fill: #ffb366;
     }
     
 `;

@@ -1,4 +1,4 @@
-import { easeLinear } from "d3-ease";
+import { easeElastic } from "d3-ease";
 import { interpolate } from "d3-interpolate";
 import { select } from "d3-selection";
 import { arc, Arc, DefaultArcObject } from "d3-shape";
@@ -9,7 +9,7 @@ import { MapContext } from "../MapContext";
 let data = {
     previous: 0,
     value: 0,
-    size: 600,
+    size: 490,
     update: () => {
         // MAX: 350 MIN: 330
         return Math.floor(Math.random() * 20 + 320);
@@ -26,6 +26,7 @@ const Odometer: React.FC = () => {
     const [odomDrawn, setOdomDrawn] = useState(false);
     const [width, setWidth] = useState<number | null>(null);
     const [height, setHeight] = useState<number | null>(null);
+    const [label, setLabel] = useState<D3SVGTextSelection>(null);
 
     let arcGenerator: Arc<any, DefaultArcObject> | null = null;
     let outerArcGenerator: Arc<any, DefaultArcObject> | null = null;
@@ -62,7 +63,13 @@ const Odometer: React.FC = () => {
         }
 
         if (odomDrawn && currentShipment) {
+            data.value = 0;
+            data.previous = 0;
             update();
+        }
+        if (odomDrawn && !currentShipment) {
+            data.value = 0;
+            data.previous = 0;
         }
     });
 
@@ -77,18 +84,20 @@ const Odometer: React.FC = () => {
     };
 
     const update = () => {
-        if (currentShipment) {
+        if (currentShipment && label) {
             data.previous = data.value;
             data.value = data.update();
             odomSelection
                 .select(".odom-foreground")
                 .transition()
-                .ease(easeLinear)
-                .duration(750)
+                .ease(easeElastic)
+                .duration(2000)
                 .attrTween("d", () => arcTween(data) as any)
                 .on("end", () =>
-                    setTimeout(update, Math.floor(Math.random() * 2000 + 1000))
+                    setTimeout(update, Math.floor(Math.random() * 3000 + 2000))
                 );
+
+            label.text(`${data.value} knots`);
         }
     };
 
@@ -113,6 +122,7 @@ const Odometer: React.FC = () => {
                 .attr("d", arcGenerator as any);
 
             setOdomDrawn(true);
+            setLabel(label);
         }
     };
 

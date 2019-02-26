@@ -272,3 +272,18 @@ export const OdomContainer = styled.div`
     width: 23%;
     height: 100%;
 `;
+
+export const AltitudeContainer = styled.div`
+    height: 100%;
+    width: 17%;
+`;
+
+/*
+    Fulfillment styles
+*/
+
+export const FulfillmentContainer = styled.div`
+    grid-column: 1 / span 2;
+    grid-row-start: 2;
+    background-color: #284557;
+`;

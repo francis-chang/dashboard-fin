@@ -29,6 +29,7 @@ interface PropsForFilterList {
 */
 
 type SVGSelection = Selection<SVGSVGElement | null, {}, null, undefined> | null;
+type D3SVGTextSelection = Selection<SVGTextElement, {}, null, undefined> | null;
 type SVGGeoPath = GeoPath<any, GeoPermissibleObjects> | null;
 
 /*
