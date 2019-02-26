@@ -165,6 +165,7 @@ export const MapOnGrid = styled.div`
     grid-row-start: 1;
     grid-column-start: 1;
     background-color: #eef3f7;
+    position: relative;
 `;
 
 /*

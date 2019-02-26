@@ -5,6 +5,7 @@ import { event, select } from "d3-selection";
 import "d3-transition";
 import { zoom, zoomIdentity } from "d3-zoom";
 import React, { useContext, useEffect, useRef, useState } from "react";
+import { animated, useSpring } from "react-spring";
 import { feature } from "topojson";
 import { MapOnGrid } from "../ComponentStyles";
 import { MapContext } from "./MapContext";
@@ -135,7 +136,7 @@ const Map: React.FC = () => {
             const height = svgContainerRef.current.getBoundingClientRect()
                 .height;
             return zoomIdentity
-                .translate(width / 2, height / 2)
+                .translate(width / 2, (height * 0.6) / 2)
                 .scale(4)
                 .translate(-currentCoordinates[0], -currentCoordinates[1]);
         }
@@ -229,13 +230,19 @@ const Map: React.FC = () => {
                 if (!contains) {
                     mapSelection
                         .select(`.flight-path${i}`)
-                        .attr("opacity", "0.3");
+                        .attr("opacity", "0.15");
+                    mapSelection
+                        .select(`.flight-traveled${i}`)
+                        .attr("opacity", "0.15");
                     mapSelection
                         .select(`.${shipment.id}`)
-                        .attr("opacity", "0.3");
+                        .attr("opacity", "0.15");
                 } else {
                     mapSelection
                         .select(`.flight-path${i}`)
+                        .attr("opacity", "1");
+                    mapSelection
+                        .select(`.flight-traveled${i}`)
                         .attr("opacity", "1");
                     mapSelection.select(`.${shipment.id}`).attr("opacity", "1");
                 }
@@ -245,13 +252,19 @@ const Map: React.FC = () => {
                 if (shipment.id !== currentShipment.id) {
                     mapSelection
                         .select(`.flight-path${i}`)
-                        .attr("opacity", "0.3");
+                        .attr("opacity", "0.15");
+                    mapSelection
+                        .select(`.flight-traveled${i}`)
+                        .attr("opacity", "0.15");
                     mapSelection
                         .select(`.${shipment.id}`)
-                        .attr("opacity", "0.3");
+                        .attr("opacity", "0.15");
                 } else {
                     mapSelection
                         .select(`.flight-path${i}`)
+                        .attr("opacity", "1");
+                    mapSelection
+                        .select(`.flight-traveled${i}`)
                         .attr("opacity", "1");
                     mapSelection.select(`.${shipment.id}`).attr("opacity", "1");
                 }
@@ -275,14 +288,37 @@ const Map: React.FC = () => {
                     .attr("class", `flight-path flight-path${i}`)
                     .attr("d", path as any);
 
-                let circle = mapSelection
-                    .append("circle")
-                    .attr("class", `shipment-circle ${shipment.id}`)
-                    .attr("r", "4px");
+                let totalLength = flightPath.node().getTotalLength();
+                let lengthTraveled = totalLength * shipment.progress;
+                let lengthToBeTraveled = totalLength - lengthTraveled;
 
                 let remaining = 1 - shipment.progress;
                 let minRemaining = remaining * shipment.flightDuration;
                 let msRemaining = Math.floor(minRemaining * 60000);
+
+                let flightTraveled = mapSelection
+                    .selectAll(`flight-traveled${i}`)
+                    .data(pathFeatures)
+                    .enter()
+                    .append("path")
+                    .attr("class", `flight-traveled flight-traveled${i}`)
+                    .attr(
+                        "stroke-dasharray",
+                        `${lengthTraveled} ${lengthToBeTraveled + 10}`
+                    )
+                    .transition()
+                    .duration(msRemaining)
+                    .ease(easeLinear)
+                    .attr("stroke-dasharray", `${totalLength} 0`)
+                    .attr("d", path as any);
+
+                let circle = mapSelection
+                    .append("circle")
+                    .attr("class", `shipment-circle ${shipment.id}`)
+                    .attr("r", "5px")
+                    .on("click", () => {
+                        setCurrentShipment(shipment);
+                    });
 
                 circle
                     .transition()
@@ -302,11 +338,23 @@ const Map: React.FC = () => {
         }
     };
 
+    const animateInfo = useSpring({
+        width: "100%",
+        height: currentShipment ? "40%" : "0%",
+        position: "absolute",
+        left: "0rem",
+        bottom: "0rem",
+        backgroundColor: "#182a34",
+        opacity: 0.7
+    });
+
     return (
         <MapOnGrid>
             <svg width="100%" height="100%" ref={svgContainerRef}>
                 <g ref={mapRef} />
             </svg>
+
+            <animated.div style={animateInfo} />
         </MapOnGrid>
     );
 };

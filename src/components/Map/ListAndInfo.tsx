@@ -37,14 +37,20 @@ const ListAndInfo: React.FC = () => {
         overflow: "hidden"
     });
 
-    const { filteredShipments } = useContext(MapContext);
+    const { filteredShipments, setCurrentShipment } = useContext(MapContext);
+
+    const setMouseAndNullCurrent = () => {
+        setMouseClicked(!mouseClicked);
+        setCurrentShipment(null);
+    };
+
     return (
         <ListAndInfoOnGrid>
             <ListOnGrid>
                 <ListTitle
                     onMouseOver={() => setmouseHover(true)}
                     onMouseOut={() => setmouseHover(false)}
-                    onClick={() => setMouseClicked(!mouseClicked)}
+                    onClick={setMouseAndNullCurrent}
                 >
                     <animated.div style={animateListTitle}>
                         FILTER SHIPMENTS

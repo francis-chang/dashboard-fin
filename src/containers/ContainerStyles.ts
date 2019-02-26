@@ -53,17 +53,35 @@ export const Global = createGlobalStyle`
         fill: #dce8ef;
         stroke-width: 1.5px;
         stroke: #203746;
+        stroke-dasharray: 1250;
+        stroke-dashoffset: 1250;
+        animation: dash 2s linear forwards
+    }
+
+    @keyframes dash{
+        to{
+            stroke-dashoffset: 0;
+        }
     }
 
     .flight-path{
         fill: none;
-        stroke: #182a34;
+        stroke: #49779c;
         stroke-width: 2px;
-        stroke-dasharray: 5;
+        stroke-dasharray: 5 2;
     }
 
     .shipment-circle{
-        fill: orange;
+        fill: #ffb366;
+
+        cursor: pointer;
+    }
+
+    .flight-traveled{
+        fill: none;
+        stroke: #182a34;
+        stroke-width: 3px;
+        stroke-linecap: round;
     }
     
 `;

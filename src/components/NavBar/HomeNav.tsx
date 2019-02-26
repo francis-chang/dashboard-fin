@@ -29,7 +29,7 @@ const HomeNav: React.FC<PropsForOpenNav> = ({ isOpen, setClick }) => {
         transform: isOpen ? "translateX(4.3rem)" : "translateX(-13.7rem)",
         height: "100%",
         overflow: "hidden",
-        zIndex: isOpen ? 0 : 2
+        zIndex: isOpen ? 1 : 2
     });
 
     return (
