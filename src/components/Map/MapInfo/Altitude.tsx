@@ -33,12 +33,12 @@ const Altitude: React.FC = () => {
 
         if (drawnChart && selection && height) {
             let y = scaleLinear()
-                .domain([0, 100])
+                .domain([8000, 9500])
                 .range([height - 30, 5]);
             selection
                 .select(".alt-rect-inner")
                 .attr("height", 0)
-                .attr("y", y(0));
+                .attr("y", y(8000));
             update();
         }
     });
@@ -46,9 +46,10 @@ const Altitude: React.FC = () => {
     const update = () => {
         if (selection && currentShipment && height) {
             let y = scaleLinear()
-                .domain([0, 100])
+                .domain([8000, 9500])
                 .range([height - 30, 5]);
-            const ran = Math.floor(Math.random() * 50 + 40);
+            const ran = Math.floor(Math.random() * 500 + 8900);
+            console.log(ran);
             selection
                 .select(".alt-rect-inner")
                 .transition()
@@ -64,7 +65,7 @@ const Altitude: React.FC = () => {
     const drawChart = () => {
         if (selection && width && height) {
             let y = scaleLinear()
-                .domain([0, 100])
+                .domain([8000, 9500])
                 .range([height - 30, 5]);
 
             selection
@@ -72,18 +73,16 @@ const Altitude: React.FC = () => {
                 .attr("transform", `translate(0, 10)`)
                 .attr("class", "alt-rect-outer")
                 .attr("x", `${width / 2}`)
-                .attr("y", y(100))
+                .attr("y", y(9500))
                 .attr("width", 30)
-                .attr("height", y(0));
+                .attr("height", y(8000));
 
             selection
                 .append("rect")
                 .attr("transform", `translate(0, 10)`)
                 .attr("class", "alt-rect-inner")
                 .attr("x", `${width / 2 + 5}`)
-                .attr("y", y(47))
-                .attr("width", 20)
-                .attr("height", `${height - 30 - y(47)}`);
+                .attr("width", 20);
 
             const axisSelection = select(axisRef.current).attr(
                 "transform",
@@ -91,7 +90,7 @@ const Altitude: React.FC = () => {
             );
 
             const yAxis = axisLeft(y)
-                .ticks(5)
+                .ticks(4)
                 .tickSize(15);
 
             //@ts-ignore
