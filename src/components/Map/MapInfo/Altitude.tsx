@@ -49,7 +49,6 @@ const Altitude: React.FC = () => {
                 .domain([8000, 9500])
                 .range([height - 30, 5]);
             const ran = Math.floor(Math.random() * 500 + 8900);
-            console.log(ran);
             selection
                 .select(".alt-rect-inner")
                 .transition()

@@ -1,8 +1,17 @@
 import React, { useContext, useState } from "react";
+import {
+    FilterButtonContainer,
+    FilterContainer,
+    FilterInput,
+    FilterInputContainer,
+    FilterInputTitle
+} from "../ComponentStyles";
 import { MapContext } from "./MapContext";
 
 const FilterList: React.FC<PropsForFilterList> = ({ setMouseClicked }) => {
-    const { shipments, setShipments } = useContext(MapContext);
+    const { shipments, setShipments, setCurrentShipment } = useContext(
+        MapContext
+    );
     const [inputSearch, setInputSearch] = useState("");
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,18 +64,28 @@ const FilterList: React.FC<PropsForFilterList> = ({ setMouseClicked }) => {
     const reset = () => {
         setInputSearch("");
         setShipments(shipments);
+        setCurrentShipment(null);
     };
 
     return (
-        <div>
-            <input value={inputSearch} onChange={onChange} />
-            <button onClick={filterOnTime}>only on time</button>
-            <button onClick={filterDelayed}>only delayed</button>
-            <button onClick={filterCanceled}>only canceled</button>
-            <button onClick={reset}>reset</button>
+        <FilterContainer>
+            <FilterInputContainer>
+                <FilterInputTitle>SEARCH</FilterInputTitle>
+                <FilterInput value={inputSearch} onChange={onChange} />
+            </FilterInputContainer>
+            <FilterButtonContainer onClick={filterOnTime}>
+                only on time
+            </FilterButtonContainer>
+            <FilterButtonContainer onClick={filterDelayed}>
+                only delayed
+            </FilterButtonContainer>
+            <FilterButtonContainer onClick={filterCanceled}>
+                only canceled
+            </FilterButtonContainer>
+            <FilterButtonContainer onClick={reset}>reset</FilterButtonContainer>
 
             <button onClick={() => setMouseClicked(false)}>okay</button>
-        </div>
+        </FilterContainer>
     );
 };
 

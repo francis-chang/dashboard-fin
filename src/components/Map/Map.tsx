@@ -355,7 +355,7 @@ const Map: React.FC = () => {
             </svg>
 
             <animated.div style={animateInfo}>
-                <MapInfo />
+                <MapInfo projection={projection} />
             </animated.div>
         </MapOnGrid>
     );

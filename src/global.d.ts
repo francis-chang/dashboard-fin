@@ -24,6 +24,14 @@ interface PropsForFilterList {
     setMouseClicked: (b: boolean) => void;
 }
 
+interface PropsForMapInfo {
+    projection: GeoProjection;
+}
+
+interface PropsForLocation {
+    projection: GeoProjection;
+}
+
 /*
     TYPINGS FOR D3 SELECTIONS
 */

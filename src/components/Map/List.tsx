@@ -23,7 +23,7 @@ const List: React.FC = () => {
         width: "100%",
         top: "0px",
         left: "0px",
-        height: mouseClicked ? "5rem" : "0%",
+        height: mouseClicked ? "35rem" : "0%",
         overflow: "hidden"
     });
 

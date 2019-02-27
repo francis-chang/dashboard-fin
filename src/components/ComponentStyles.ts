@@ -249,6 +249,41 @@ export const ListingETA = styled.div`
 `;
 
 /*
+    Filter Styles
+ */
+
+export const FilterContainer = styled.div``;
+
+export const FilterInputContainer = styled.div`
+    width: 100%;
+    display: flex;
+`;
+export const FilterInputTitle = styled.div`
+    padding: 0rem 0.5rem;
+    font-size: 1.5rem;
+`;
+
+export const FilterInput = styled.input`
+    flex-grow: 1;
+    background-color: #203746;
+    border: none;
+    user-select: none;
+    color: white;
+    font-size: 1.2rem;
+
+    &:focus {
+        outline-width: 0;
+    }
+`;
+
+export const FilterButtonContainer = styled.div`
+    width: 100%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 0.5rem 0.2rem;
+`;
+
+/*
     Info Styles
 */
 export const InfoOnGrid = styled.div`
@@ -276,6 +311,11 @@ export const OdomContainer = styled.div`
 export const AltitudeContainer = styled.div`
     height: 100%;
     width: 17%;
+`;
+
+export const LocationContainer = styled.div`
+    height: 100%;
+    width: 30%;
 `;
 
 /*
