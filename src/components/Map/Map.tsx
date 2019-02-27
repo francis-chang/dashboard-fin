@@ -345,7 +345,7 @@ const Map: React.FC = () => {
         position: "absolute",
         left: "0rem",
         bottom: "0rem",
-        backgroundColor: "rgba(24, 42, 52, 0.8)"
+        backgroundColor: "rgba(32,55,70,.85)"
     });
 
     return (

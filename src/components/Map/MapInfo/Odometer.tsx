@@ -45,16 +45,16 @@ const Odometer: React.FC = () => {
 
         if (width && height) {
             arcGenerator = arc()
-                .innerRadius((width - 85) / 2)
-                .outerRadius((width - 25) / 2)
+                .innerRadius((width - 80) / 2)
+                .outerRadius((width - 40) / 2)
                 .startAngle(0)
                 .endAngle(function(d: any) {
                     return (d.value / d.size) * (Math.PI * 2);
                 });
 
             outerArcGenerator = arc()
-                .innerRadius((width - 100) / 2)
-                .outerRadius((width - 10) / 2)
+                .innerRadius((width - 90) / 2)
+                .outerRadius((width - 30) / 2)
                 .startAngle(0)
                 .endAngle(Math.PI * 2);
         }

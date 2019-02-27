@@ -86,7 +86,7 @@ export const Global = createGlobalStyle`
     .odom-background{
         fill: none;
         stroke: #eef3f7;
-        stroke-width: 5px;
+        stroke-width: 3px;
         shape-rendering: auto;
     }
 
@@ -103,12 +103,13 @@ export const Global = createGlobalStyle`
 
     .y-axis{
         color: #eef3f7;
+        font-size: .8rem;
     }
     
     .alt-rect-outer{
         fill: none;
         stroke: #eef3f7;
-        stroke-width: 5px;
+        stroke-width: 3px;
     }
 
     .alt-rect-inner{
