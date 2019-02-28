@@ -303,11 +303,6 @@ export const MapInfoContainer = styled.div`
     overflow: hidden;
 `;
 
-export const OdomContainer = styled.div`
-    width: 23%;
-    height: 100%;
-`;
-
 export const AltitudeContainer = styled.div`
     height: 100%;
     width: 17%;
@@ -316,6 +311,26 @@ export const AltitudeContainer = styled.div`
 export const LocationContainer = styled.div`
     height: 100%;
     width: 30%;
+`;
+
+export const MapInfoOdom = styled.div`
+    height: 100%;
+    width: 100%;
+`;
+export const MapInfoOdomContainer = styled.div`
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
+export const MapInfoOdomTitle = styled.div`
+    width: 100%;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
 `;
 
 /*

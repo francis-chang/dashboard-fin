@@ -96,7 +96,7 @@ export const Global = createGlobalStyle`
     }
 
     .odom-label{
-        font-size: 1.8rem;
+        font-size: 2.2rem;
         fill: #eef3f7;
         text-anchor: middle;
     }

@@ -10,22 +10,19 @@ const Location: React.FC<PropsForLocation> = ({ projection }) => {
     const [timeout, setTO] = useState<any>(null);
 
     useEffect(() => {
+        if (timeout) {
+            clearTimeout(timeout);
+        }
+
         if (currentShipment) {
-            if (timeout) {
-                clearTimeout(timeout);
-                setTO(null);
-            }
             updateLocation();
-        } else {
-            if (timeout) {
-                clearTimeout(timeout);
-                setTO(null);
-            }
+            let to = setTimeout(updateLocation, 3000);
+            setTO(to);
         }
     });
 
     const updateLocation = () => {
-        if (currentShipment && !timeout) {
+        if (currentShipment) {
             const transform = select(`.${currentShipment.id}`).attr(
                 "transform"
             );
@@ -38,9 +35,6 @@ const Location: React.FC<PropsForLocation> = ({ projection }) => {
             let str = `${coords[0].toFixed(4)}, ${coords[1].toFixed(4)}`;
 
             setTransformStr(str);
-
-            let to = setTimeout(updateLocation, 3000);
-            setTO(to);
         }
     };
 

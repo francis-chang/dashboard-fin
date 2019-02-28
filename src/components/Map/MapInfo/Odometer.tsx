@@ -3,7 +3,11 @@ import { interpolate } from "d3-interpolate";
 import { select } from "d3-selection";
 import { arc, Arc, DefaultArcObject } from "d3-shape";
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { OdomContainer } from "../../ComponentStyles";
+import {
+    MapInfoOdom,
+    MapInfoOdomContainer,
+    MapInfoOdomTitle
+} from "../../ComponentStyles";
 import { MapContext } from "../MapContext";
 
 let data = {
@@ -36,28 +40,30 @@ const Odometer: React.FC = () => {
             setSelection(select(odometerRef.current));
             if (containerRef.current) {
                 setWidth(containerRef.current.getBoundingClientRect().width);
+
                 const mapOnGrid = document.getElementById("mapOnGrid");
                 if (mapOnGrid) {
-                    setHeight(mapOnGrid.getBoundingClientRect().height * 0.4);
+                    setHeight(mapOnGrid.getBoundingClientRect().height * 0.35);
                 }
             }
         }
 
         if (width && height) {
             arcGenerator = arc()
-                .innerRadius((width - 80) / 2)
-                .outerRadius((width - 40) / 2)
+                .innerRadius((height - 80) / 2)
+                .outerRadius((height - 40) / 2)
                 .startAngle(0)
                 .endAngle(function(d: any) {
                     return (d.value / d.size) * (Math.PI * 2);
                 });
 
             outerArcGenerator = arc()
-                .innerRadius((width - 90) / 2)
-                .outerRadius((width - 30) / 2)
+                .innerRadius((height - 90) / 2)
+                .outerRadius((height - 30) / 2)
                 .startAngle(0)
                 .endAngle(Math.PI * 2);
         }
+
         if (!odomDrawn) {
             drawOdometer();
         }
@@ -97,7 +103,7 @@ const Odometer: React.FC = () => {
                     setTimeout(update, Math.floor(Math.random() * 3000 + 2000))
                 );
 
-            label.text(`${data.value} knots`);
+            label.text(`${data.value}`);
         }
     };
 
@@ -114,7 +120,7 @@ const Odometer: React.FC = () => {
                 .append("text")
                 .attr("class", "odom-label")
                 .attr("dy", ".35em");
-            label.text(`${data.value} knots`);
+            label.text(`${data.value}`);
 
             const path = odomSelection
                 .append("path")
@@ -127,11 +133,14 @@ const Odometer: React.FC = () => {
     };
 
     return (
-        <OdomContainer>
-            <svg ref={containerRef} width="100%" height="100%">
-                <g ref={odometerRef} />
-            </svg>
-        </OdomContainer>
+        <MapInfoOdomContainer>
+            <MapInfoOdomTitle>Flight Speed(Knots)</MapInfoOdomTitle>
+            <MapInfoOdom>
+                <svg ref={containerRef} width="100%" height="100%">
+                    <g ref={odometerRef} />
+                </svg>
+            </MapInfoOdom>
+        </MapInfoOdomContainer>
     );
 };
 

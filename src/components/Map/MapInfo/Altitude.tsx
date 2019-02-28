@@ -23,7 +23,7 @@ const Altitude: React.FC = () => {
             const mapOnGrid = document.getElementById("mapOnGrid");
             if (mapOnGrid) {
                 const boundHeight =
-                    mapOnGrid.getBoundingClientRect().height * 0.4;
+                    mapOnGrid.getBoundingClientRect().height * 0.3;
                 setHeight(boundHeight);
             }
         }
@@ -48,7 +48,7 @@ const Altitude: React.FC = () => {
             let y = scaleLinear()
                 .domain([8000, 9500])
                 .range([height - 30, 5]);
-            const ran = Math.floor(Math.random() * 500 + 8900);
+            const ran = Math.floor(Math.random() * 200 + 8900);
             selection
                 .select(".alt-rect-inner")
                 .transition()
