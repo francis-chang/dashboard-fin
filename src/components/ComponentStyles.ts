@@ -325,8 +325,9 @@ export const MapInfoTitle = styled.div`
     width: 100%;
     font-size: 1.5rem;
     text-transform: uppercase;
-    color: white;
+    color: #eef3f7;
     text-align: center;
+    text-decoration: underline;
 `;
 
 export const MapInfoAltitudeContainer = styled.div`
@@ -338,18 +339,17 @@ export const MapInfoAltitudeContainer = styled.div`
 `;
 
 export const LocationContainer = styled.div`
-    width: 25%;
-    height: 30%;
+    width: 100%;
+    height: 50%;
     display: flex;
     flex-direction: column;
-    color: white;
+    color: #eef3f7;
 `;
-export const LocationTitle = styled.div`
+export const MapInfoCoordinate = styled.div`
     width: 100%;
-    font-size: 1.7rem;
-    height: 50%;
+    font-size: 2.7rem;
+    color: #eef3f7;
     text-align: center;
-    text-transform: uppercase;
 `;
 
 export const LocationLngLat = styled.div`
@@ -357,6 +357,20 @@ export const LocationLngLat = styled.div`
     font-size: 1.5rem;
     height: 50%;
     text-align: center;
+`;
+
+export const LocationAndCargoContainer = styled.div`
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+`;
+
+export const CargoInfo = styled.div`
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
 `;
 
 /*

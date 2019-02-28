@@ -1,8 +1,10 @@
 import { select } from "d3-selection";
 import React, { useContext, useEffect, useState } from "react";
 import {
+    CargoInfo,
+    LocationAndCargoContainer,
     LocationContainer,
-    LocationLngLat,
+    MapInfoCoordinate,
     MapInfoTitle
 } from "../../ComponentStyles";
 import { MapContext } from "../MapContext";
@@ -10,12 +12,14 @@ import { MapContext } from "../MapContext";
 const Location: React.FC<PropsForLocation> = ({ projection }) => {
     const { currentShipment } = useContext(MapContext);
 
-    const [transformStr, setTransformStr] = useState<string | null>(null);
+    const [lng, setLng] = useState<string | null>(null);
+    const [lat, setLat] = useState<string | null>(null);
     const [timeout, setTO] = useState<any>(null);
 
     useEffect(() => {
         if (timeout) {
             clearTimeout(timeout);
+            setTO(null);
         }
 
         if (currentShipment) {
@@ -23,6 +27,9 @@ const Location: React.FC<PropsForLocation> = ({ projection }) => {
             let to = setTimeout(updateLocation, 3000);
             setTO(to);
         }
+        return function cleanup() {
+            clearTimeout(timeout);
+        };
     });
 
     const updateLocation = () => {
@@ -36,19 +43,25 @@ const Location: React.FC<PropsForLocation> = ({ projection }) => {
             let y = +transform.slice(leftIndex + 1, transform.length - 1);
 
             let coords = projection.invert([x, y]);
-            let str = `${Math.abs(coords[1].toFixed(3))}°N, ${Math.abs(
-                coords[0].toFixed(3)
-            )}°W`;
-
-            setTransformStr(str);
+            let lngitude = `${Math.abs(coords[1].toFixed(3))}°N`;
+            let latitude = `${Math.abs(coords[0].toFixed(3))}°W`;
+            setLng(lngitude);
+            setLat(latitude);
         }
     };
 
     return (
-        <LocationContainer>
-            <MapInfoTitle>[LNG, LAT]</MapInfoTitle>
-            <LocationLngLat>{transformStr}</LocationLngLat>
-        </LocationContainer>
+        <LocationAndCargoContainer>
+            <LocationContainer>
+                <MapInfoTitle>coordinates</MapInfoTitle>
+                <MapInfoCoordinate>{lng}</MapInfoCoordinate>
+                <MapInfoCoordinate>{lat}</MapInfoCoordinate>
+            </LocationContainer>
+            <CargoInfo>
+                <MapInfoTitle>Cargo weight</MapInfoTitle>
+                <MapInfoCoordinate>45kg</MapInfoCoordinate>
+            </CargoInfo>
+        </LocationAndCargoContainer>
     );
 };
 
