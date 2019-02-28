@@ -1,6 +1,10 @@
 import { select } from "d3-selection";
 import React, { useContext, useEffect, useState } from "react";
-import { LocationContainer } from "../../ComponentStyles";
+import {
+    LocationContainer,
+    LocationLngLat,
+    MapInfoTitle
+} from "../../ComponentStyles";
 import { MapContext } from "../MapContext";
 
 const Location: React.FC<PropsForLocation> = ({ projection }) => {
@@ -32,13 +36,20 @@ const Location: React.FC<PropsForLocation> = ({ projection }) => {
             let y = +transform.slice(leftIndex + 1, transform.length - 1);
 
             let coords = projection.invert([x, y]);
-            let str = `${coords[0].toFixed(4)}, ${coords[1].toFixed(4)}`;
+            let str = `${Math.abs(coords[1].toFixed(3))}°N, ${Math.abs(
+                coords[0].toFixed(3)
+            )}°W`;
 
             setTransformStr(str);
         }
     };
 
-    return <LocationContainer>{transformStr}</LocationContainer>;
+    return (
+        <LocationContainer>
+            <MapInfoTitle>[LNG, LAT]</MapInfoTitle>
+            <LocationLngLat>{transformStr}</LocationLngLat>
+        </LocationContainer>
+    );
 };
 
 export default Location;

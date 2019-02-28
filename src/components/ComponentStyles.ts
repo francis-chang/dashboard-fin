@@ -308,15 +308,11 @@ export const AltitudeContainer = styled.div`
     width: 17%;
 `;
 
-export const LocationContainer = styled.div`
-    height: 100%;
-    width: 30%;
-`;
-
 export const MapInfoOdom = styled.div`
     height: 100%;
     width: 100%;
 `;
+
 export const MapInfoOdomContainer = styled.div`
     height: 100%;
     width: 30%;
@@ -325,11 +321,41 @@ export const MapInfoOdomContainer = styled.div`
     align-items: center;
 `;
 
-export const MapInfoOdomTitle = styled.div`
+export const MapInfoTitle = styled.div`
     width: 100%;
     font-size: 1.5rem;
     text-transform: uppercase;
     color: white;
+    text-align: center;
+`;
+
+export const MapInfoAltitudeContainer = styled.div`
+    height: 100%;
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
+export const LocationContainer = styled.div`
+    width: 25%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    color: white;
+`;
+export const LocationTitle = styled.div`
+    width: 100%;
+    font-size: 1.7rem;
+    height: 50%;
+    text-align: center;
+    text-transform: uppercase;
+`;
+
+export const LocationLngLat = styled.div`
+    width: 100%;
+    font-size: 1.5rem;
+    height: 50%;
     text-align: center;
 `;
 

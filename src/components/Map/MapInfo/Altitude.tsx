@@ -2,7 +2,7 @@ import { axisLeft } from "d3-axis";
 import { scaleLinear } from "d3-scale";
 import { select } from "d3-selection";
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { AltitudeContainer } from "../../ComponentStyles";
+import { MapInfoAltitudeContainer, MapInfoTitle } from "../../ComponentStyles";
 import { MapContext } from "../MapContext";
 
 const Altitude: React.FC = () => {
@@ -23,7 +23,7 @@ const Altitude: React.FC = () => {
             const mapOnGrid = document.getElementById("mapOnGrid");
             if (mapOnGrid) {
                 const boundHeight =
-                    mapOnGrid.getBoundingClientRect().height * 0.3;
+                    mapOnGrid.getBoundingClientRect().height * 0.35;
                 setHeight(boundHeight);
             }
         }
@@ -100,12 +100,13 @@ const Altitude: React.FC = () => {
     };
 
     return (
-        <AltitudeContainer>
+        <MapInfoAltitudeContainer>
+            <MapInfoTitle>Altitude(m)</MapInfoTitle>
             <svg ref={containerRef} width="100%" height="100%">
                 <g ref={axisRef} />
                 <g ref={chartRef} />
             </svg>
-        </AltitudeContainer>
+        </MapInfoAltitudeContainer>
     );
 };
 

@@ -6,7 +6,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import {
     MapInfoOdom,
     MapInfoOdomContainer,
-    MapInfoOdomTitle
+    MapInfoTitle
 } from "../../ComponentStyles";
 import { MapContext } from "../MapContext";
 
@@ -134,7 +134,7 @@ const Odometer: React.FC = () => {
 
     return (
         <MapInfoOdomContainer>
-            <MapInfoOdomTitle>Flight Speed(Knots)</MapInfoOdomTitle>
+            <MapInfoTitle>Flight Speed(Knots)</MapInfoTitle>
             <MapInfoOdom>
                 <svg ref={containerRef} width="100%" height="100%">
                     <g ref={odometerRef} />
