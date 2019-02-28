@@ -115,6 +115,15 @@ export const Global = createGlobalStyle`
     .alt-rect-inner{
         fill: #ffb366;
     }
+
+    .map-info-exit {
+        color: #eef3f7;
+        &:hover {
+            transform: rotate(90deg);
+            color: #ff5050;
+            transition-duration: 350ms;
+        }
+    }
     
 `;
 

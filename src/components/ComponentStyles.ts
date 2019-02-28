@@ -301,6 +301,7 @@ export const MapInfoContainer = styled.div`
     width: 100%;
     height: 100%;
     overflow: hidden;
+    position: relative;
 `;
 
 export const AltitudeContainer = styled.div`
@@ -315,7 +316,7 @@ export const MapInfoOdom = styled.div`
 
 export const MapInfoOdomContainer = styled.div`
     height: 100%;
-    width: 30%;
+    width: 25%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -332,7 +333,7 @@ export const MapInfoTitle = styled.div`
 
 export const MapInfoAltitudeContainer = styled.div`
     height: 100%;
-    width: 15%;
+    width: 13%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -361,9 +362,10 @@ export const LocationLngLat = styled.div`
 
 export const LocationAndCargoContainer = styled.div`
     width: 25%;
-    height: 100%;
+    height: 80%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 `;
 
 export const CargoInfo = styled.div`
@@ -371,6 +373,43 @@ export const CargoInfo = styled.div`
     height: 30%;
     display: flex;
     flex-direction: column;
+`;
+
+export const FromToContainer = styled.div`
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+`;
+
+export const From = styled.div`
+    width: 100%;
+    height: 50%;
+`;
+
+export const FromToAirport = styled.div`
+    font-size: 1.2rem;
+`;
+export const FromToAbbr = styled.div`
+    font-size: 1.5rem;
+`;
+export const FromToLngLat = styled.div`
+    font-size: 1rem;
+`;
+export const FromToCity = styled.div`
+    font-size: 1rem;
+`;
+
+export const FromToExit = styled.div`
+    position: absolute;
+    top: 0;
+    right: 0;
+`;
+
+export const MapInfoTitleExit = styled.div`
+    font-size: 2.5rem;
+    cursor: pointer;
+    padding: 0.3rem 1rem;
 `;
 
 /*
