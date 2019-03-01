@@ -19,7 +19,8 @@ const FilterList: React.FC<PropsForFilterList> = ({ setMouseClicked }) => {
         setInputSearch(searchString);
         const filteredShipmentsList = shipments.filter(shipment => {
             if (
-                shipment.descr.toLowerCase().includes(searchString) ||
+                shipment.from.abbr.toLowerCase().includes(searchString) ||
+                shipment.to.abbr.toLowerCase().includes(searchString) ||
                 shipment.name.toLowerCase().includes(searchString) ||
                 shipment.id.toLowerCase().includes(searchString)
             ) {

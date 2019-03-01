@@ -20,10 +20,11 @@ const MapInfo: React.FC<PropsForMapInfo> = ({ projection }) => {
 
     return (
         <MapInfoContainer>
+            <FromTo />
             <Odometer />
             <Altitude />
             <Location projection={projection} />
-            <FromTo />
+
             <FromToExit onClick={() => setCurrentShipment(null)}>
                 <MapInfoTitleExit className="map-info-exit">
                     <FontAwesomeIcon icon="times" />

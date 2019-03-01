@@ -101,7 +101,7 @@ const Altitude: React.FC = () => {
 
     return (
         <MapInfoAltitudeContainer>
-            <MapInfoTitle>Altitude(m)</MapInfoTitle>
+            <MapInfoTitle>Altitude-m</MapInfoTitle>
             <svg ref={containerRef} width="100%" height="100%">
                 <g ref={axisRef} />
                 <g ref={chartRef} />

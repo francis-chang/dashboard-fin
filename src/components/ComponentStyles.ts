@@ -302,11 +302,12 @@ export const MapInfoContainer = styled.div`
     height: 100%;
     overflow: hidden;
     position: relative;
+    justify-content: center;
 `;
 
 export const AltitudeContainer = styled.div`
     height: 100%;
-    width: 17%;
+    width: 15%;
 `;
 
 export const MapInfoOdom = styled.div`
@@ -326,14 +327,13 @@ export const MapInfoTitle = styled.div`
     width: 100%;
     font-size: 1.5rem;
     text-transform: uppercase;
-    color: #eef3f7;
     text-align: center;
-    text-decoration: underline;
+    color: #b9d0df;
 `;
 
 export const MapInfoAltitudeContainer = styled.div`
     height: 100%;
-    width: 13%;
+    width: 16%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -348,7 +348,7 @@ export const LocationContainer = styled.div`
 `;
 export const MapInfoCoordinate = styled.div`
     width: 100%;
-    font-size: 2.7rem;
+    font-size: 1.5rem;
     color: #eef3f7;
     text-align: center;
 `;
@@ -361,11 +361,10 @@ export const LocationLngLat = styled.div`
 `;
 
 export const LocationAndCargoContainer = styled.div`
-    width: 25%;
+    width: 23%;
     height: 80%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 `;
 
 export const CargoInfo = styled.div`
@@ -376,7 +375,7 @@ export const CargoInfo = styled.div`
 `;
 
 export const FromToContainer = styled.div`
-    width: 30%;
+    width: 25%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -391,6 +390,7 @@ export const FromToAirport = styled.div`
     font-size: 1.2rem;
 `;
 export const FromToAbbr = styled.div`
+    color: #ffb366;
     font-size: 1.5rem;
 `;
 export const FromToLngLat = styled.div`
@@ -420,4 +420,63 @@ export const FulfillmentContainer = styled.div`
     grid-column: 1 / span 2;
     grid-row-start: 2;
     background-color: #284557;
+`;
+
+/*
+    Departure / Arriving Styles
+*/
+
+export const MapInfoArriveDepartContainer = styled.div`
+    height: 100%;
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    color: #eef3f7;
+    justify-content: center;
+`;
+
+export const MapInfoArriveContainer = styled.div`
+    display: flex;
+    height: 50%;
+    width: 100%;
+`;
+
+export const MapInfoArriveLeft = styled.div`
+    width: 8rem;
+    min-width: 8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+`;
+
+export const MapInfoArriveLeftTitle = styled.div`
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: #b9d0df;
+`;
+export const MapInfoArriveLeftAbbr = styled.div`
+    width: 100%;
+    font-size: 2.5rem;
+    text-align: center;
+    color: #ffb366;
+`;
+export const MapInfoArriveLeftTime = styled.div`
+    width: 100%;
+    font-size: 1.5rem;
+    text-align: center;
+`;
+export const MapInfoArriveRight = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 3px solid #b9d0df;
+    margin: 0.5rem 0;
+    padding-left: 0.5rem;
+    color: #b9d0df;
+`;
+export const MapInfoArriveRightAirport = styled.div`
+    font-size: 1.3rem;
+    color: #eef3f7;
 `;

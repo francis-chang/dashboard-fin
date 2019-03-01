@@ -56,9 +56,7 @@ type Shipment = {
     id: string;
     from: Destination;
     to: Destination;
-    descr: string;
     progress: number;
     flightDuration: number;
-    flightInitialSpeed: number;
     eta: string;
 };

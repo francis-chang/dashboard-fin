@@ -134,7 +134,7 @@ const Odometer: React.FC = () => {
 
     return (
         <MapInfoOdomContainer>
-            <MapInfoTitle>Flight Speed(Knots)</MapInfoTitle>
+            <MapInfoTitle>Flight Speed-knots</MapInfoTitle>
             <MapInfoOdom>
                 <svg ref={containerRef} width="100%" height="100%">
                     <g ref={odometerRef} />

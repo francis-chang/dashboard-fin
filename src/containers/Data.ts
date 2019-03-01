@@ -40,6 +40,30 @@ export const DESTINATIONLIST = [
         abbr: "SEA",
         city: "Seattle, WA",
         lnglat: [-122.3088, 47.4502]
+    },
+    {
+        airport: "San Francisco International",
+        abbr: "SFO",
+        city: "San Mateo County, CA",
+        lnglat: [-122.4194, 37.7749]
+    },
+    {
+        airport: "Miami International",
+        abbr: "MIA",
+        city: "Miami, FL",
+        lnglat: [-80.2871, 25.7959]
+    },
+    {
+        airport: "Orlando International",
+        abbr: "MCO",
+        city: "Orlando, FL",
+        lnglat: [-81.3081, 28.4312]
+    },
+    {
+        airport: "Ronald Reagan Washington National",
+        abbr: "DCA",
+        city: "Arlington, VA",
+        lnglat: [-77.4565, 38.9531]
     }
 ];
 
@@ -49,10 +73,8 @@ export const SHIPMENTDATA = [
         id: "tNO6KHlKFv",
         from: DESTINATIONLIST[1],
         to: DESTINATIONLIST[5],
-        descr: "LAX/JFK",
         progress: 0.4,
         flightDuration: 320,
-        flightInitialSpeed: 340,
         eta: "on time"
     },
     {
@@ -60,10 +82,8 @@ export const SHIPMENTDATA = [
         id: "Gu11LV3D58",
         from: DESTINATIONLIST[1],
         to: DESTINATIONLIST[2],
-        descr: "LAX/ORD",
         progress: 0.7,
         flightDuration: 245,
-        flightInitialSpeed: 340,
         eta: "delayed"
     },
     {
@@ -71,10 +91,8 @@ export const SHIPMENTDATA = [
         id: "QA7NVuLzgB",
         from: DESTINATIONLIST[6],
         to: DESTINATIONLIST[0],
-        descr: "SEA/ATL",
         progress: 0.2,
         flightDuration: 280,
-        flightInitialSpeed: 310,
         eta: "on time"
     },
     {
@@ -82,10 +100,8 @@ export const SHIPMENTDATA = [
         id: "ju4j5tQ7De",
         from: DESTINATIONLIST[5],
         to: DESTINATIONLIST[2],
-        descr: "JFK/ORD",
         progress: 0.4,
         flightDuration: 175,
-        flightInitialSpeed: 350,
         eta: "on time"
     },
     {
@@ -93,10 +109,8 @@ export const SHIPMENTDATA = [
         id: "rZUdtLoY77",
         from: DESTINATIONLIST[5],
         to: DESTINATIONLIST[4],
-        descr: "JFK/DEN",
         progress: 0,
         flightDuration: 295,
-        flightInitialSpeed: 310,
         eta: "on time"
     },
     {
@@ -104,10 +118,35 @@ export const SHIPMENTDATA = [
         id: "lNtJq1lJkR",
         from: DESTINATIONLIST[3],
         to: DESTINATIONLIST[2],
-        descr: "DEN/ORD",
         progress: 0,
         flightDuration: 145,
-        flightInitialSpeed: 0,
         eta: "canceled"
+    },
+    {
+        name: "OKAFOR-YG691",
+        id: "as23094",
+        from: DESTINATIONLIST[6],
+        to: DESTINATIONLIST[9],
+        flightDuration: 340,
+        progress: 0.4,
+        eta: "delayed"
+    },
+    {
+        name: "SPECTRAL-GT2345",
+        id: "asdf239084",
+        from: DESTINATIONLIST[7],
+        to: DESTINATIONLIST[8],
+        flightDuration: 325,
+        progress: 0.2,
+        eta: "on time"
+    },
+    {
+        name: "FLEXBOX-AS23409",
+        id: "asdf2039482",
+        from: DESTINATIONLIST[7],
+        to: DESTINATIONLIST[10],
+        flightDuration: 300,
+        progress: 0.1,
+        eta: "on time"
     }
 ];
