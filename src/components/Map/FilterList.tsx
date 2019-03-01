@@ -2,17 +2,25 @@ import React, { useContext, useState } from "react";
 import {
     FilterButtonContainer,
     FilterContainer,
+    FilterETAContainer,
     FilterInput,
     FilterInputContainer,
-    FilterInputTitle
+    FilterInputTitle,
+    FilterOkayButton,
+    FilterResetButton,
+    FilterResetContainer
 } from "../ComponentStyles";
 import { MapContext } from "./MapContext";
 
 const FilterList: React.FC<PropsForFilterList> = ({ setMouseClicked }) => {
-    const { shipments, setShipments, setCurrentShipment } = useContext(
-        MapContext
-    );
+    const {
+        shipments,
+        setShipments,
+        setCurrentShipment,
+        filteredShipments
+    } = useContext(MapContext);
     const [inputSearch, setInputSearch] = useState("");
+    const [searchBYETA, setSearchBYETA] = useState(false);
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const searchString = e.target.value.toLowerCase();
@@ -33,7 +41,7 @@ const FilterList: React.FC<PropsForFilterList> = ({ setMouseClicked }) => {
     };
 
     const filterOnTime = () => {
-        const filteredShipmentsList = shipments.filter(shipment => {
+        const filteredShipmentsList = filteredShipments.filter(shipment => {
             if (shipment.eta === "on time") {
                 return true;
             }
@@ -43,7 +51,7 @@ const FilterList: React.FC<PropsForFilterList> = ({ setMouseClicked }) => {
     };
 
     const filterCanceled = () => {
-        const filteredShipmentsList = shipments.filter(shipment => {
+        const filteredShipmentsList = filteredShipments.filter(shipment => {
             if (shipment.eta === "canceled") {
                 return true;
             }
@@ -53,7 +61,7 @@ const FilterList: React.FC<PropsForFilterList> = ({ setMouseClicked }) => {
     };
 
     const filterDelayed = () => {
-        const filteredShipmentsList = shipments.filter(shipment => {
+        const filteredShipmentsList = filteredShipments.filter(shipment => {
             if (shipment.eta === "delayed") {
                 return true;
             }
@@ -74,18 +82,25 @@ const FilterList: React.FC<PropsForFilterList> = ({ setMouseClicked }) => {
                 <FilterInputTitle>SEARCH</FilterInputTitle>
                 <FilterInput value={inputSearch} onChange={onChange} />
             </FilterInputContainer>
-            <FilterButtonContainer onClick={filterOnTime}>
-                only on time
-            </FilterButtonContainer>
-            <FilterButtonContainer onClick={filterDelayed}>
-                only delayed
-            </FilterButtonContainer>
-            <FilterButtonContainer onClick={filterCanceled}>
-                only canceled
-            </FilterButtonContainer>
-            <FilterButtonContainer onClick={reset}>reset</FilterButtonContainer>
+            <FilterETAContainer>
+                <FilterInputTitle>ETA: </FilterInputTitle>
+                <FilterButtonContainer onClick={filterOnTime}>
+                    on time
+                </FilterButtonContainer>
+                <FilterButtonContainer onClick={filterDelayed}>
+                    delayed
+                </FilterButtonContainer>
+                <FilterButtonContainer onClick={filterCanceled}>
+                    canceled
+                </FilterButtonContainer>
+            </FilterETAContainer>
+            <FilterResetContainer>
+                <FilterResetButton onClick={reset}>reset</FilterResetButton>
 
-            <button onClick={() => setMouseClicked(false)}>okay</button>
+                <FilterOkayButton onClick={() => setMouseClicked(false)}>
+                    okay
+                </FilterOkayButton>
+            </FilterResetContainer>
         </FilterContainer>
     );
 };

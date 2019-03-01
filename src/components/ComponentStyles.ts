@@ -252,35 +252,91 @@ export const ListingETA = styled.div`
     Filter Styles
  */
 
-export const FilterContainer = styled.div``;
+export const FilterContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`;
 
 export const FilterInputContainer = styled.div`
-    width: 100%;
+    padding-top: 0.5rem;
+    width: 75%;
     display: flex;
 `;
 export const FilterInputTitle = styled.div`
     padding: 0rem 0.5rem;
     font-size: 1.5rem;
+    width: 8rem;
+    text-align: center;
 `;
 
 export const FilterInput = styled.input`
     flex-grow: 1;
-    background-color: #203746;
+    background-color: #dce8ef;
     border: none;
     user-select: none;
-    color: white;
-    font-size: 1.2rem;
+    color: #182a34;
 
+    font-size: 1.4rem;
     &:focus {
         outline-width: 0;
     }
 `;
 
 export const FilterButtonContainer = styled.div`
-    width: 100%;
+    flex-grow: 1;
     cursor: pointer;
     font-size: 1.1rem;
     padding: 0.5rem 0.2rem;
+    text-align: center;
+    text-transform: uppercase;
+    &:hover {
+        background-color: #284557;
+        transition-duration: 250ms;
+    }
+`;
+
+export const FilterResetContainer = styled.div`
+    width: 75%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+`;
+
+export const FilterResetButton = styled.div`
+    cursor: pointer;
+    font-size: 1.3rem;
+    padding: 0.3rem 1.5rem;
+    margin: 0.5rem 1rem;
+    text-align: center;
+    border: 3px solid #eef3f7;
+    border-radius: 4px;
+    text-transform: uppercase;
+    &:hover {
+        border: 3px solid #00cc66;
+        transition-duration: 250ms;
+    }
+`;
+
+export const FilterOkayButton = styled.div`
+    cursor: pointer;
+    font-size: 1.3rem;
+    padding: 0.3rem 1.5rem;
+    margin: 0.5rem 1rem;
+    text-align: center;
+    border: 3px solid transparent;
+    background-color: #00cc66;
+    border-radius: 4px;
+    text-transform: uppercase;
+    color: #284557;
+`;
+
+export const FilterETAContainer = styled.div`
+    width: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 
 /*
