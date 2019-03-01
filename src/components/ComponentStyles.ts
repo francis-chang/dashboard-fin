@@ -284,7 +284,7 @@ export const FilterInput = styled.input`
     }
 `;
 
-export const FilterButtonContainer = styled.div`
+export const FilterButtonContainer = styled.div<{ isClicked: boolean }>`
     flex-grow: 1;
     cursor: pointer;
     font-size: 1.1rem;
@@ -295,6 +295,8 @@ export const FilterButtonContainer = styled.div`
         background-color: #284557;
         transition-duration: 250ms;
     }
+
+    background-color: ${p => (p.isClicked ? "#284557" : "#182a34")};
 `;
 
 export const FilterResetContainer = styled.div`
@@ -315,6 +317,7 @@ export const FilterResetButton = styled.div`
     text-transform: uppercase;
     &:hover {
         border: 3px solid #00cc66;
+        color: #00cc66;
         transition-duration: 250ms;
     }
 `;
@@ -325,11 +328,17 @@ export const FilterOkayButton = styled.div`
     padding: 0.3rem 1.5rem;
     margin: 0.5rem 1rem;
     text-align: center;
-    border: 3px solid transparent;
-    background-color: #00cc66;
+    border: 3px solid #00cc66;
+    background-color: #182a34;
+
     border-radius: 4px;
     text-transform: uppercase;
-    color: #284557;
+    color: #00cc66;
+    &:hover {
+        background-color: #00cc66;
+        color: #182a34;
+        transition-duration: 250ms;
+    }
 `;
 
 export const FilterETAContainer = styled.div`

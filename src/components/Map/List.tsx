@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { animated, useSpring } from "react-spring";
 import { ListBody, ListOnGrid, ListTitle } from "../ComponentStyles";
 import FilterList from "./FilterList";
@@ -8,6 +8,7 @@ import { MapContext } from "./MapContext";
 const List: React.FC = () => {
     const [mouseHover, setmouseHover] = useState(false);
     const [mouseClicked, setMouseClicked] = useState(false);
+    const listBodyRef = useRef<HTMLDivElement | null>(null);
 
     const animateListTitle = useSpring({
         width: "100%",
@@ -32,6 +33,9 @@ const List: React.FC = () => {
     const setMouseAndNullCurrent = () => {
         setMouseClicked(!mouseClicked);
         setCurrentShipment(null);
+        if (listBodyRef.current) {
+            listBodyRef.current.scrollTop = 0;
+        }
     };
 
     return (
@@ -46,7 +50,7 @@ const List: React.FC = () => {
                 </animated.div>
             </ListTitle>
 
-            <ListBody>
+            <ListBody ref={listBodyRef}>
                 <animated.div style={animateFilterBody}>
                     <FilterList setMouseClicked={setMouseClicked} />
                 </animated.div>
