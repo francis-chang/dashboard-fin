@@ -39,7 +39,9 @@ const Altitude: React.FC = () => {
                 .select(".alt-rect-inner")
                 .attr("height", 0)
                 .attr("y", y(8000));
-            update();
+            if (currentShipment && currentShipment.eta !== "canceled") {
+                update();
+            }
         }
     });
 

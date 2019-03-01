@@ -302,7 +302,12 @@ const Map: React.FC = () => {
                     .data(pathFeatures)
                     .enter()
                     .append("path")
-                    .attr("class", `flight-traveled flight-traveled${i}`)
+                    .attr(
+                        "class",
+                        shipment.eta === "canceled"
+                            ? `flight-canceled flight-traveled${i}`
+                            : `flight-traveled flight-traveled${i}`
+                    )
                     .attr(
                         "stroke-dasharray",
                         `${lengthTraveled} ${lengthToBeTraveled + 10}`
@@ -315,7 +320,12 @@ const Map: React.FC = () => {
 
                 let circle = mapSelection
                     .append("circle")
-                    .attr("class", `shipment-circle ${shipment.id}`)
+                    .attr(
+                        "class",
+                        shipment.eta === "canceled"
+                            ? `shipment-circle-canceled ${shipment.id}`
+                            : `shipment-circle ${shipment.id}`
+                    )
                     .attr("r", "5px")
                     .on("click", () => {
                         setCurrentShipment(shipment);

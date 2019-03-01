@@ -12,7 +12,37 @@ import {
 import { MapContext } from "../MapContext";
 
 const FromTo: React.FC = () => {
-    const { currentShipment } = useContext(MapContext);
+    const { currentShipment, date } = useContext(MapContext);
+
+    const options = {
+        hour12: true,
+        hour: "numeric",
+        minute: "numeric"
+    };
+
+    const computeArriveTime = () => {
+        if (currentShipment && date) {
+            let progressTime = Math.floor(
+                currentShipment.flightDuration * currentShipment.progress
+            );
+            let arrival = new Date(date);
+            arrival.setMinutes(arrival.getMinutes() - progressTime);
+            return arrival.toLocaleString("en-US", options);
+        }
+        return "";
+    };
+
+    const computeDepartTime = () => {
+        if (currentShipment && date) {
+            let progressTime = Math.floor(
+                currentShipment.flightDuration * (1 - currentShipment.progress)
+            );
+            let arrival = new Date(date);
+            arrival.setMinutes(arrival.getMinutes() + progressTime);
+            return arrival.toLocaleString("en-US", options);
+        }
+        return "";
+    };
 
     return (
         <MapInfoArriveDepartContainer>
@@ -22,7 +52,9 @@ const FromTo: React.FC = () => {
                     <MapInfoArriveLeftAbbr>
                         {currentShipment && currentShipment.from.abbr}
                     </MapInfoArriveLeftAbbr>
-                    <MapInfoArriveLeftTime>8:30PM</MapInfoArriveLeftTime>
+                    <MapInfoArriveLeftTime>
+                        {computeArriveTime()}
+                    </MapInfoArriveLeftTime>
                 </MapInfoArriveLeft>
                 <MapInfoArriveRight>
                     <MapInfoArriveRightAirport>
@@ -43,7 +75,14 @@ const FromTo: React.FC = () => {
                     <MapInfoArriveLeftAbbr>
                         {currentShipment && currentShipment.to.abbr}
                     </MapInfoArriveLeftAbbr>
-                    <MapInfoArriveLeftTime>8:30PM</MapInfoArriveLeftTime>
+                    <MapInfoArriveLeftTime>
+                        {currentShipment &&
+                        currentShipment.eta === "canceled" ? (
+                            <div style={{ color: "#ff5050" }}>CANCELED</div>
+                        ) : (
+                            computeDepartTime()
+                        )}
+                    </MapInfoArriveLeftTime>
                 </MapInfoArriveLeft>
                 <MapInfoArriveRight>
                     <MapInfoArriveRightAirport>

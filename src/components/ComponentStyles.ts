@@ -211,6 +211,11 @@ export const ListBody = styled.div`
     overflow-x: hidden;
 `;
 
+export const ListTitleArrow = styled.div`
+    font-size: 1.8rem;
+    padding-left: 1rem;
+`;
+
 /*
     Listing Styles
 */
@@ -426,7 +431,7 @@ export const LocationLngLat = styled.div`
 `;
 
 export const LocationAndCargoContainer = styled.div`
-    width: 23%;
+    width: 22%;
     height: 80%;
     display: flex;
     flex-direction: column;

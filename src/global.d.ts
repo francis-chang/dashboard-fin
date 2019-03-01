@@ -59,4 +59,5 @@ type Shipment = {
     progress: number;
     flightDuration: number;
     eta: string;
+    cargoWeight: string;
 };

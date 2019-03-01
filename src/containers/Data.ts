@@ -75,7 +75,8 @@ export const SHIPMENTDATA = [
         to: DESTINATIONLIST[5],
         progress: 0.4,
         flightDuration: 320,
-        eta: "on time"
+        eta: "on time",
+        cargoWeight: "450.52kg"
     },
     {
         name: "AAPL-247D3",
@@ -84,7 +85,8 @@ export const SHIPMENTDATA = [
         to: DESTINATIONLIST[2],
         progress: 0.7,
         flightDuration: 245,
-        eta: "delayed"
+        eta: "delayed",
+        cargoWeight: "390.81kg"
     },
     {
         name: "MINERVA-227JD",
@@ -93,7 +95,8 @@ export const SHIPMENTDATA = [
         to: DESTINATIONLIST[0],
         progress: 0.2,
         flightDuration: 280,
-        eta: "on time"
+        eta: "on time",
+        cargoWeight: "381.52kg"
     },
     {
         name: "EVERGREEN-VX347",
@@ -102,7 +105,8 @@ export const SHIPMENTDATA = [
         to: DESTINATIONLIST[2],
         progress: 0.4,
         flightDuration: 175,
-        eta: "on time"
+        eta: "on time",
+        cargoWeight: "271.54kg"
     },
     {
         name: "MSFT-785GT",
@@ -111,16 +115,18 @@ export const SHIPMENTDATA = [
         to: DESTINATIONLIST[4],
         progress: 0,
         flightDuration: 295,
-        eta: "on time"
+        eta: "on time",
+        cargoWeight: "421.65kg"
     },
     {
         name: "PALANTIR-D7554",
         id: "lNtJq1lJkR",
         from: DESTINATIONLIST[3],
-        to: DESTINATIONLIST[2],
-        progress: 0,
+        to: DESTINATIONLIST[3],
+        progress: 1,
         flightDuration: 145,
-        eta: "canceled"
+        eta: "canceled",
+        cargoWeight: "234.63kg"
     },
     {
         name: "OKAFOR-YG691",
@@ -129,7 +135,8 @@ export const SHIPMENTDATA = [
         to: DESTINATIONLIST[9],
         flightDuration: 340,
         progress: 0.4,
-        eta: "delayed"
+        eta: "delayed",
+        cargoWeight: "81.24kg"
     },
     {
         name: "SPECTRAL-GT2345",
@@ -138,7 +145,8 @@ export const SHIPMENTDATA = [
         to: DESTINATIONLIST[8],
         flightDuration: 325,
         progress: 0.2,
-        eta: "on time"
+        eta: "on time",
+        cargoWeight: "189.92kg"
     },
     {
         name: "FLEXBOX-AS23409",
@@ -147,6 +155,7 @@ export const SHIPMENTDATA = [
         to: DESTINATIONLIST[10],
         flightDuration: 300,
         progress: 0.1,
-        eta: "on time"
+        eta: "on time",
+        cargoWeight: "340.31kg"
     }
 ];

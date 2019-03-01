@@ -71,7 +71,9 @@ const Odometer: React.FC = () => {
         if (odomDrawn && currentShipment) {
             data.value = 0;
             data.previous = 0;
-            update();
+            if (currentShipment.eta !== "canceled") {
+                update();
+            }
         }
         if (odomDrawn && !currentShipment) {
             data.value = 0;

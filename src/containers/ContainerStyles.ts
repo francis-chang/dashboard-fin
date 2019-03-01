@@ -76,11 +76,24 @@ export const Global = createGlobalStyle`
         cursor: pointer;
     }
 
+    .shipment-circle-canceled{
+        fill: #ff5050;
+        cursor: pointer;
+    }
+
     .flight-traveled{
         fill: none;
         stroke: #182a34;
         stroke-width: 3px;
         stroke-linecap: round;
+    }
+    
+    .flight-canceled{
+        fill: none;
+        stroke-width: 3px;
+        stroke-linecap: round;
+        stroke: #ff5050;
+        opacity: 0.5;
     }
 
     .odom-background{

@@ -59,7 +59,9 @@ const Location: React.FC<PropsForLocation> = ({ projection }) => {
             </LocationContainer>
             <CargoInfo>
                 <MapInfoTitle>Cargo weight</MapInfoTitle>
-                <MapInfoCoordinate>45kg</MapInfoCoordinate>
+                <MapInfoCoordinate>
+                    {currentShipment && currentShipment.cargoWeight}
+                </MapInfoCoordinate>
             </CargoInfo>
         </LocationAndCargoContainer>
     );

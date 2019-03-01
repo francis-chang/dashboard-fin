@@ -66,12 +66,9 @@ const Listing: React.FC<PropsForListing> = ({ shipment }) => {
             const remainingFlightMinutes = Math.floor(
                 flightDuration * (1 - progress)
             );
-            const hours = Math.floor(remainingFlightMinutes / 60);
-            const minutes = remainingFlightMinutes % 60;
 
             let eta = new Date(date);
-            eta.setHours(eta.getHours() + hours);
-            eta.setMinutes(eta.getMinutes() + minutes);
+            eta.setMinutes(eta.getMinutes() + remainingFlightMinutes);
 
             return eta.toLocaleString("en-US", options);
         }
