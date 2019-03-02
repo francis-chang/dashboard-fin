@@ -60,4 +60,7 @@ type Shipment = {
     flightDuration: number;
     eta: string;
     cargoWeight: string;
+    // fulfillments: Fulfillment;
 };
+
+type Fulfillment = string[];

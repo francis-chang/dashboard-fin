@@ -1,0 +1,19 @@
+`${shipment.company} facility 
+
+Cargo transported from facility to ${shipment.from.airport}
+
+Shipping labels bought for - Purchase per unit ${shipment.price}, Purchase total ${shipment.totalprice}
+
+Cargo weighed and handled
+
+departed ${shipment.from.airport}
+
+arrived ${shipment.to.airport}
+
+delivering/delivered to ${shipment.facility } facility/warehouse
+
+
+
+
+
+

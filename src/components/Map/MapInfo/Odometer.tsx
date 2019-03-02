@@ -10,17 +10,12 @@ import {
 } from "../../ComponentStyles";
 import { MapContext } from "../MapContext";
 
-let data = {
-    previous: 0,
-    value: 0,
-    size: 490,
-    update: () => {
-        // MAX: 350 MIN: 330
-        return Math.floor(Math.random() * 20 + 320);
-    }
-};
-
 const Odometer: React.FC = () => {
+    let data = {
+        previous: 0,
+        value: 0,
+        size: 490
+    };
     const odometerRef = useRef<SVGSVGElement | null>(null);
     const containerRef = useRef<SVGSVGElement | null>(null);
 
@@ -34,6 +29,14 @@ const Odometer: React.FC = () => {
 
     let arcGenerator: Arc<any, DefaultArcObject> | null = null;
     let outerArcGenerator: Arc<any, DefaultArcObject> | null = null;
+    let timeouts: number[] = [];
+
+    const updateSpeed = () => {
+        if (currentShipment.eta !== "canceled") {
+            return Math.floor(Math.random() * 20 + 320);
+        }
+        return 0;
+    };
 
     useEffect(() => {
         if (!odomSelection) {
@@ -71,9 +74,7 @@ const Odometer: React.FC = () => {
         if (odomDrawn && currentShipment) {
             data.value = 0;
             data.previous = 0;
-            if (currentShipment.eta !== "canceled") {
-                update();
-            }
+            update();
         }
         if (odomDrawn && !currentShipment) {
             data.value = 0;
@@ -92,18 +93,36 @@ const Odometer: React.FC = () => {
     };
 
     const update = () => {
-        if (currentShipment && label) {
+        if (currentShipment && label && currentShipment.eta !== "canceled") {
             data.previous = data.value;
-            data.value = data.update();
+            data.value = updateSpeed();
             odomSelection
                 .select(".odom-foreground")
                 .transition()
                 .ease(easeElastic)
                 .duration(2000)
                 .attrTween("d", () => arcTween(data) as any)
-                .on("end", () =>
-                    setTimeout(update, Math.floor(Math.random() * 3000 + 2000))
-                );
+                .on("end", () => {
+                    timeouts.forEach(timeout => {
+                        clearTimeout(timeout);
+                    });
+                    let x = setTimeout(
+                        update,
+                        Math.floor(Math.random() * 3000 + 2000)
+                    );
+                    timeouts.push(x);
+                });
+
+            label.text(`${data.value}`);
+        } else {
+            data.previous = 0;
+            data.value = 0;
+            odomSelection
+                .select(".odom-foreground")
+                .transition()
+                .ease(easeElastic)
+                .duration(2000)
+                .attrTween("d", () => arcTween(data) as any);
 
             label.text(`${data.value}`);
         }

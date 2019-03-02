@@ -77,6 +77,7 @@ export const SHIPMENTDATA = [
         flightDuration: 320,
         eta: "on time",
         cargoWeight: "450.52kg"
+        // fulfillments: []
     },
     {
         name: "AAPL-247D3",

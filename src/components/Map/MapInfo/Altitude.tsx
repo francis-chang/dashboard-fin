@@ -15,6 +15,7 @@ const Altitude: React.FC = () => {
     const [drawnChart, setDrawn] = useState(false);
     const [width, setWidth] = useState<number | null>(null);
     const [height, setHeight] = useState<number | null>(null);
+    let to: number[] = [];
 
     useEffect(() => {
         if (!selection && containerRef.current) {
@@ -39,26 +40,45 @@ const Altitude: React.FC = () => {
                 .select(".alt-rect-inner")
                 .attr("height", 0)
                 .attr("y", y(8000));
-            if (currentShipment && currentShipment.eta !== "canceled") {
-                update();
-            }
+
+            update();
         }
     });
 
     const update = () => {
+        to.forEach(timeout => {
+            clearTimeout(timeout);
+        });
         if (selection && currentShipment && height) {
             let y = scaleLinear()
                 .domain([8000, 9500])
                 .range([height - 30, 5]);
             const ran = Math.floor(Math.random() * 200 + 8900);
+
             selection
                 .select(".alt-rect-inner")
                 .transition()
                 .duration(750)
-                .attr("y", y(ran))
-                .attr("height", `${height - 30 - y(ran)}`)
+                .attr(
+                    "y",
+                    currentShipment.eta !== "canceled" ? y(ran) : y(8000)
+                )
+                .attr(
+                    "height",
+                    currentShipment.eta !== "canceled"
+                        ? `${height - 30 - y(ran)}`
+                        : 0
+                )
                 .on("end", () => {
-                    setTimeout(update, Math.floor(Math.random() * 3000 + 2000));
+                    to.forEach(timeout => {
+                        clearTimeout(timeout);
+                    });
+                    to.push(
+                        setTimeout(
+                            update,
+                            Math.floor(Math.random() * 3000 + 2000)
+                        )
+                    );
                 });
         }
     };
