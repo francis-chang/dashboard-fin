@@ -34,7 +34,7 @@ const Altitude: React.FC = () => {
 
         if (drawnChart && selection && height) {
             let y = scaleLinear()
-                .domain([8000, 9500])
+                .domain([8000, 10000])
                 .range([height - 30, 5]);
             selection
                 .select(".alt-rect-inner")
@@ -51,9 +51,9 @@ const Altitude: React.FC = () => {
         });
         if (selection && currentShipment && height) {
             let y = scaleLinear()
-                .domain([8000, 9500])
+                .domain([8000, 10000])
                 .range([height - 30, 5]);
-            const ran = Math.floor(Math.random() * 200 + 8900);
+            const ran = Math.floor(Math.random() * 80 + 9200);
 
             selection
                 .select(".alt-rect-inner")
@@ -86,7 +86,7 @@ const Altitude: React.FC = () => {
     const drawChart = () => {
         if (selection && width && height) {
             let y = scaleLinear()
-                .domain([8000, 9500])
+                .domain([8000, 10000])
                 .range([height - 30, 5]);
 
             selection
@@ -94,7 +94,7 @@ const Altitude: React.FC = () => {
                 .attr("transform", `translate(0, 10)`)
                 .attr("class", "alt-rect-outer")
                 .attr("x", `${width / 2}`)
-                .attr("y", y(9500))
+                .attr("y", y(10000))
                 .attr("width", 30)
                 .attr("height", y(8000));
 

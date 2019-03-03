@@ -1,8 +1,14 @@
 import React from "react";
-import { FulfillmentContainer } from "../ComponentStyles";
+import { FulfillmentCargo, FulfillmentContainer } from "../ComponentStyles";
+import FulfillmentList from "./FulfillmentList";
 
 const Fulfillment: React.FC = () => {
-    return <FulfillmentContainer />;
+    return (
+        <FulfillmentContainer>
+            <FulfillmentCargo />
+            <FulfillmentList />
+        </FulfillmentContainer>
+    );
 };
 
 export default Fulfillment;

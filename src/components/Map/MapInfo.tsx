@@ -16,13 +16,17 @@ import Odometer from "./MapInfo/Odometer";
 library.add(faTimes);
 
 const MapInfo: React.FC<PropsForMapInfo> = ({ projection }) => {
-    const { setCurrentShipment } = useContext(MapContext);
+    const { currentShipment, setCurrentShipment } = useContext(MapContext);
 
     return (
         <MapInfoContainer>
             <FromTo />
-            <Odometer />
-            <Altitude />
+            {currentShipment && currentShipment.eta !== "canceled" && (
+                <Odometer />
+            )}
+            {currentShipment && currentShipment.eta !== "canceled" && (
+                <Altitude />
+            )}
             <Location projection={projection} />
 
             <FromToExit onClick={() => setCurrentShipment(null)}>

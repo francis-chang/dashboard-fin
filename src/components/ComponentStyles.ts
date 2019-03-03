@@ -490,6 +490,32 @@ export const FulfillmentContainer = styled.div`
     grid-column: 1 / span 2;
     grid-row-start: 2;
     background-color: #284557;
+    display: flex;
+`;
+
+export const FulfillmentCargo = styled.div`
+    width: 35%;
+    height: 100%;
+`;
+
+export const FulfillmentListContainer = styled.div`
+    width: 35%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+    border-left: 3px solid #eef3f7;
+    align-items: center;
+`;
+
+export const FulfillmentListing = styled.div`
+    height: 14%;
+    width: 100%;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: #eef3f7;
+    display: flex;
+    align-items: center;
 `;
 
 /*
