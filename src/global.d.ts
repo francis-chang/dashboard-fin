@@ -71,3 +71,8 @@ interface FinalDate {
 }
 
 type FinalDates = FinalDate[];
+
+type timesObj = {
+    descr: string;
+    time: number;
+};

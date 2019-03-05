@@ -33,7 +33,7 @@ const dateoptions = {
 
 const FulfillmentList: React.FC = () => {
     const { currentShipment, date } = useContext(MapContext);
-    const [times, setTimes] = useState<number[]>([]);
+    const [times, setTimes] = useState<timesObj[]>([]);
 
     const [dates, setDates] = useState<Date[]>([]);
 
@@ -49,9 +49,57 @@ const FulfillmentList: React.FC = () => {
             const paid = Math.floor(Math.random() * 1440 + 1440);
             const transported = Math.floor(Math.random() * 300 + 300);
             const weighed = Math.floor(Math.random() * 120 + 180);
+            const depart =
+                currentShipment.flightDuration * currentShipment.progress;
+            const arrival =
+                currentShipment.flightDuration * (1 - currentShipment.progress);
             const delivered = Math.floor(Math.random() * 460 + 240);
 
-            const times = [orderPlaced, paid, transported, weighed, delivered];
+            // const times = [
+            //     orderPlaced,
+            //     paid,
+            //     transported,
+            //     weighed,
+            //     depart,
+            //     arrival,
+            //     delivered
+            // ];
+
+            const times: timesObj[] = [
+                {
+                    descr: "Order Placed",
+                    time: orderPlaced
+                },
+                {
+                    descr: "paid",
+                    time: paid
+                },
+
+                {
+                    descr: "transported",
+                    time: transported
+                },
+
+                {
+                    descr: "weighed",
+                    time: weighed
+                },
+
+                {
+                    descr: "depart",
+                    time: depart
+                },
+
+                {
+                    descr: "arrival",
+                    time: arrival
+                },
+
+                {
+                    descr: "delivered",
+                    time: delivered
+                }
+            ];
             setTimes(times);
             setTimesSet(true);
         }
@@ -60,16 +108,20 @@ const FulfillmentList: React.FC = () => {
     const calcDates = () => {
         if (date) {
             const dates = times.map((time, i) => {
-                let nowDate = new Date();
+                let nowDate = new Date(date);
 
-                if (i === times.length - 1) {
+                if (time.descr === "delivered") {
                     nowDate = computeDepartTime();
                     const timeDate = nowDate.getMinutes();
-                    nowDate.setMinutes(timeDate + time);
+                    nowDate.setMinutes(timeDate + time.time);
+                } else if (time.descr === "arrival") {
+                    return computeArriveTime();
+                } else if (time.descr === "depart") {
+                    return computeDepartTime();
                 } else {
                     nowDate = computeArriveTime();
                     const timeDate = nowDate.getMinutes();
-                    nowDate.setMinutes(timeDate - time);
+                    nowDate.setMinutes(timeDate - time.time);
                 }
                 return nowDate;
             });
@@ -80,7 +132,6 @@ const FulfillmentList: React.FC = () => {
 
     const setFinalDates = () => {
         let finalDates: FinalDates = [];
-
         dates.map(date => {
             let dateDNE = true;
             finalDates.forEach(final => {
@@ -99,23 +150,22 @@ const FulfillmentList: React.FC = () => {
     const computeArriveTime = () => {
         if (currentShipment && date) {
             let progressTime = Math.floor(
-                currentShipment.flightDuration * currentShipment.progress
+                currentShipment.flightDuration * (1 - currentShipment.progress)
             );
             let arrival = new Date(date);
-            arrival.setMinutes(arrival.getMinutes() - progressTime);
+            arrival.setMinutes(arrival.getMinutes() + progressTime);
             return arrival;
         }
-
         return new Date();
     };
 
     const computeDepartTime = () => {
         if (currentShipment && date) {
             let progressTime = Math.floor(
-                currentShipment.flightDuration * (1 - currentShipment.progress)
+                currentShipment.flightDuration * currentShipment.progress
             );
             let depart = new Date(date);
-            depart.setMinutes(depart.getMinutes() + progressTime);
+            depart.setMinutes(depart.getMinutes() - progressTime);
             return depart;
         }
         return new Date();
@@ -134,6 +184,7 @@ const FulfillmentList: React.FC = () => {
             setFinalDates();
         }
     }, [currentShipment, timesSet, datesSet]);
+
     return (
         <FulfillmentListContainer>
             {finalTimes.map(date => (
@@ -142,10 +193,8 @@ const FulfillmentList: React.FC = () => {
                         {date.date.toLocaleString("en-US", dateoptions)}
                     </FulfillmentTitle>
                     <FulfillmentDateList>
-                        {date.dates.map(fulfill => (
-                            <FulfillmentDateListing
-                                key={fulfill.toLocaleDateString()}
-                            >
+                        {date.dates.map((fulfill, i) => (
+                            <FulfillmentDateListing key={i}>
                                 {fulfill.toLocaleString("en-US", houroptions)}
                             </FulfillmentDateListing>
                         ))}

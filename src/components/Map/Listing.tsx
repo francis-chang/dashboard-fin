@@ -67,6 +67,8 @@ const Listing: React.FC<PropsForListing> = ({ shipment }) => {
                 flightDuration * (1 - progress)
             );
 
+            console.log(remainingFlightMinutes);
+
             let eta = new Date(date);
             eta.setMinutes(eta.getMinutes() + remainingFlightMinutes);
 
