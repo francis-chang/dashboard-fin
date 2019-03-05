@@ -23,33 +23,42 @@ var fulfilloptions = {
 
 const FulfillmentList: React.FC = () => {
     const { currentShipment, date } = useContext(MapContext);
-    const [orderPlacedTime, setOrderPlacedTime] = useState<Date | null>(null);
-    const [paidTime, setPaidTime] = useState<Date | null>(null);
-    const [
-        cargoTransportedTime,
-        setCargoTransportedTime
-    ] = useState<Date | null>(null);
-    const [weighedTime, setWeighedTime] = useState<Date | null>(null);
-    const [departedTime, setDepartedTime] = useState<Date | null>(null);
-    const [arrivalTime, setArrivalTime] = useState<Date | null>(null);
-    const [deliveredTime, setDeliveredTime] = useState<Date | null>(null);
+    const [times, setTimes] = useState<number[]>([]);
+
+    const [dates, setDates] = useState<Date[]>([]);
 
     const [timesSet, setTimesSet] = useState(false);
 
+    const [datesSet, setDatesSet] = useState(false);
+
     const calcTimes = () => {
         if (currentShipment && date) {
-            const nowDate = new Date(date);
             const orderPlaced = Math.floor(Math.random() * 4320 + 2880);
             const paid = Math.floor(Math.random() * 1440 + 1440);
             const transported = Math.floor(Math.random() * 300 + 300);
             const weighed = Math.floor(Math.random() * 120 + 180);
             const delivered = Math.floor(Math.random() * 460 + 240);
 
-            const nowMinutes = nowDate.getMinutes();
-            nowDate.setMinutes(nowMinutes - orderPlaced);
-            setOrderPlacedTime(nowDate);
-
+            const times = [orderPlaced, paid, transported, weighed, delivered];
+            setTimes(times);
             setTimesSet(true);
+        }
+    };
+
+    const calcDates = () => {
+        if (date) {
+            const dates = times.map((time, i) => {
+                const nowDate = new Date(date);
+                const timeDate = nowDate.getMinutes();
+                if (i === times.length - 1) {
+                    nowDate.setMinutes(timeDate + time);
+                } else {
+                    nowDate.setMinutes(timeDate - time);
+                }
+                return nowDate;
+            });
+            setDates(dates);
+            setDatesSet(true);
         }
     };
 
@@ -62,6 +71,7 @@ const FulfillmentList: React.FC = () => {
             arrival.setMinutes(arrival.getMinutes() - progressTime);
             return arrival.toLocaleString("en-US", options);
         }
+
         return "";
     };
 
@@ -81,14 +91,25 @@ const FulfillmentList: React.FC = () => {
         if (currentShipment && date) {
             calcTimes();
         }
-    }, [currentShipment]);
+
+        if (currentShipment && timesSet) {
+            calcDates();
+        }
+
+        if (timesSet) {
+        }
+
+        if (datesSet) {
+            console.log(dates);
+        }
+    }, [currentShipment, timesSet, datesSet]);
     return (
         <FulfillmentListContainer>
-            <FulfillmentListing>AT WAREHOUSE</FulfillmentListing>
-            <FulfillmentListing>
-                {orderPlacedTime &&
-                    orderPlacedTime.toLocaleDateString("en-US", fulfilloptions)}
-            </FulfillmentListing>
+            {dates.map(date => (
+                <FulfillmentListing key={date.toISOString()}>
+                    {date.toLocaleString("en-US", fulfilloptions)}
+                </FulfillmentListing>
+            ))}
         </FulfillmentListContainer>
     );
 };

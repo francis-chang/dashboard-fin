@@ -1,19 +1,54 @@
-`${shipment.company} facility 
+`${shipment.company} warehouse 
 
-Cargo transported from facility to ${shipment.from.airport}
-
-Shipping labels bought for - Purchase per unit ${shipment.price}, Purchase total ${shipment.totalprice}
+Ca rgo transported from warehouse to ${shipment.from.airport}
 
 Cargo weighed and handled
+
+Shipping labels bought for - Purchase per unit ${shipment.price}, Purchase total ${shipment.totalprice}
 
 departed ${shipment.from.airport}
 
 arrived ${shipment.to.airport}
 
 delivering/delivered to ${shipment.facility } facility/warehouse
+_________________________________
+
+order placed [random 2-5 days before]
+
+order paid in full [ random 1-2 days before]
+
+cargo transported [random 5-10 hours before flight]
+
+cargo weighed and handled [3-5 hours before flight]
+
+departed
+
+arrived 
+
+delivered [4-10 hours after flight random eta]
 
 
 
 
 
 
+t78ytgfr5degb cx4tvhnyumjiked4rcxfg1nz5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=\\]fv 

@@ -511,7 +511,7 @@ export const FulfillmentListContainer = styled.div`
 export const FulfillmentListing = styled.div`
     height: 14%;
     width: 100%;
-    font-size: 1.5rem;
+    font-size: 1rem;
     text-transform: uppercase;
     color: #eef3f7;
     display: flex;
