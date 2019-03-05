@@ -505,17 +505,28 @@ export const FulfillmentListContainer = styled.div`
     flex-direction: column;
     padding-left: 1rem;
     border-left: 3px solid #eef3f7;
-    align-items: center;
 `;
 
 export const FulfillmentListing = styled.div`
-    height: 14%;
+    padding: 1rem 0rem;
     width: 100%;
-    font-size: 1rem;
-    text-transform: uppercase;
     color: #eef3f7;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+`;
+
+export const FulfillmentTitle = styled.div`
+    font-size: 1.2rem;
+`;
+
+export const FulfillmentDateList = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+`;
+
+export const FulfillmentDateListing = styled.div`
+    font-size: 1rem;
 `;
 
 /*

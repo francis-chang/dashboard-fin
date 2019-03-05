@@ -1,17 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
 import {
+    FulfillmentDateList,
+    FulfillmentDateListing,
     FulfillmentListContainer,
-    FulfillmentListing
+    FulfillmentListing,
+    FulfillmentTitle
 } from "../ComponentStyles";
 import { MapContext } from "./MapContext";
 
-const options = {
+const houroptions = {
     hour12: true,
     hour: "numeric",
     minute: "numeric"
 };
 
-var fulfilloptions = {
+const fulloptions = {
     weekday: "long",
     year: "numeric",
     month: "long",
@@ -19,6 +22,13 @@ var fulfilloptions = {
     hour12: true,
     hour: "numeric",
     minute: "numeric"
+};
+
+const dateoptions = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric"
 };
 
 const FulfillmentList: React.FC = () => {
@@ -30,6 +40,8 @@ const FulfillmentList: React.FC = () => {
     const [timesSet, setTimesSet] = useState(false);
 
     const [datesSet, setDatesSet] = useState(false);
+
+    const [finalTimes, setFinalTimes] = useState<FinalDates>([]);
 
     const calcTimes = () => {
         if (currentShipment && date) {
@@ -48,11 +60,15 @@ const FulfillmentList: React.FC = () => {
     const calcDates = () => {
         if (date) {
             const dates = times.map((time, i) => {
-                const nowDate = new Date(date);
-                const timeDate = nowDate.getMinutes();
+                let nowDate = new Date();
+
                 if (i === times.length - 1) {
+                    nowDate = computeDepartTime();
+                    const timeDate = nowDate.getMinutes();
                     nowDate.setMinutes(timeDate + time);
                 } else {
+                    nowDate = computeArriveTime();
+                    const timeDate = nowDate.getMinutes();
                     nowDate.setMinutes(timeDate - time);
                 }
                 return nowDate;
@@ -62,6 +78,24 @@ const FulfillmentList: React.FC = () => {
         }
     };
 
+    const setFinalDates = () => {
+        let finalDates: FinalDates = [];
+
+        dates.map(date => {
+            let dateDNE = true;
+            finalDates.forEach(final => {
+                if (final.date.getDate() === date.getDate()) {
+                    dateDNE = false;
+                    final.dates.push(date);
+                }
+            });
+            if (dateDNE) {
+                finalDates.push({ date: date, dates: [date] });
+            }
+        });
+        setFinalTimes(finalDates);
+    };
+
     const computeArriveTime = () => {
         if (currentShipment && date) {
             let progressTime = Math.floor(
@@ -69,10 +103,10 @@ const FulfillmentList: React.FC = () => {
             );
             let arrival = new Date(date);
             arrival.setMinutes(arrival.getMinutes() - progressTime);
-            return arrival.toLocaleString("en-US", options);
+            return arrival;
         }
 
-        return "";
+        return new Date();
     };
 
     const computeDepartTime = () => {
@@ -80,11 +114,11 @@ const FulfillmentList: React.FC = () => {
             let progressTime = Math.floor(
                 currentShipment.flightDuration * (1 - currentShipment.progress)
             );
-            let arrival = new Date(date);
-            arrival.setMinutes(arrival.getMinutes() + progressTime);
-            return arrival.toLocaleString("en-US", options);
+            let depart = new Date(date);
+            depart.setMinutes(depart.getMinutes() + progressTime);
+            return depart;
         }
-        return "";
+        return new Date();
     };
 
     useEffect(() => {
@@ -96,18 +130,26 @@ const FulfillmentList: React.FC = () => {
             calcDates();
         }
 
-        if (timesSet) {
-        }
-
         if (datesSet) {
-            console.log(dates);
+            setFinalDates();
         }
     }, [currentShipment, timesSet, datesSet]);
     return (
         <FulfillmentListContainer>
-            {dates.map(date => (
-                <FulfillmentListing key={date.toISOString()}>
-                    {date.toLocaleString("en-US", fulfilloptions)}
+            {finalTimes.map(date => (
+                <FulfillmentListing key={date.date.toISOString()}>
+                    <FulfillmentTitle>
+                        {date.date.toLocaleString("en-US", dateoptions)}
+                    </FulfillmentTitle>
+                    <FulfillmentDateList>
+                        {date.dates.map(fulfill => (
+                            <FulfillmentDateListing
+                                key={fulfill.toLocaleDateString()}
+                            >
+                                {fulfill.toLocaleString("en-US", houroptions)}
+                            </FulfillmentDateListing>
+                        ))}
+                    </FulfillmentDateList>
                 </FulfillmentListing>
             ))}
         </FulfillmentListContainer>

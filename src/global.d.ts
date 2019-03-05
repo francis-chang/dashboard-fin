@@ -64,3 +64,10 @@ type Shipment = {
 };
 
 type Fulfillment = string[];
+
+interface FinalDate {
+    date: Date;
+    dates: Date[];
+}
+
+type FinalDates = FinalDate[];
