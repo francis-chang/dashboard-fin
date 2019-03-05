@@ -33,15 +33,8 @@ const dateoptions = {
 
 const FulfillmentList: React.FC = () => {
     const { currentShipment, date } = useContext(MapContext);
-    const [times, setTimes] = useState<timesObj[]>([]);
 
-    const [dates, setDates] = useState<Date[]>([]);
-
-    const [timesSet, setTimesSet] = useState(false);
-
-    const [datesSet, setDatesSet] = useState(false);
-
-    const [finalTimes, setFinalTimes] = useState<FinalDates>([]);
+    const [finalTimes, setFinalTimes] = useState<FinalDate[]>([]);
 
     const calcTimes = () => {
         if (currentShipment && date) {
@@ -54,16 +47,6 @@ const FulfillmentList: React.FC = () => {
             const arrival =
                 currentShipment.flightDuration * (1 - currentShipment.progress);
             const delivered = Math.floor(Math.random() * 460 + 240);
-
-            // const times = [
-            //     orderPlaced,
-            //     paid,
-            //     transported,
-            //     weighed,
-            //     depart,
-            //     arrival,
-            //     delivered
-            // ];
 
             const times: timesObj[] = [
                 {
@@ -100,13 +83,7 @@ const FulfillmentList: React.FC = () => {
                     time: delivered
                 }
             ];
-            setTimes(times);
-            setTimesSet(true);
-        }
-    };
 
-    const calcDates = () => {
-        if (date) {
             const dates = times.map((time, i) => {
                 let nowDate = new Date(date);
 
@@ -125,26 +102,24 @@ const FulfillmentList: React.FC = () => {
                 }
                 return nowDate;
             });
-            setDates(dates);
-            setDatesSet(true);
-        }
-    };
 
-    const setFinalDates = () => {
-        let finalDates: FinalDates = [];
-        dates.map(date => {
-            let dateDNE = true;
-            finalDates.forEach(final => {
-                if (final.date.getDate() === date.getDate()) {
-                    dateDNE = false;
-                    final.dates.push(date);
+            let finalDates: FinalDates = [];
+
+            dates.map(date => {
+                let dateDNE = true;
+                finalDates.forEach(final => {
+                    if (final.date.getDate() === date.getDate()) {
+                        dateDNE = false;
+                        final.dates.push(date);
+                    }
+                });
+                if (dateDNE) {
+                    finalDates.push({ date: date, dates: [date] });
                 }
             });
-            if (dateDNE) {
-                finalDates.push({ date: date, dates: [date] });
-            }
-        });
-        setFinalTimes(finalDates);
+
+            setFinalTimes(finalDates);
+        }
     };
 
     const computeArriveTime = () => {
@@ -175,15 +150,7 @@ const FulfillmentList: React.FC = () => {
         if (currentShipment && date) {
             calcTimes();
         }
-
-        if (currentShipment && timesSet) {
-            calcDates();
-        }
-
-        if (datesSet) {
-            setFinalDates();
-        }
-    }, [currentShipment, timesSet, datesSet]);
+    }, [currentShipment]);
 
     return (
         <FulfillmentListContainer>
