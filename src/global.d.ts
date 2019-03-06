@@ -67,7 +67,7 @@ type Fulfillment = string[];
 
 interface FinalDate {
     date: Date;
-    dates: Date[];
+    dates: datesObj[];
 }
 
 type FinalDates = FinalDate[];
@@ -75,4 +75,9 @@ type FinalDates = FinalDate[];
 type timesObj = {
     descr: string;
     time: number;
+};
+
+type datesObj = {
+    descr: string;
+    date: Date;
 };

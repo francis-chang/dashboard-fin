@@ -499,7 +499,7 @@ export const FulfillmentCargo = styled.div`
 `;
 
 export const FulfillmentListContainer = styled.div`
-    width: 35%;
+    width: 65%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -508,7 +508,7 @@ export const FulfillmentListContainer = styled.div`
 `;
 
 export const FulfillmentListing = styled.div`
-    padding: 1rem 0rem;
+    padding: 0.5rem 0rem;
     width: 100%;
     color: #eef3f7;
     display: flex;
@@ -516,7 +516,10 @@ export const FulfillmentListing = styled.div`
 `;
 
 export const FulfillmentTitle = styled.div`
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    padding-bottom: 0.3rem;
+    text-transform: uppercase;
+    text-decoration: underline;
 `;
 
 export const FulfillmentDateList = styled.div`
@@ -527,6 +530,25 @@ export const FulfillmentDateList = styled.div`
 
 export const FulfillmentDateListing = styled.div`
     font-size: 1rem;
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 0.2rem;
+`;
+
+export const FulfillmentDateListingDate = styled.div`
+    font-size: 1.3rem;
+    width: 9rem;
+    border-right: 3px solid #eef3f7;
+    margin-right: 0.5rem;
+`;
+
+export const FulfillmentDateListingETA = styled.div`
+    font-size: 1rem;
+    color: #b9d0df;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.2rem;
 `;
 
 /*

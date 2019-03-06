@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import {
     FulfillmentDateList,
     FulfillmentDateListing,
+    FulfillmentDateListingDate,
+    FulfillmentDateListingETA,
     FulfillmentListContainer,
     FulfillmentListing,
     FulfillmentTitle
@@ -38,87 +40,120 @@ const FulfillmentList: React.FC = () => {
 
     const calcTimes = () => {
         if (currentShipment && date) {
-            const orderPlaced = Math.floor(Math.random() * 4320 + 2880);
-            const paid = Math.floor(Math.random() * 1440 + 1440);
-            const transported = Math.floor(Math.random() * 300 + 300);
-            const weighed = Math.floor(Math.random() * 120 + 180);
-            const depart =
-                currentShipment.flightDuration * currentShipment.progress;
-            const arrival =
-                currentShipment.flightDuration * (1 - currentShipment.progress);
-            const delivered = Math.floor(Math.random() * 460 + 240);
+            if (currentShipment.eta === "canceled") {
+                const orderPlaced = Math.floor(Math.random() * 4320 + 2880);
+                const nowDate = new Date(date);
+                nowDate.setMinutes(nowDate.getMinutes() - orderPlaced);
 
-            const times: timesObj[] = [
-                {
-                    descr: "Order Placed",
-                    time: orderPlaced
-                },
-                {
-                    descr: "paid",
-                    time: paid
-                },
+                const orderCanceled = Math.floor(Math.random() * 1440 + 1440);
+                const cancelDate = new Date(date);
+                cancelDate.setMinutes(cancelDate.getMinutes() - orderCanceled);
 
-                {
-                    descr: "transported",
-                    time: transported
-                },
+                const canceledList: FinalDate[] = [
+                    {
+                        date: nowDate,
+                        dates: [{ descr: "Order placed", date: nowDate }]
+                    },
+                    {
+                        date: cancelDate,
+                        dates: [{ descr: "order canceled", date: cancelDate }]
+                    }
+                ];
 
-                {
-                    descr: "weighed",
-                    time: weighed
-                },
+                setFinalTimes(canceledList);
+            } else {
+                const orderPlaced = Math.floor(Math.random() * 4320 + 2880);
+                const paid = Math.floor(Math.random() * 1440 + 1440);
+                const transported = Math.floor(Math.random() * 300 + 300);
+                const weighed = Math.floor(Math.random() * 120 + 180);
+                const depart =
+                    currentShipment.flightDuration * currentShipment.progress;
+                const arrival =
+                    currentShipment.flightDuration *
+                    (1 - currentShipment.progress);
+                const delivered = Math.floor(Math.random() * 460 + 240);
 
-                {
-                    descr: "depart",
-                    time: depart
-                },
+                const times: timesObj[] = [
+                    {
+                        descr: "Order Placed",
+                        time: orderPlaced
+                    },
+                    {
+                        descr: `Paid at $5.99 per unit totalling $${(
+                            (Math.random() * 100 + 150) *
+                            5.99
+                        ).toFixed(2)}`,
+                        time: paid
+                    },
 
-                {
-                    descr: "arrival",
-                    time: arrival
-                },
+                    {
+                        descr: `Transported from ${currentShipment.name.slice(
+                            0,
+                            currentShipment.name.indexOf("-")
+                        )} facility to ${currentShipment.from.airport}`,
+                        time: transported
+                    },
 
-                {
-                    descr: "delivered",
-                    time: delivered
-                }
-            ];
+                    {
+                        descr: `Weighed in at ${currentShipment.cargoWeight}`,
+                        time: weighed
+                    },
 
-            const dates = times.map((time, i) => {
-                let nowDate = new Date(date);
+                    {
+                        descr: `Depart ${currentShipment.from.airport}`,
+                        time: depart
+                    },
 
-                if (time.descr === "delivered") {
-                    nowDate = computeDepartTime();
-                    const timeDate = nowDate.getMinutes();
-                    nowDate.setMinutes(timeDate + time.time);
-                } else if (time.descr === "arrival") {
-                    return computeArriveTime();
-                } else if (time.descr === "depart") {
-                    return computeDepartTime();
-                } else {
-                    nowDate = computeArriveTime();
-                    const timeDate = nowDate.getMinutes();
-                    nowDate.setMinutes(timeDate - time.time);
-                }
-                return nowDate;
-            });
+                    {
+                        descr: `Arrive ${currentShipment.to.airport}`,
+                        time: arrival
+                    },
 
-            let finalDates: FinalDates = [];
+                    {
+                        descr: `Deliver to ${currentShipment.name.slice(
+                            0,
+                            currentShipment.name.indexOf("-")
+                        )} Warehouse`,
+                        time: delivered
+                    }
+                ];
 
-            dates.map(date => {
-                let dateDNE = true;
-                finalDates.forEach(final => {
-                    if (final.date.getDate() === date.getDate()) {
-                        dateDNE = false;
-                        final.dates.push(date);
+                const dates = times.map((time, i) => {
+                    let nowDate = new Date(date);
+
+                    if (time.descr.indexOf("Deliver") > -1) {
+                        nowDate = computeArriveTime();
+                        const timeDate = nowDate.getMinutes();
+                        nowDate.setMinutes(timeDate + time.time);
+                    } else if (time.descr.indexOf("Arrive") > -1) {
+                        return { descr: time.descr, date: computeArriveTime() };
+                    } else if (time.descr.indexOf("Depart") > -1) {
+                        return { descr: time.descr, date: computeDepartTime() };
+                    } else {
+                        nowDate = computeDepartTime();
+                        const timeDate = nowDate.getMinutes();
+                        nowDate.setMinutes(timeDate - time.time);
+                    }
+                    return { descr: time.descr, date: nowDate };
+                });
+
+                let finalDates: FinalDate[] = [];
+
+                dates.map(date => {
+                    let dateDNE = true;
+                    finalDates.forEach(final => {
+                        if (final.date.getDate() === date.date.getDate()) {
+                            dateDNE = false;
+                            final.dates.push(date);
+                        }
+                    });
+                    if (dateDNE) {
+                        finalDates.push({ date: date.date, dates: [date] });
                     }
                 });
-                if (dateDNE) {
-                    finalDates.push({ date: date, dates: [date] });
-                }
-            });
 
-            setFinalTimes(finalDates);
+                setFinalTimes(finalDates);
+            }
         }
     };
 
@@ -153,22 +188,50 @@ const FulfillmentList: React.FC = () => {
     }, [currentShipment]);
 
     return (
-        <FulfillmentListContainer>
-            {finalTimes.map(date => (
-                <FulfillmentListing key={date.date.toISOString()}>
-                    <FulfillmentTitle>
-                        {date.date.toLocaleString("en-US", dateoptions)}
-                    </FulfillmentTitle>
-                    <FulfillmentDateList>
-                        {date.dates.map((fulfill, i) => (
-                            <FulfillmentDateListing key={i}>
-                                {fulfill.toLocaleString("en-US", houroptions)}
-                            </FulfillmentDateListing>
-                        ))}
-                    </FulfillmentDateList>
-                </FulfillmentListing>
-            ))}
-        </FulfillmentListContainer>
+        currentShipment && (
+            <FulfillmentListContainer>
+                {finalTimes.map(date => (
+                    <FulfillmentListing key={date.date.toISOString()}>
+                        <FulfillmentTitle>
+                            {date.date.toLocaleString("en-US", dateoptions)}
+                        </FulfillmentTitle>
+                        <FulfillmentDateList>
+                            {date.dates.map((fulfill, i) => {
+                                if (fulfill.date > new Date()) {
+                                    return (
+                                        <FulfillmentDateListingETA key={i}>
+                                            <FulfillmentDateListingDate>
+                                                {fulfill.date > new Date() &&
+                                                    `ETA `}
+                                                {fulfill.date.toLocaleString(
+                                                    "en-US",
+                                                    houroptions
+                                                )}
+                                            </FulfillmentDateListingDate>
+                                            {fulfill.descr}
+                                        </FulfillmentDateListingETA>
+                                    );
+                                } else {
+                                    return (
+                                        <FulfillmentDateListing key={i}>
+                                            <FulfillmentDateListingDate>
+                                                {fulfill.date > new Date() &&
+                                                    `ETA `}
+                                                {fulfill.date.toLocaleString(
+                                                    "en-US",
+                                                    houroptions
+                                                )}
+                                            </FulfillmentDateListingDate>
+                                            {fulfill.descr}
+                                        </FulfillmentDateListing>
+                                    );
+                                }
+                            })}
+                        </FulfillmentDateList>
+                    </FulfillmentListing>
+                ))}
+            </FulfillmentListContainer>
+        )
     );
 };
 

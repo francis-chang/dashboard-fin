@@ -135,7 +135,7 @@ export const SHIPMENTDATA = [
         from: DESTINATIONLIST[6],
         to: DESTINATIONLIST[9],
         flightDuration: 340,
-        progress: 0.4,
+        progress: 1,
         eta: "delayed",
         cargoWeight: "81.24kg"
     },
