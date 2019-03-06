@@ -494,12 +494,18 @@ export const FulfillmentContainer = styled.div`
 `;
 
 export const FulfillmentCargo = styled.div`
-    width: 35%;
+    width: 20%;
     height: 100%;
 `;
 
+export const FulfillmentCargoListing = styled.div`
+    padding: 0.5rem;
+    color: #eef3f7;
+    font-size: 1.2rem;
+`;
+
 export const FulfillmentListContainer = styled.div`
-    width: 65%;
+    width: 80%;
     height: 100%;
     display: flex;
     flex-direction: column;

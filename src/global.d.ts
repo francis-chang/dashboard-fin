@@ -1,3 +1,5 @@
+declare module "randomstring";
+
 /*
     PROP TYPINGS FOR NAVIGATION
 */

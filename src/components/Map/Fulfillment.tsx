@@ -1,11 +1,12 @@
 import React from "react";
-import { FulfillmentCargo, FulfillmentContainer } from "../ComponentStyles";
+import { FulfillmentContainer } from "../ComponentStyles";
+import FulfillCargo from "./FulfillCargo";
 import FulfillmentList from "./FulfillmentList";
 
 const Fulfillment: React.FC = () => {
     return (
         <FulfillmentContainer>
-            <FulfillmentCargo />
+            <FulfillCargo />
             <FulfillmentList />
         </FulfillmentContainer>
     );
