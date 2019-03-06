@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 /*
     #182a34 - DARKEST PRUSSIAN BLUE
-    #203746 - DARK PRUSSIAN BLUE
+    # - DARK PRUSSIAN BLUE
     #284557 - PRUSSIAN BLUE
     #49779c - MID BLUE 
     #b9d0df - SKY BLUE  
@@ -496,6 +496,21 @@ export const FulfillmentContainer = styled.div`
 export const FulfillmentCargo = styled.div`
     width: 20%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+`;
+
+export const FulfillmentCargoTitle = styled.div`
+    width: 100%;
+    height: 2.5rem;
+    border-bottom: 0.3rem solid #eef3f7;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    padding-left: 0.5rem;
+    color: #eef3f7;
+    background-color: #203746;
 `;
 
 export const FulfillmentCargoListing = styled.div`
@@ -509,10 +524,23 @@ export const FulfillmentListContainer = styled.div`
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding-left: 1rem;
-    border-left: 3px solid #eef3f7;
+    border-left: 0.3rem solid #eef3f7;
 `;
 
+export const FulfillmentListTitle = styled.div`
+    background-color: #203746;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    height: 2.5rem;
+    padding-left: 0.5rem;
+    border-bottom: 0.3rem solid #eef3f7;
+`;
+
+export const FulfillmentListText = styled.div`
+    color: #eef3f7;
+    font-size: 1.8rem;
+`;
 export const FulfillmentListing = styled.div`
     padding: 0.5rem 0rem;
     width: 100%;
