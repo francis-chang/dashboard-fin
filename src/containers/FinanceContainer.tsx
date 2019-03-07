@@ -1,9 +1,12 @@
 import React from "react";
 import { DashboardPlacement } from "./ContainerStyles";
+import Fade from "./Test";
 
 const FinanceContainer: React.FC = () => {
     return (
-        <DashboardPlacement>This is the finance container</DashboardPlacement>
+        <DashboardPlacement>
+            <Fade in={true} />
+        </DashboardPlacement>
     );
 };
 

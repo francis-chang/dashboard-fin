@@ -23,7 +23,7 @@ const FulfillCargo = () => {
     const generateList = () => {
         let cargoList: { item: string; units: number }[] = [];
         if (currentShipment) {
-            const r = Math.floor(Math.random() * 5 + 4);
+            const r = Math.floor(Math.random() * 3 + 3);
 
             for (var x = 0; x <= r; x++) {
                 cargoList.push({

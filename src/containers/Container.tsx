@@ -11,6 +11,7 @@ const Container: React.FC = () => {
         <Grid>
             <Global />
             <NavBar />
+
             <Router>
                 <Route component={ShipmentContainer} path={"/tracking"} />
                 <Route component={FinanceContainer} path={"/finance"} />
