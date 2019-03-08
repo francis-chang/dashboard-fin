@@ -6,8 +6,8 @@ import {
     faHome
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "@reach/router";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
     MidNavigation,
     NavBarOnGrid,
@@ -69,12 +69,12 @@ const NavBar: React.FC = () => {
                     </NavigationButton>
                 </TopNavigation>
                 <MidNavigation>
-                    <Link to="/tracking" getProps={isActive}>
+                    <Link to="/tracking">
                         <NavigationButtonDash>
                             <FontAwesomeIcon icon="globe-americas" />
                         </NavigationButtonDash>
                     </Link>
-                    <Link to="/finance" getProps={isActive}>
+                    <Link to="/finance">
                         <NavigationButtonDash>
                             <FontAwesomeIcon icon="chart-bar" />
                         </NavigationButtonDash>
