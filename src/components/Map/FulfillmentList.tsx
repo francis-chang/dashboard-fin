@@ -6,8 +6,6 @@ import {
     FulfillmentDateListingETA,
     FulfillmentListContainer,
     FulfillmentListing,
-    FulfillmentListText,
-    FulfillmentListTitle,
     FulfillmentTitle
 } from "../ComponentStyles";
 import { MapContext } from "./MapContext";
@@ -58,7 +56,7 @@ const FulfillmentList: React.FC = () => {
                     },
                     {
                         date: cancelDate,
-                        dates: [{ descr: "order Canceled", date: cancelDate }]
+                        dates: [{ descr: "order canceled", date: cancelDate }]
                     }
                 ];
 
@@ -190,72 +188,50 @@ const FulfillmentList: React.FC = () => {
     }, [currentShipment]);
 
     return (
-        <FulfillmentListContainer>
-            <FulfillmentListTitle>
-                <FulfillmentListText>Tracking</FulfillmentListText>
-            </FulfillmentListTitle>
-            {!currentShipment ? (
-                <div
-                    style={{
-                        color: "#eef3f7",
-                        fontSize: "3rem",
-                        textTransform: "uppercase",
-                        textAlign: "center"
-                    }}
-                >
-                    Select a shipment
-                </div>
-            ) : (
-                <div
-                    style={{
-                        overflowY: "scroll",
-                        maxHeight: "20rem",
-                        width: "80%"
-                    }}
-                >
-                    {finalTimes.map(date => (
-                        <FulfillmentListing key={date.date.toISOString()}>
-                            <FulfillmentTitle>
-                                {date.date.toLocaleString("en-US", dateoptions)}
-                            </FulfillmentTitle>
-                            <FulfillmentDateList>
-                                {date.dates.map((fulfill, i) => {
-                                    if (fulfill.date > new Date()) {
-                                        return (
-                                            <FulfillmentDateListingETA key={i}>
-                                                <FulfillmentDateListingDate>
-                                                    {fulfill.date >
-                                                        new Date() && `ETA `}
-                                                    {fulfill.date.toLocaleString(
-                                                        "en-US",
-                                                        houroptions
-                                                    )}
-                                                </FulfillmentDateListingDate>
-                                                {fulfill.descr}
-                                            </FulfillmentDateListingETA>
-                                        );
-                                    } else {
-                                        return (
-                                            <FulfillmentDateListing key={i}>
-                                                <FulfillmentDateListingDate>
-                                                    {fulfill.date >
-                                                        new Date() && `ETA `}
-                                                    {fulfill.date.toLocaleString(
-                                                        "en-US",
-                                                        houroptions
-                                                    )}
-                                                </FulfillmentDateListingDate>
-                                                {fulfill.descr}
-                                            </FulfillmentDateListing>
-                                        );
-                                    }
-                                })}
-                            </FulfillmentDateList>
-                        </FulfillmentListing>
-                    ))}
-                </div>
-            )}
-        </FulfillmentListContainer>
+        currentShipment && (
+            <FulfillmentListContainer>
+                {finalTimes.map(date => (
+                    <FulfillmentListing key={date.date.toISOString()}>
+                        <FulfillmentTitle>
+                            {date.date.toLocaleString("en-US", dateoptions)}
+                        </FulfillmentTitle>
+                        <FulfillmentDateList>
+                            {date.dates.map((fulfill, i) => {
+                                if (fulfill.date > new Date()) {
+                                    return (
+                                        <FulfillmentDateListingETA key={i}>
+                                            <FulfillmentDateListingDate>
+                                                {fulfill.date > new Date() &&
+                                                    `ETA `}
+                                                {fulfill.date.toLocaleString(
+                                                    "en-US",
+                                                    houroptions
+                                                )}
+                                            </FulfillmentDateListingDate>
+                                            {fulfill.descr}
+                                        </FulfillmentDateListingETA>
+                                    );
+                                } else {
+                                    return (
+                                        <FulfillmentDateListing key={i}>
+                                            <FulfillmentDateListingDate>
+                                                {fulfill.date > new Date() &&
+                                                    `ETA `}
+                                                {fulfill.date.toLocaleString(
+                                                    "en-US",
+                                                    houroptions
+                                                )}
+                                            </FulfillmentDateListingDate>
+                                            {fulfill.descr}
+                                        </FulfillmentDateListing>
+                                    );
+                                }
+                            })}
+                        </FulfillmentDateList>
+                    </FulfillmentListing>
+                ))}
+            </FulfillmentListContainer>
+        )
     );
 };
 

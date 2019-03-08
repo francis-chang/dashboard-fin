@@ -1,10 +1,6 @@
 import { generate } from "randomstring";
 import React, { useContext, useEffect, useState } from "react";
-import {
-    FulfillmentCargo,
-    FulfillmentCargoListing,
-    FulfillmentCargoTitle
-} from "../ComponentStyles";
+import { FulfillmentCargo, FulfillmentCargoListing } from "../ComponentStyles";
 import { MapContext } from "./MapContext";
 
 const FulfillCargo = () => {
@@ -39,13 +35,12 @@ const FulfillCargo = () => {
     };
     return (
         <FulfillmentCargo>
-            <FulfillmentCargoTitle>Cargo</FulfillmentCargoTitle>
             {currentShipment &&
                 cargoList &&
                 cargoList.map(cargo => (
-                    <FulfillmentCargoListing key={cargo.item}>{`${
-                        cargo.item
-                    } x ${cargo.units}`}</FulfillmentCargoListing>
+                    <FulfillmentCargoListing>{`${cargo.item} x ${
+                        cargo.units
+                    }`}</FulfillmentCargoListing>
                 ))}
         </FulfillmentCargo>
     );
