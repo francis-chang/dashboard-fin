@@ -1,10 +1,10 @@
+import { Router } from "@reach/router";
 import React, { useState } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { animated, useTransition } from "react-spring";
+import { useTransition } from "react-spring";
 import NavBar from "../components/NavBar/NavBar";
 import { Global, Grid } from "./ContainerStyles";
 import FinanceContainer from "./FinanceContainer";
-// import Route from "./Route";
+import Route from "./Route";
 import ShipmentContainer from "./ShipmentContainer";
 
 const Container: React.FC = () => {
@@ -16,29 +16,15 @@ const Container: React.FC = () => {
         leave: { opacity: 0 }
     });
     return (
-        <BrowserRouter>
-            <Grid>
-                <Global />
-                <NavBar />
-                {containerTransition.map(
-                    ({ item, key, props }) =>
-                        item && (
-                            <animated.div style={props}>
-                                <Switch>
-                                    <Route
-                                        path="/tracking"
-                                        component={ShipmentContainer}
-                                    />
-                                    <Route
-                                        path="/finance"
-                                        component={FinanceContainer}
-                                    />
-                                </Switch>
-                            </animated.div>
-                        )
-                )}
-            </Grid>
-        </BrowserRouter>
+        <Grid>
+            <Global />
+            <NavBar />
+
+            <Router>
+                <Route path="/tracking" component={ShipmentContainer} />
+                <Route path="/finance" component={FinanceContainer} />
+            </Router>
+        </Grid>
     );
 };
 

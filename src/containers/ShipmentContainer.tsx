@@ -14,8 +14,6 @@ const ShipmentContainer: React.FC = () => {
     );
     const shipments = SHIPMENTDATA.slice();
 
-    const [visible, setVisible] = useState(true);
-
     useEffect(() => {
         if (!date) {
             setDate(new Date());
