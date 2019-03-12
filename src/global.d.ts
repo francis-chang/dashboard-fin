@@ -83,3 +83,13 @@ type datesObj = {
     descr: string;
     date: Date;
 };
+
+interface Task {
+    description: string;
+    time: Date;
+}
+
+interface FinalTime {
+    date: Date;
+    tasks: Task[];
+}

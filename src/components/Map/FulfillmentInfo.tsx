@@ -6,8 +6,32 @@ const FulfillmentInfoContainer = styled.div`
     height: 100%;
 `;
 
-interface Props {}
+const options = {
+    hour12: true,
+    hour: "numeric",
+    minute: "numeric",
+    day: "numeric",
+    month: "numeric"
+};
 
-export const FulfillmentInfo: React.FC<Props> = () => {
-    return <FulfillmentInfoContainer>as;ldkfjwoeia</FulfillmentInfoContainer>;
+interface Props {
+    currentTime: FinalTime | null;
+}
+
+export const FulfillmentInfo: React.FC<Props> = ({ currentTime }) => {
+    return (
+        <FulfillmentInfoContainer>
+            {
+                <ul>
+                    {currentTime &&
+                        currentTime.tasks.map(task => (
+                            <li key={task.time.toISOString()}>
+                                {task.description} |{" "}
+                                {task.time.toLocaleString("en-US", options)}{" "}
+                            </li>
+                        ))}
+                </ul>
+            }
+        </FulfillmentInfoContainer>
+    );
 };

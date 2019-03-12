@@ -13,30 +13,20 @@ const FulfillmentContainer = styled.div`
     display: flex;
 `;
 
-interface Task {
-    description: string;
-    time: Date;
-}
-
-const fulloptions = {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour12: true,
-    hour: "numeric",
-    minute: "numeric"
-};
-
 export const FullfillmentList: React.FC<Props> = () => {
     const { currentShipment, date } = React.useContext(MapContext);
 
-    const [times, setTimes] = React.useState<Task[] | null>(null);
+    const [times, setTimes] = React.useState<FinalTime[]>([]);
+
+    const [currentTime, setCurrentTime] = React.useState<FinalTime | null>(
+        null
+    );
 
     const calcTimes = () => {
         if (currentShipment) {
             const departingTime = calcDepartTime();
             const arrivingTime = calcArriveTime();
+
             const fulfillments = currentShipment.fulfillments.map(
                 fulfillment => {
                     if (fulfillment.depart) {
@@ -54,15 +44,30 @@ export const FullfillmentList: React.FC<Props> = () => {
                     }
                 }
             );
-            setTimes(fulfillments);
+
+            let finalTimes: FinalTime[] = [];
+            fulfillments.forEach(fulfillment => {
+                let dateDNE = true;
+                finalTimes.forEach(time => {
+                    if (time.date.getDate() === fulfillment.time.getDate()) {
+                        dateDNE = false;
+                        time.tasks.push(fulfillment);
+                    }
+                });
+                if (dateDNE) {
+                    finalTimes.push({
+                        date: fulfillment.time,
+                        tasks: [fulfillment]
+                    });
+                }
+            });
+            setTimes(finalTimes);
         }
     };
 
     React.useEffect(() => {
-        if (!times) {
-            calcTimes();
-        }
-    });
+        calcTimes();
+    }, [currentShipment]);
 
     const calcDepartTime = () => {
         if (date && currentShipment) {
@@ -90,8 +95,11 @@ export const FullfillmentList: React.FC<Props> = () => {
 
     return (
         <FulfillmentContainer>
-            <FullfillmentButtons />
-            <FulfillmentInfo />
+            <FullfillmentButtons
+                times={times}
+                setCurrentTime={setCurrentTime}
+            />
+            <FulfillmentInfo currentTime={currentTime} />
         </FulfillmentContainer>
     );
 };

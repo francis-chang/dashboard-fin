@@ -1,7 +1,11 @@
 import * as React from "react";
 import styled from "styled-components";
+import { MapContext } from "./MapContext";
 
-interface Props {}
+interface Props {
+    times: FinalTime[];
+    setCurrentTime: (t: FinalTime) => void;
+}
 
 const FullfillmentButtonsContainer = styled.div`
     height: 100%;
@@ -24,13 +28,45 @@ const History = styled.div`
     height: 8rem;
     margin: 0.5rem 0rem;
     background-color: red;
+    display: flex;
+    flex-direction: column;
 `;
 
-export const FullfillmentButtons: React.FC<Props> = () => {
+const dateoptions = {
+    // weekday: "long",
+    // year: "numeric",
+    month: "long",
+    day: "numeric"
+};
+
+export const FullfillmentButtons: React.FC<Props> = ({
+    times,
+    setCurrentTime
+}) => {
+    const { currentShipment } = React.useContext(MapContext);
+    const setToCurrent = () => {
+        const current = new Date();
+        times.forEach(time => {
+            if (time.date.getDate() === current.getDate()) {
+                setCurrentTime(time);
+            }
+        });
+    };
+    React.useEffect(() => {}, [currentShipment]);
+
     return (
         <FullfillmentButtonsContainer>
-            <CurrentETAButton>CURRENT</CurrentETAButton>
-            <History>History goes here</History>
+            <CurrentETAButton onClick={setToCurrent}>CURRENT</CurrentETAButton>
+            <History>
+                {times.map(time => (
+                    <div
+                        key={time.date.toISOString()}
+                        onClick={() => setCurrentTime(time)}
+                    >
+                        {time.date.toLocaleString("en-US", dateoptions)}
+                    </div>
+                ))}
+            </History>
             <CurrentETAButton>ETA</CurrentETAButton>
         </FullfillmentButtonsContainer>
     );
