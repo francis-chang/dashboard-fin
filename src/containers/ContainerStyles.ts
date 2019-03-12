@@ -36,24 +36,38 @@ export const Global = createGlobalStyle`
         overflow-x: hidden;
     }
 
-
-    .fade-enter {
-    opacity: 0.01;
-    }
-
-    .fade-enter.fade-enter-active {
-        opacity: 1;
-        transition: opacity 300ms ease-in;
-    }
-
-    .fade-exit {
+    .fade-exit{
         opacity: 1;
     }
 
-    .fade-exit.fade-exit-active {
-        opacity: 0.01;
-        transition: opacity 300ms ease-in;
+    .fade-exit.fade-exit-active{
+        opacity: 0;
+        transition: opacity 300ms linear;
     }
+
+    .fade-exit-done{
+        opacity: 0;
+    }
+
+    .fade-appear{
+        opacity: 0;
+        z-index: 1;
+    }
+
+    .fade-appear.fade-appear-active{
+        opacity:1;
+        transition: opacity 300ms linear;
+    }
+
+    .fade-enter{
+        opacity: 1;
+    }
+
+    .fade-enter.fade-enter-active{
+        opacity: 1;
+        transition: opacity 300ms linear;
+    }
+
     .navigationButton-active{
         background-color: #b9d0df;
         color: #284557;
