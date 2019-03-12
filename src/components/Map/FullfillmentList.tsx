@@ -95,11 +95,17 @@ export const FullfillmentList: React.FC<Props> = () => {
 
     return (
         <FulfillmentContainer>
-            <FullfillmentButtons
-                times={times}
-                setCurrentTime={setCurrentTime}
-            />
-            <FulfillmentInfo currentTime={currentTime} />
+            {currentShipment && (
+                <>
+                    <FullfillmentButtons
+                        times={times}
+                        setCurrentTime={setCurrentTime}
+                    />
+                    {currentTime && (
+                        <FulfillmentInfo currentTime={currentTime} />
+                    )}
+                </>
+            )}
         </FulfillmentContainer>
     );
 };

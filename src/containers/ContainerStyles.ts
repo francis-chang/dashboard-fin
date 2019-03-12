@@ -27,6 +27,7 @@ export const Global = createGlobalStyle`
         font-family: Chivo;
         src: url('./assets/fonts/Chivo/Chivo-Regular.ttf');
     }
+    
     body{
         margin: 0;
         padding: 0;
@@ -38,34 +39,46 @@ export const Global = createGlobalStyle`
 
     .fade-exit{
         opacity: 1;
+        transform: translateY(0rem);
     }
 
     .fade-exit.fade-exit-active{
         opacity: 0;
-        transition: opacity 300ms linear;
+        transform: translateY(-20rem);
+        transition: 500ms linear;
     }
 
     .fade-exit-done{
         opacity: 0;
+        transform: translateY(-20rem);
     }
 
     .fade-appear{
         opacity: 0;
+        transform: translateY(50rem);
         z-index: 1;
-    }
+    } 
 
     .fade-appear.fade-appear-active{
         opacity:1;
-        transition: opacity 300ms linear;
+        transform: translateY(0rem);
+        transition: 300ms linear;
     }
 
     .fade-enter{
-        opacity: 1;
+        opacity: 0;
+        transform: translateY(20rem);
     }
 
     .fade-enter.fade-enter-active{
         opacity: 1;
-        transition: opacity 300ms linear;
+        transform: translateY(0rem);
+        transition: 500ms linear 500ms;
+    }
+
+    .fade-enter-done{
+        opacity: 1;
+        transform: translateY(0rem);
     }
 
     .navigationButton-active{

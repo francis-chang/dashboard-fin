@@ -22,35 +22,35 @@ interface Props {
 
 export const FulfillmentInfo: React.FC<Props> = ({ currentTime }) => {
     const [appear, setAppear] = React.useState(true);
+
     return (
-        <TransitionGroup
-            key={currentTime ? currentTime.date.toISOString() : ""}
-            timeout={300}
-            classNames="fade"
-        >
-            <CSSTransition
-                in={appear}
-                appear={true}
-                timeout={300}
-                classNames="fade"
-            >
-                <FulfillmentInfoContainer>
-                    {
-                        <ul>
-                            {currentTime &&
-                                currentTime.tasks.map(task => (
-                                    <li key={task.time.toISOString()}>
-                                        {task.description} |{" "}
-                                        {task.time.toLocaleString(
-                                            "en-US",
-                                            options
-                                        )}{" "}
-                                    </li>
-                                ))}
-                        </ul>
-                    }
-                </FulfillmentInfoContainer>
-            </CSSTransition>
-        </TransitionGroup>
+        <div>
+            <TransitionGroup>
+                <CSSTransition
+                    key={currentTime ? currentTime.date.toISOString() : ""}
+                    in={true}
+                    appear={!!currentTime}
+                    timeout={1000}
+                    classNames="fade"
+                >
+                    <FulfillmentInfoContainer>
+                        {
+                            <ul>
+                                {currentTime &&
+                                    currentTime.tasks.map(task => (
+                                        <li key={task.time.toISOString()}>
+                                            {task.description} |{" "}
+                                            {task.time.toLocaleString(
+                                                "en-US",
+                                                options
+                                            )}{" "}
+                                        </li>
+                                    ))}
+                            </ul>
+                        }
+                    </FulfillmentInfoContainer>
+                </CSSTransition>
+            </TransitionGroup>
+        </div>
     );
 };
