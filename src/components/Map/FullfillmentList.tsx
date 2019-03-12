@@ -11,6 +11,7 @@ const FulfillmentContainer = styled.div`
     width: 70%;
     height: 22rem;
     display: flex;
+    position: relative;
 `;
 
 export const FullfillmentList: React.FC<Props> = () => {

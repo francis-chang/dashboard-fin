@@ -37,49 +37,6 @@ export const Global = createGlobalStyle`
         overflow-x: hidden;
     }
 
-    .fade-exit{
-        opacity: 1;
-        transform: translateY(0rem);
-    }
-
-    .fade-exit.fade-exit-active{
-        opacity: 0;
-        transform: translateY(-20rem);
-        transition: 500ms linear;
-    }
-
-    .fade-exit-done{
-        opacity: 0;
-        transform: translateY(-20rem);
-    }
-
-    .fade-appear{
-        opacity: 0;
-        transform: translateY(50rem);
-        z-index: 1;
-    } 
-
-    .fade-appear.fade-appear-active{
-        opacity:1;
-        transform: translateY(0rem);
-        transition: 300ms linear;
-    }
-
-    .fade-enter{
-        opacity: 0;
-        transform: translateY(20rem);
-    }
-
-    .fade-enter.fade-enter-active{
-        opacity: 1;
-        transform: translateY(0rem);
-        transition: 500ms linear 500ms;
-    }
-
-    .fade-enter-done{
-        opacity: 1;
-        transform: translateY(0rem);
-    }
 
     .navigationButton-active{
         background-color: #b9d0df;
