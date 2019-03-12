@@ -1,7 +1,10 @@
 import { generate } from "randomstring";
 import React, { useContext, useEffect, useState } from "react";
-import { FulfillmentCargo, FulfillmentCargoListing } from "../ComponentStyles";
-import { MapContext } from "./MapContext";
+import {
+    FulfillmentCargo,
+    FulfillmentCargoListing
+} from "../../../ComponentStyles";
+import { MapContext } from "../../MapContext";
 
 const FulfillCargo = () => {
     const { currentShipment } = useContext(MapContext);

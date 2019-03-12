@@ -33,6 +33,7 @@ export const Global = createGlobalStyle`
         font-size: 16px;
         font-family: Chivo;
         -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
     }
 
 

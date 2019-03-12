@@ -7,8 +7,8 @@ import {
     FulfillmentListContainer,
     FulfillmentListing,
     FulfillmentTitle
-} from "../ComponentStyles";
-import { MapContext } from "./MapContext";
+} from "../../../ComponentStyles";
+import { MapContext } from "../../MapContext";
 
 const houroptions = {
     hour12: true,

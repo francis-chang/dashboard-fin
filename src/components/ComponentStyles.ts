@@ -491,6 +491,7 @@ export const FulfillmentContainer = styled.div`
     grid-row-start: 2;
     background-color: #284557;
     display: flex;
+    align-items: center;
 `;
 
 export const FulfillmentCargo = styled.div`
