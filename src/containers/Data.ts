@@ -67,6 +67,51 @@ export const DESTINATIONLIST = [
     }
 ];
 
+const fulfillments = [
+    [
+        {
+            description: "Order placed",
+            minutes: 10000,
+            depart: true
+        },
+        {
+            description: "Order Check and weight",
+            minutes: 5000,
+            depart: true
+        },
+        {
+            description: "order paid",
+            minutes: 3000,
+            depart: true
+        },
+        {
+            description: "cargo brought to airport",
+            minutes: 1000,
+            depart: true
+        },
+        {
+            description: "cargo depart",
+            minutes: 0,
+            depart: true
+        },
+        {
+            description: "cargo arrive",
+            minutes: 0,
+            depart: false
+        },
+        {
+            description: "cargo qa",
+            minutes: 250,
+            depart: false
+        },
+        {
+            description: "cargo delivery",
+            minutes: 1000,
+            depart: false
+        }
+    ]
+];
+
 export const SHIPMENTDATA = [
     {
         name: "FLEX-7DJ43",
@@ -76,8 +121,8 @@ export const SHIPMENTDATA = [
         progress: 0.4,
         flightDuration: 320,
         eta: "on time",
-        cargoWeight: "450.52kg"
-        // fulfillments: []
+        cargoWeight: "450.52kg",
+        fulfillments: fulfillments[0]
     },
     {
         name: "AAPL-247D3",
@@ -87,7 +132,8 @@ export const SHIPMENTDATA = [
         progress: 0.7,
         flightDuration: 245,
         eta: "delayed",
-        cargoWeight: "390.81kg"
+        cargoWeight: "390.81kg",
+        fulfillments: fulfillments[0]
     },
     {
         name: "MINERVA-227JD",
@@ -97,7 +143,8 @@ export const SHIPMENTDATA = [
         progress: 0.2,
         flightDuration: 280,
         eta: "on time",
-        cargoWeight: "381.52kg"
+        cargoWeight: "381.52kg",
+        fulfillments: fulfillments[0]
     },
     {
         name: "EVERGREEN-VX347",
@@ -107,7 +154,8 @@ export const SHIPMENTDATA = [
         progress: 0.4,
         flightDuration: 175,
         eta: "on time",
-        cargoWeight: "271.54kg"
+        cargoWeight: "271.54kg",
+        fulfillments: fulfillments[0]
     },
     {
         name: "MSFT-785GT",
@@ -117,7 +165,8 @@ export const SHIPMENTDATA = [
         progress: 0,
         flightDuration: 295,
         eta: "on time",
-        cargoWeight: "421.65kg"
+        cargoWeight: "421.65kg",
+        fulfillments: fulfillments[0]
     },
     {
         name: "PALANTIR-D7554",
@@ -127,7 +176,8 @@ export const SHIPMENTDATA = [
         progress: 1,
         flightDuration: 145,
         eta: "canceled",
-        cargoWeight: "234.63kg"
+        cargoWeight: "234.63kg",
+        fulfillments: fulfillments[0]
     },
     {
         name: "OKAFOR-YG691",
@@ -137,7 +187,8 @@ export const SHIPMENTDATA = [
         flightDuration: 340,
         progress: 1,
         eta: "delayed",
-        cargoWeight: "81.24kg"
+        cargoWeight: "81.24kg",
+        fulfillments: fulfillments[0]
     },
     {
         name: "SPECTRAL-GT2345",
@@ -147,7 +198,8 @@ export const SHIPMENTDATA = [
         flightDuration: 325,
         progress: 0.2,
         eta: "on time",
-        cargoWeight: "189.92kg"
+        cargoWeight: "189.92kg",
+        fulfillments: fulfillments[0]
     },
     {
         name: "FLEXBOX-AS23409",
@@ -157,6 +209,7 @@ export const SHIPMENTDATA = [
         flightDuration: 300,
         progress: 0.1,
         eta: "on time",
-        cargoWeight: "340.31kg"
+        cargoWeight: "340.31kg",
+        fulfillments: fulfillments[0]
     }
 ];

@@ -32,7 +32,7 @@ const Odometer: React.FC = () => {
     let timeouts: number[] = [];
 
     const updateSpeed = () => {
-        if (currentShipment.eta !== "canceled") {
+        if (currentShipment && currentShipment.eta !== "canceled") {
             return Math.floor(Math.random() * 20 + 320);
         }
         return 0;

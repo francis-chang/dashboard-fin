@@ -62,10 +62,10 @@ type Shipment = {
     flightDuration: number;
     eta: string;
     cargoWeight: string;
-    // fulfillments: Fulfillment;
+    fulfillments: Fulfillment;
 };
 
-type Fulfillment = string[];
+type Fulfillment = { description: string; minutes: number; depart: boolean }[];
 
 interface FinalDate {
     date: Date;

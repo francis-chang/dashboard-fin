@@ -1,7 +1,7 @@
 import { createContext } from "react";
 
 type MapContextType = {
-    currentShipment: any;
+    currentShipment: Shipment | null;
     setCurrentShipment: (shipment: any) => void;
     date: Date | null;
     shipments: Shipment[];
