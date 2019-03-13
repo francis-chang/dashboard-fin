@@ -24,12 +24,12 @@ const TaskContainer = styled.div`
 
 const Time = styled.div<{ complete: boolean }>`
     font-size: 2.2rem;
-    color: ${p => (p.complete ? "#182a34" : "#eef3f7")};
+    color: ${p => (p.complete ? "#00cc66" : "#eef3f7")};
     padding: 0.2rem 0.5rem;
     width: 11rem;
     min-width: 11rem;
     text-align: center;
-    background-color: ${p => (p.complete ? "#00cc66" : "#182a34")};
+    background-color: ${p => (p.complete ? "#182a34" : "#182a34")};
     border-radius: 4px;
 `;
 
