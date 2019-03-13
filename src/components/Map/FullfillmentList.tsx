@@ -10,6 +10,7 @@ const datesMaxMin = [];
 
 const FulfillmentContainer = styled.div`
     width: 55%;
+    padding-right: 3rem;
     height: 22rem;
     display: flex;
 `;

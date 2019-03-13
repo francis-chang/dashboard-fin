@@ -13,9 +13,9 @@ const FullfillmentButtonsContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 12rem;
-    min-width: 12rem;
-    max-width: 12rem;
+    width: 10rem;
+    min-width: 10rem;
+    max-width: 10rem;
     align-items: center;
 `;
 const CurrentETAButton = styled.div`
