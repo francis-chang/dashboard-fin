@@ -67,62 +67,17 @@ export const DESTINATIONLIST = [
     }
 ];
 
-const fulfillments = [
-    [
-        {
-            description: "Order placed",
-            minutes: 10000,
-            depart: true
-        },
-        {
-            description: "Order Check and weight",
-            minutes: 5000,
-            depart: true
-        },
-        {
-            description: "order paid",
-            minutes: 3000,
-            depart: true
-        },
-        {
-            description: "cargo brought to airport",
-            minutes: 1000,
-            depart: true
-        },
-        {
-            description: "cargo depart",
-            minutes: 0,
-            depart: true
-        },
-        {
-            description: "cargo arrive",
-            minutes: 0,
-            depart: false
-        },
-        {
-            description: "cargo qa",
-            minutes: 250,
-            depart: false
-        },
-        {
-            description: "cargo delivery",
-            minutes: 1000,
-            depart: false
-        }
-    ]
-];
-
 const fulfillmentLAXJFK = [
     {
         description:
             "Order placed by LIMA and ready for inspection by at LIMA facility",
-        minutes: 10000,
+        minutes: 12547,
         depart: true
     },
     {
         description:
             "Los Angeles Rep. Matt Grevers(N979I3) met with LIMA. Transport weighed in at 1549.23kg. Shipment priced at 4293.23",
-        minutes: 5000,
+        minutes: 7000,
         depart: true
     },
     {
@@ -143,7 +98,7 @@ const fulfillmentLAXJFK = [
         depart: true
     },
     {
-        description: "Flight on schedule to arrive",
+        description: "Flight on schedule to arrive to JFK",
         minutes: 0,
         depart: false
     },
@@ -164,25 +119,25 @@ const fulfillmentLAXORD = [
     {
         description:
             "Order placed by OSCAR and ready for inspection by at OSCAR facility",
-        minutes: 10000,
+        minutes: 8546,
         depart: true
     },
     {
         description:
             "Los Angeles Rep. Michael Phelps(N979I3) met with OSCAR. Transport weighed in at 2003.41kg. Shipment priced at 5410.11",
-        minutes: 5000,
+        minutes: 4855,
         depart: true
     },
     {
         description:
             "OSCAR has paid order in full. Transport scheduled for pickup in several hours",
-        minutes: 3000,
+        minutes: 3846,
         depart: true
     },
     {
         description:
             "Transport picked up by Los Angeles Rep. Sun Yang(F7C6RU) and brought to LAX",
-        minutes: 1000,
+        minutes: 800,
         depart: true
     },
     {
@@ -203,7 +158,7 @@ const fulfillmentLAXORD = [
     },
     {
         description: "Transport on schedule for delivery to OSCAR warehouse",
-        minutes: 1000,
+        minutes: 1440,
         depart: false
     }
 ];
@@ -212,25 +167,25 @@ const fulfillmentSEAATL = [
     {
         description:
             "Order placed by ROMEO and ready for inspection by at ROMEO facility",
-        minutes: 10000,
+        minutes: 7800,
         depart: true
     },
     {
         description:
             "Seattle Rep. Ryan Held(N979I3) met with ROMEO. Transport weighed in at 1892.11kg. Shipment priced at 3992.04",
-        minutes: 5000,
+        minutes: 4896,
         depart: true
     },
     {
         description:
             "ROMEO has paid order in full. Transport scheduled for pickup in several hours",
-        minutes: 3000,
+        minutes: 4100,
         depart: true
     },
     {
         description:
             "Transport picked up by Seattle Rep. Ippei Watanabe(F7C6RU) and brought to SEA",
-        minutes: 1000,
+        minutes: 1440,
         depart: true
     },
     {
@@ -239,19 +194,286 @@ const fulfillmentSEAATL = [
         depart: true
     },
     {
-        description: "Flight on schedule to arrive",
+        description: "Flight on schedule to arrive at ATL",
         minutes: 0,
         depart: false
     },
     {
         description:
             "Transport on schedule for QA check by Atlanta Rep. Ryan Murphy(2OBOQT) ",
-        minutes: 250,
+        minutes: 360,
         depart: false
     },
     {
         description: "Transport on schedule for delivery to ROMEO warehouse",
-        minutes: 1000,
+        minutes: 2500,
+        depart: false
+    }
+];
+
+const fulfillmentJFKORD = [
+    {
+        description:
+            "Order placed by ECHO and ready for inspection by at ECHO facility",
+        minutes: 9687,
+        depart: true
+    },
+    {
+        description:
+            "Seattle Rep. Michael Andrew(N979I3) met with ECHO. Transport weighed in at 1822.11kg. Shipment priced at 3887.23",
+        minutes: 6657,
+        depart: true
+    },
+    {
+        description:
+            "ECHO has paid order in full. Transport scheduled for pickup in several hours",
+        minutes: 3500,
+        depart: true
+    },
+    {
+        description:
+            "Transport picked up by New York Rep. Lilly King(F7C6RU) and brought to JFK",
+        minutes: 1200,
+        depart: true
+    },
+    {
+        description: "Flight departs JFK for ORD. Flight time - 2h 55m",
+        minutes: 0,
+        depart: true
+    },
+    {
+        description: "Flight on schedule to arrive at ORD",
+        minutes: 0,
+        depart: false
+    },
+    {
+        description:
+            "Transport on schedule for QA check by Chicago Rep. Amanda Beard(2OBOQT) ",
+        minutes: 199,
+        depart: false
+    },
+    {
+        description: "Transport on schedule for delivery to ECHO warehouse",
+        minutes: 720,
+        depart: false
+    }
+];
+
+const fulfillmentJFKDEN = [
+    {
+        description:
+            "Order placed by MIKE and ready for inspection by at MIKE facility",
+        minutes: 7368,
+        depart: true
+    },
+    {
+        description:
+            "Seattle Rep. Katie Ledecky(N979I3) met with MIKE. Transport weighed in at 3103.14kg. Shipment priced at 5182.20",
+        minutes: 6457,
+        depart: true
+    },
+    {
+        description:
+            "MIKE has paid order in full. Transport scheduled for pickup in several hours",
+        minutes: 3100,
+        depart: true
+    },
+    {
+        description:
+            "Transport picked up by New York Rep. Adam Peaty(F7C6RU) and brought to SEA",
+        minutes: 1200,
+        depart: true
+    },
+    {
+        description: "Flight departs JFK for DEN. Flight time - 4h 45m",
+        minutes: 0,
+        depart: true
+    },
+    {
+        description: "Flight on schedule to arrive at DEN",
+        minutes: 0,
+        depart: false
+    },
+    {
+        description:
+            "Transport on schedule for QA check by Denver Rep. Ryan Lochte(2OBOQT) ",
+        minutes: 350,
+        depart: false
+    },
+    {
+        description: "Transport on schedule for delivery to MIKE warehouse",
+        minutes: 1720,
+        depart: false
+    }
+];
+
+const fulfillmentDFW = [
+    {
+        description:
+            "Order placed by INDIA and ready for inspection by at INDIA facility",
+        minutes: 8459,
+        depart: true
+    },
+    {
+        description:
+            "Dallas Rep. Zhang Lin(N979I3) met with INDIA. Transport weighed in at 3501.31kg. Shipment priced at 6125.64",
+        minutes: 6100,
+        depart: true
+    },
+    {
+        description:
+            "INDIA failed to pay the agreed payment schedule. Will alot 24 hours grace period. ",
+        minutes: 3450,
+        depart: true
+    },
+    {
+        description:
+            "INDIA has called to confirm a cancelation. Order Canceled.",
+        minutes: 1540,
+        depart: true
+    }
+];
+
+const fulfillmentSEAMCO = [
+    {
+        description:
+            "Order placed by PAPA and ready for inspection by at PAPA facility",
+        minutes: 7851,
+        depart: true
+    },
+    {
+        description:
+            "Seattle Rep. Missy Franklin(N979I3) met with PAPA. Transport weighed in at 1250.22kg. Shipment priced at 2500.14",
+        minutes: 6111,
+        depart: true
+    },
+    {
+        description:
+            "PAPA has paid order in full. Transport scheduled for pickup in several hours",
+        minutes: 2987,
+        depart: true
+    },
+    {
+        description:
+            "Transport picked up by Seattle Rep. Missy Franklin (N979I3) and brought to SEA",
+        minutes: 1120,
+        depart: true
+    },
+    {
+        description: "Flight departs SEA for MCO. Flight time - 5h 25m",
+        minutes: 0,
+        depart: true
+    },
+    {
+        description: "Flight on schedule to arrive at MCO",
+        minutes: 0,
+        depart: false
+    },
+    {
+        description:
+            "Transport on schedule for QA check by Orlando Rep. Ryan Murphy(2OBOQT) ",
+        minutes: 350,
+        depart: false
+    },
+    {
+        description: "Transport on schedule for delivery to PAPA warehouse",
+        minutes: 1200,
+        depart: false
+    }
+];
+
+const fulfillmentSFOMIA = [
+    {
+        description:
+            "Order placed by SIERRA and ready for inspection by at SIERRA facility",
+        minutes: 7624,
+        depart: true
+    },
+    {
+        description:
+            "Seattle Rep. Kathleen Baker(N979I3) met with SIERRA. Transport weighed in at 2858.59kg. Shipment priced at 4100.23",
+        minutes: 6000,
+        depart: true
+    },
+    {
+        description:
+            "SIERRA has paid order in full. Transport scheduled for pickup in several hours",
+        minutes: 4200,
+        depart: true
+    },
+    {
+        description:
+            "Transport picked up by San Francisco Rep. Kathleen Baker (N979I3) and brought to SFO",
+        minutes: 852,
+        depart: true
+    },
+    {
+        description: "Flight departs SFO for MIA. Flight time - 5h 25m",
+        minutes: 0,
+        depart: true
+    },
+    {
+        description: "Flight on schedule to arrive at MIA",
+        minutes: 0,
+        depart: false
+    },
+    {
+        description:
+            "Transport on schedule for QA check by Miami Rep. Paul Biedermann(2OBOQT) ",
+        minutes: 180,
+        depart: false
+    },
+    {
+        description: "Transport on schedule for delivery to SIERRA warehouse",
+        minutes: 1200,
+        depart: false
+    }
+];
+
+const fulfillmentSFODCA = [
+    {
+        description:
+            "Order placed by UNIFORM and ready for inspection by at UNIFORM facility",
+        minutes: 1440,
+        depart: true
+    },
+    {
+        description:
+            "Seattle Rep. Blake Pieroni(N979I3) met with UNIFORM. Transport weighed in at 2345.22kg. Shipment priced at 3634.17",
+        minutes: 6547,
+        depart: true
+    },
+    {
+        description:
+            "UNIFORM has paid order in full. Transport scheduled for pickup in several hours",
+        minutes: 3400,
+        depart: true
+    },
+    {
+        description:
+            "Transport picked up by Seattle Rep. Zachary Apple (N979I3) and brought to SEA",
+        minutes: 1390,
+        depart: true
+    },
+    {
+        description: "Flight departs SFO for DCA. Flight time - 5h 10m",
+        minutes: 0,
+        depart: true
+    },
+    {
+        description: "Flight on schedule to arrive at DCA",
+        minutes: 0,
+        depart: false
+    },
+    {
+        description:
+            "Transport on schedule for QA check by Washington DC Rep. Zane Grothe(2OBOQT) ",
+        minutes: 400,
+        depart: false
+    },
+    {
+        description: "Transport on schedule for delivery to UNIFORM warehouse",
+        minutes: 2511,
         depart: false
     }
 ];
@@ -299,7 +521,7 @@ export const SHIPMENTDATA = [
         flightDuration: 175,
         eta: "on time",
         cargoWeight: "271.54kg",
-        fulfillments: fulfillments[0]
+        fulfillments: fulfillmentJFKORD
     },
     {
         name: "MIKE-785GT",
@@ -310,7 +532,7 @@ export const SHIPMENTDATA = [
         flightDuration: 295,
         eta: "on time",
         cargoWeight: "421.65kg",
-        fulfillments: fulfillments[0]
+        fulfillments: fulfillmentJFKDEN
     },
     {
         name: "INDIA-D7554",
@@ -321,7 +543,7 @@ export const SHIPMENTDATA = [
         flightDuration: 145,
         eta: "canceled",
         cargoWeight: "234.63kg",
-        fulfillments: fulfillments[0]
+        fulfillments: fulfillmentDFW
     },
     {
         name: "PAPA-YG691",
@@ -332,7 +554,7 @@ export const SHIPMENTDATA = [
         progress: 1,
         eta: "delayed",
         cargoWeight: "81.24kg",
-        fulfillments: fulfillments[0]
+        fulfillments: fulfillmentSEAMCO
     },
     {
         name: "SIERRA-GT2345",
@@ -343,7 +565,7 @@ export const SHIPMENTDATA = [
         progress: 0.2,
         eta: "on time",
         cargoWeight: "189.92kg",
-        fulfillments: fulfillments[0]
+        fulfillments: fulfillmentSFOMIA
     },
     {
         name: "UNIFORM-AS23409",
@@ -354,6 +576,6 @@ export const SHIPMENTDATA = [
         progress: 0.1,
         eta: "on time",
         cargoWeight: "340.31kg",
-        fulfillments: fulfillments[0]
+        fulfillments: fulfillmentSFODCA
     }
 ];
