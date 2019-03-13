@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { MapContext } from "./MapContext";
 
 const FulfillmentCargoContainer = styled.div`
-    width: 30%;
+    width: 40%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -12,6 +12,28 @@ const FulfillmentCargoContainer = styled.div`
     justify-content: center;
 `;
 
+const FulfillmentMiddle = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-left: 0.5rem;
+`;
+
+const FulfillmentTitle = styled.div`
+    color: #eef3f7;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+`;
+
+const FulfillmentWeights = styled.div`
+    border-radius: 6px;
+    background-color: #ffb366;
+    padding: 0.1rem 0.3rem;
+    margin: 0rem 0.5rem 0.5rem 0rem;
+`;
+const FulfillmentSpecsContainer = styled.div`
+    display: flex;
+    align-items: center;
+`;
 const FulfillmentItemContainer = styled.div`
     width: 90%;
     margin: 0.3rem 0rem;
@@ -48,8 +70,20 @@ export const FullfillmentCargo: React.FC<Props> = () => {
                         <FulfillmentItemContainer>
                             <FulfillmentItemCount>
                                 {item.count}
-                            </FulfillmentItemCount>{" "}
-                            {item.id} | {item.name}
+                            </FulfillmentItemCount>
+                            <FulfillmentMiddle>
+                                <FulfillmentTitle>
+                                    {item.name} {item.id}
+                                </FulfillmentTitle>
+                                <FulfillmentSpecsContainer>
+                                    <FulfillmentWeights>
+                                        {item.v}
+                                    </FulfillmentWeights>
+                                    <FulfillmentWeights>
+                                        {item.w}
+                                    </FulfillmentWeights>
+                                </FulfillmentSpecsContainer>
+                            </FulfillmentMiddle>
                         </FulfillmentItemContainer>
                     );
                 })}

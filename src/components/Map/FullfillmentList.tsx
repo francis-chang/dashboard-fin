@@ -9,7 +9,7 @@ interface Props {}
 const datesMaxMin = [];
 
 const FulfillmentContainer = styled.div`
-    width: 65%;
+    width: 55%;
     height: 22rem;
     display: flex;
 `;
