@@ -11,7 +11,14 @@ const FulfillmentContainer = styled.div`
     width: 70%;
     height: 22rem;
     display: flex;
-    position: relative;
+`;
+
+const FulfillmentCargo = styled.div`
+    width: 30%;
+    height: 22rem;
+    display: flex;
+    flex-direction: column;
+    background-color: red;
 `;
 
 export const FullfillmentList: React.FC<Props> = () => {
@@ -95,18 +102,21 @@ export const FullfillmentList: React.FC<Props> = () => {
     };
 
     return (
-        <FulfillmentContainer>
-            {currentShipment && (
-                <>
-                    <FullfillmentButtons
-                        times={times}
-                        setCurrentTime={setCurrentTime}
-                    />
-                    {currentTime && (
-                        <FulfillmentInfo currentTime={currentTime} />
-                    )}
-                </>
-            )}
-        </FulfillmentContainer>
+        <>
+            <FulfillmentCargo>hi</FulfillmentCargo>
+            <FulfillmentContainer>
+                {currentShipment && (
+                    <>
+                        <FullfillmentButtons
+                            times={times}
+                            setCurrentTime={setCurrentTime}
+                        />
+                        {currentTime && (
+                            <FulfillmentInfo currentTime={currentTime} />
+                        )}
+                    </>
+                )}
+            </FulfillmentContainer>
+        </>
     );
 };
