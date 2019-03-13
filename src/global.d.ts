@@ -63,6 +63,7 @@ type Shipment = {
     eta: string;
     cargoWeight: string;
     fulfillments: Fulfillment;
+    items: Item[];
 };
 
 type Fulfillment = { description: string; minutes: number; depart: boolean }[];
@@ -93,3 +94,13 @@ interface FinalTime {
     date: Date;
     tasks: Task[];
 }
+
+type Item = {
+    name: string;
+    id: string;
+    count: number;
+    v: string;
+    w: string;
+    tv: string;
+    tw: string;
+};

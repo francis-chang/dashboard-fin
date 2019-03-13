@@ -478,6 +478,81 @@ const fulfillmentSFODCA = [
     }
 ];
 
+const items = [
+    {
+        name: "UNIVERSE 10 PHONES",
+        id: "TRXQBRBO9S",
+        count: 3000,
+        v: "35.136in³ (575.775cm³)",
+        w: "6.14oz (174 grams)",
+        tv: "61ft³ (1.725m³)",
+        tw: "1151.25lbs (522kg)"
+    },
+    {
+        name: "UNIVERSE 9 PHONES",
+        id: "TRXQBRBO9S",
+        count: 2500,
+        v: "40.225in³ (611.48cm³)",
+        w: "7.1oz (192 grams)",
+        tv: "69ft³ (1.825m³)",
+        tw: "1324.48lbs (544kg)"
+    },
+    {
+        name: "NEBULA GT PHONES",
+        id: "TRXQBRBO9S",
+        count: 2400,
+        v: "38.255in³ (600.45cm³)",
+        w: "7.3oz (204 grams)",
+        tv: "62.2ft³ (1.754m³)",
+        tw: "1257.41lbs (512.24kg)"
+    },
+    {
+        name: "NEBULA XR PHONES",
+        id: "TRXQBRBO9S",
+        count: 1500,
+        v: "34.154in³ (542.34cm³)",
+        w: "5.8oz (164.21 grams)",
+        tv: "51ft³ (1.546m³)",
+        tw: "1214.45lbs (511.4kg)"
+    },
+    {
+        name: "CENTER 7 TABLETS",
+        id: "13M6TNEPP4",
+        count: 1500,
+        v: "52.140in³ (854.421cm³)",
+        w: "8.2oz (201.23 grams)",
+        tv: "92ft³ (3.15m³)",
+        tw: "1854.45lbs (812.65kg)"
+    },
+    {
+        name: "lJ100 TABLETS",
+        id: "13M6TNEPP4",
+        count: 1500,
+        v: "52.140in³ (854.421cm³)",
+        w: "8.2oz (201.23 grams)",
+        tv: "92ft³ (3.15m³)",
+        tw: "1854.45lbs (812.65kg)"
+    },
+    {
+        name: "mePAD PRO TABLETS",
+        id: "13M6TNEPP4",
+        count: 1500,
+        v: "57.228in³ (951.24cm³)",
+        w: "9.1oz (245.21 grams)",
+        tv: "101.2ft³ (3.49m³)",
+        tw: "2001.45lbs (98.45kg)"
+    },
+    {
+        name: "8800GTX MOTHERBOARD",
+        id: "13M6TNEPP4",
+        count: 1500,
+        v: "57.228in³ (951.24cm³)",
+        w: "9.1oz (245.21 grams)",
+        tv: "101.2ft³ (3.49m³)",
+        tw: "2001.45lbs (98.45kg)"
+    }
+];
+
 export const SHIPMENTDATA = [
     {
         name: "LIMA-7DJ43",
@@ -488,7 +563,8 @@ export const SHIPMENTDATA = [
         flightDuration: 320,
         eta: "on time",
         cargoWeight: "450.52kg",
-        fulfillments: fulfillmentLAXJFK
+        fulfillments: fulfillmentLAXJFK,
+        items: [items[0], items[3], items[5]]
     },
     {
         name: "OSCAR-247D3",
@@ -499,7 +575,8 @@ export const SHIPMENTDATA = [
         flightDuration: 245,
         eta: "delayed",
         cargoWeight: "390.81kg",
-        fulfillments: fulfillmentLAXORD
+        fulfillments: fulfillmentLAXORD,
+        items: [items[0], items[3], items[5]]
     },
     {
         id: "QA7NV-uLzgB",
@@ -510,7 +587,8 @@ export const SHIPMENTDATA = [
         flightDuration: 280,
         eta: "on time",
         cargoWeight: "381.52kg",
-        fulfillments: fulfillmentSEAATL
+        fulfillments: fulfillmentSEAATL,
+        items: [items[0], items[3], items[5]]
     },
     {
         name: "ECHO-VX347",
@@ -521,7 +599,8 @@ export const SHIPMENTDATA = [
         flightDuration: 175,
         eta: "on time",
         cargoWeight: "271.54kg",
-        fulfillments: fulfillmentJFKORD
+        fulfillments: fulfillmentJFKORD,
+        items: [items[0], items[3], items[5]]
     },
     {
         name: "MIKE-785GT",
@@ -532,7 +611,8 @@ export const SHIPMENTDATA = [
         flightDuration: 295,
         eta: "on time",
         cargoWeight: "421.65kg",
-        fulfillments: fulfillmentJFKDEN
+        fulfillments: fulfillmentJFKDEN,
+        items: [items[0], items[3], items[5]]
     },
     {
         name: "INDIA-D7554",
@@ -543,7 +623,8 @@ export const SHIPMENTDATA = [
         flightDuration: 145,
         eta: "canceled",
         cargoWeight: "234.63kg",
-        fulfillments: fulfillmentDFW
+        fulfillments: fulfillmentDFW,
+        items: [items[0], items[3], items[5]]
     },
     {
         name: "PAPA-YG691",
@@ -554,7 +635,8 @@ export const SHIPMENTDATA = [
         progress: 1,
         eta: "delayed",
         cargoWeight: "81.24kg",
-        fulfillments: fulfillmentSEAMCO
+        fulfillments: fulfillmentSEAMCO,
+        items: [items[0], items[3], items[5]]
     },
     {
         name: "SIERRA-GT2345",
@@ -565,7 +647,8 @@ export const SHIPMENTDATA = [
         progress: 0.2,
         eta: "on time",
         cargoWeight: "189.92kg",
-        fulfillments: fulfillmentSFOMIA
+        fulfillments: fulfillmentSFOMIA,
+        items: [items[0], items[3], items[5]]
     },
     {
         name: "UNIFORM-AS23409",
@@ -576,6 +659,7 @@ export const SHIPMENTDATA = [
         progress: 0.1,
         eta: "on time",
         cargoWeight: "340.31kg",
-        fulfillments: fulfillmentSFODCA
+        fulfillments: fulfillmentSFODCA,
+        items: [items[0], items[3], items[5]]
     }
 ];

@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import { FullfillmentButtons } from "./FulfillmentButtons";
+import { FullfillmentCargo } from "./FulfillmentCargo";
 import { FulfillmentInfo } from "./FulfillmentInfo";
 import { MapContext } from "./MapContext";
 
@@ -11,14 +12,6 @@ const FulfillmentContainer = styled.div`
     width: 65%;
     height: 22rem;
     display: flex;
-`;
-
-const FulfillmentCargo = styled.div`
-    width: 30%;
-    height: 22rem;
-    display: flex;
-    flex-direction: column;
-    background-color: red;
 `;
 
 const fulloptions = {
@@ -39,6 +32,8 @@ export const FullfillmentList: React.FC<Props> = () => {
     const [currentTime, setCurrentTime] = React.useState<FinalTime | null>(
         null
     );
+
+    const [firstCurrent, setFirstCurrent] = React.useState(false);
 
     const calcTimes = () => {
         if (currentShipment) {
@@ -86,8 +81,8 @@ export const FullfillmentList: React.FC<Props> = () => {
     };
 
     React.useEffect(() => {
-        setCurrentTime(null);
         calcTimes();
+        setCurrentTime(null);
     }, [currentShipment]);
 
     const calcDepartTime = () => {
@@ -116,7 +111,7 @@ export const FullfillmentList: React.FC<Props> = () => {
 
     return (
         <>
-            <FulfillmentCargo>hi</FulfillmentCargo>
+            <FullfillmentCargo>hi</FullfillmentCargo>
             <FulfillmentContainer>
                 {currentShipment && (
                     <>
