@@ -110,6 +110,7 @@ export const FullfillmentList: React.FC<Props> = () => {
                         <FullfillmentButtons
                             times={times}
                             setCurrentTime={setCurrentTime}
+                            currentTime={currentTime}
                         />
                         {currentTime && (
                             <FulfillmentInfo currentTime={currentTime} />
