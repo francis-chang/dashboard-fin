@@ -24,13 +24,13 @@ const CurrentETAButton = styled.div`
     color: #fff;
     margin: 0.5rem 0rem;
     border-radius: 4px;
-    border: 2px solid #00cc66;
-    color: #00cc66;
+    border: 2px solid #eef3f7;
+    color: #eef3f7;
     text-align: center;
     cursor: pointer;
 
     &:hover {
-        background-color: #00cc66;
+        background-color: #eef3f7;
         color: #182a34;
         transition-duration: 250ms;
     }
@@ -64,15 +64,14 @@ export const FullfillmentButtons: React.FC<Props> = ({
     const HistoryButton = styled.div<{ matchDate: boolean }>`
         width: 5rem;
         padding: 0.3rem 0.3rem;
-
-        border: 1px solid #00cc66;
-        background-color: ${p => (p.matchDate ? "#00cc66" : "#284557")};
-        color: ${p => (p.matchDate ? "#284557" : "#00cc66")};
+        border: 1px solid #eef3f7;
+        background-color: ${p => (p.matchDate ? "#dce8ef" : "#284557")};
+        color: ${p => (p.matchDate ? "#284557" : "#eef3f7")};
         text-align: center;
         cursor: pointer;
 
         &:hover {
-            background-color: #00cc66;
+            background-color: #eef3f7;
             color: #182a34;
             transition-duration: 250ms;
         }
@@ -85,12 +84,20 @@ export const FullfillmentButtons: React.FC<Props> = ({
             }
         });
     };
+
+    const setToETA = () => {
+        setCurrentTime(times[times.length - 1]);
+    };
     React.useEffect(() => {}, [currentShipment]);
 
     return (
         <FullfillmentButtonsContainer>
-            <CurrentETAButton onClick={setToCurrent}>CURRENT</CurrentETAButton>
-            <CurrentETAButton>ETA</CurrentETAButton>
+            <HistoryButton matchDate={false} onClick={setToCurrent}>
+                CURRENT
+            </HistoryButton>
+            <HistoryButton matchDate={false} onClick={setToETA}>
+                ETA
+            </HistoryButton>
             {times.map(time => (
                 <HistoryButton
                     key={time.date.toISOString()}
