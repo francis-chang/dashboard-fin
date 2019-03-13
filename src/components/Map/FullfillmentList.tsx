@@ -8,7 +8,7 @@ interface Props {}
 const datesMaxMin = [];
 
 const FulfillmentContainer = styled.div`
-    width: 70%;
+    width: 65%;
     height: 22rem;
     display: flex;
 `;
@@ -74,6 +74,7 @@ export const FullfillmentList: React.FC<Props> = () => {
     };
 
     React.useEffect(() => {
+        setCurrentTime(null);
         calcTimes();
     }, [currentShipment]);
 

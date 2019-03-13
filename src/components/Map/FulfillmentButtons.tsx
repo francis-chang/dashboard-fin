@@ -59,8 +59,6 @@ export const FullfillmentButtons: React.FC<Props> = ({
 }) => {
     const { currentShipment } = React.useContext(MapContext);
 
-    const [selectedDate, setSelectedDate] = React.useState(null);
-
     const HistoryButton = styled.div<{ matchDate: boolean }>`
         width: 5rem;
         padding: 0.3rem 0.3rem;
@@ -88,7 +86,6 @@ export const FullfillmentButtons: React.FC<Props> = ({
     const setToETA = () => {
         setCurrentTime(times[times.length - 1]);
     };
-    React.useEffect(() => {}, [currentShipment]);
 
     return (
         <FullfillmentButtonsContainer>
