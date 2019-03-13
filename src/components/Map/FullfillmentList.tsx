@@ -21,6 +21,16 @@ const FulfillmentCargo = styled.div`
     background-color: red;
 `;
 
+const fulloptions = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour12: true,
+    hour: "numeric",
+    minute: "numeric"
+};
+
 export const FullfillmentList: React.FC<Props> = () => {
     const { currentShipment, date } = React.useContext(MapContext);
 
@@ -39,12 +49,14 @@ export const FullfillmentList: React.FC<Props> = () => {
                 fulfillment => {
                     if (fulfillment.depart) {
                         const time = new Date(departingTime);
+
                         time.setMinutes(
                             time.getMinutes() - fulfillment.minutes
                         );
                         return { description: fulfillment.description, time };
                     } else {
                         const time = new Date(arrivingTime);
+
                         time.setMinutes(
                             time.getMinutes() + fulfillment.minutes
                         );

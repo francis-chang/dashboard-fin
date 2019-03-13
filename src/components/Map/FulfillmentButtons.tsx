@@ -13,9 +13,9 @@ const FullfillmentButtonsContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 10rem;
-    min-width: 10rem;
-    max-width: 10rem;
+    width: 12rem;
+    min-width: 12rem;
+    max-width: 12rem;
     align-items: center;
 `;
 const CurrentETAButton = styled.div`
@@ -60,14 +60,14 @@ export const FullfillmentButtons: React.FC<Props> = ({
     const { currentShipment } = React.useContext(MapContext);
 
     const HistoryButton = styled.div<{ matchDate: boolean }>`
-        width: 5rem;
+        width: 7rem;
         padding: 0.3rem 0.3rem;
         border: 1px solid #eef3f7;
         background-color: ${p => (p.matchDate ? "#dce8ef" : "#284557")};
         color: ${p => (p.matchDate ? "#284557" : "#eef3f7")};
         text-align: center;
         cursor: pointer;
-
+        font-size: 1.3rem;
         &:hover {
             background-color: #eef3f7;
             color: #182a34;

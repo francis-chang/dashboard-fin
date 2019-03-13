@@ -76,7 +76,7 @@ const fulfillmentLAXJFK = [
     },
     {
         description:
-            "Los Angeles Rep. Matt Grevers(N979I3) met with LIMA. Transport weighed in at 1549.23kg. Shipment priced at 4293.23",
+            "Los Angeles Rep. Matt Grevers (N979I3) met with LIMA. Transport weighed in at 1549.23kg. Shipment priced at $4293.23",
         minutes: 7000,
         depart: true
     },
@@ -88,7 +88,7 @@ const fulfillmentLAXJFK = [
     },
     {
         description:
-            "Transport picked up by Los Angeles Rep. Caeleb Dressel(F7C6RU) and brought to LAX",
+            "Transport picked up by Los Angeles Rep. Caeleb Dressel (F7C6RU) and brought to LAX",
         minutes: 1000,
         depart: true
     },
@@ -104,7 +104,7 @@ const fulfillmentLAXJFK = [
     },
     {
         description:
-            "Transport on schedule for QA check by New York Rep. Daiya Seto(2OBOQT) ",
+            "Transport on schedule for QA check by New York Rep. Daiya Seto (2OBOQT) ",
         minutes: 250,
         depart: false
     },
@@ -124,7 +124,7 @@ const fulfillmentLAXORD = [
     },
     {
         description:
-            "Los Angeles Rep. Michael Phelps(N979I3) met with OSCAR. Transport weighed in at 2003.41kg. Shipment priced at 5410.11",
+            "Los Angeles Rep. Michael Phelps (N979I3) met with OSCAR. Transport weighed in at 2003.41kg. Shipment priced at $5410.11",
         minutes: 4855,
         depart: true
     },
@@ -136,7 +136,7 @@ const fulfillmentLAXORD = [
     },
     {
         description:
-            "Transport picked up by Los Angeles Rep. Sun Yang(F7C6RU) and brought to LAX",
+            "Transport picked up by Los Angeles Rep. Sun Yang (F7C6RU) and brought to LAX",
         minutes: 800,
         depart: true
     },
@@ -152,7 +152,7 @@ const fulfillmentLAXORD = [
     },
     {
         description:
-            "Transport on schedule for QA check by New York Rep. Cody Miller(2OBOQT) ",
+            "Transport on schedule for QA check by New York Rep. Cody Miller (2OBOQT) ",
         minutes: 250,
         depart: false
     },
@@ -172,7 +172,7 @@ const fulfillmentSEAATL = [
     },
     {
         description:
-            "Seattle Rep. Ryan Held(N979I3) met with ROMEO. Transport weighed in at 1892.11kg. Shipment priced at 3992.04",
+            "Seattle Rep. Ryan Held (N979I3) met with ROMEO. Transport weighed in at 1892.11kg. Shipment priced at $3992.04",
         minutes: 4896,
         depart: true
     },
@@ -184,7 +184,7 @@ const fulfillmentSEAATL = [
     },
     {
         description:
-            "Transport picked up by Seattle Rep. Ippei Watanabe(F7C6RU) and brought to SEA",
+            "Transport picked up by Seattle Rep. Ippei Watanabe (F7C6RU) and brought to SEA",
         minutes: 1440,
         depart: true
     },
@@ -200,7 +200,7 @@ const fulfillmentSEAATL = [
     },
     {
         description:
-            "Transport on schedule for QA check by Atlanta Rep. Ryan Murphy(2OBOQT) ",
+            "Transport on schedule for QA check by Atlanta Rep. Ryan Murphy (2OBOQT) ",
         minutes: 360,
         depart: false
     },
@@ -220,7 +220,7 @@ const fulfillmentJFKORD = [
     },
     {
         description:
-            "Seattle Rep. Michael Andrew(N979I3) met with ECHO. Transport weighed in at 1822.11kg. Shipment priced at 3887.23",
+            "Seattle Rep. Michael Andrew (N979I3) met with ECHO. Transport weighed in at 1822.11kg. Shipment priced at $3887.23",
         minutes: 6657,
         depart: true
     },
@@ -232,7 +232,7 @@ const fulfillmentJFKORD = [
     },
     {
         description:
-            "Transport picked up by New York Rep. Lilly King(F7C6RU) and brought to JFK",
+            "Transport picked up by New York Rep. Lilly King (F7C6RU) and brought to JFK",
         minutes: 1200,
         depart: true
     },
@@ -248,7 +248,7 @@ const fulfillmentJFKORD = [
     },
     {
         description:
-            "Transport on schedule for QA check by Chicago Rep. Amanda Beard(2OBOQT) ",
+            "Transport on schedule for QA check by Chicago Rep. Amanda Beard (2OBOQT) ",
         minutes: 199,
         depart: false
     },
@@ -268,7 +268,7 @@ const fulfillmentJFKDEN = [
     },
     {
         description:
-            "Seattle Rep. Katie Ledecky(N979I3) met with MIKE. Transport weighed in at 3103.14kg. Shipment priced at 5182.20",
+            "Seattle Rep. Katie Ledecky (N979I3) met with MIKE. Transport weighed in at 3103.14kg. Shipment priced at $5182.20",
         minutes: 6457,
         depart: true
     },
@@ -280,7 +280,7 @@ const fulfillmentJFKDEN = [
     },
     {
         description:
-            "Transport picked up by New York Rep. Adam Peaty(F7C6RU) and brought to SEA",
+            "Transport picked up by New York Rep. Adam Peaty (F7C6RU) and brought to SEA",
         minutes: 1200,
         depart: true
     },
@@ -296,7 +296,7 @@ const fulfillmentJFKDEN = [
     },
     {
         description:
-            "Transport on schedule for QA check by Denver Rep. Ryan Lochte(2OBOQT) ",
+            "Transport on schedule for QA check by Denver Rep. Ryan Lochte (2OBOQT) ",
         minutes: 350,
         depart: false
     },
@@ -316,7 +316,7 @@ const fulfillmentDFW = [
     },
     {
         description:
-            "Dallas Rep. Zhang Lin(N979I3) met with INDIA. Transport weighed in at 3501.31kg. Shipment priced at 6125.64",
+            "Dallas Rep. Zhang Lin (N979I3) met with INDIA. Transport weighed in at 3501.31kg. Shipment priced at $6125.64",
         minutes: 6100,
         depart: true
     },
@@ -343,7 +343,7 @@ const fulfillmentSEAMCO = [
     },
     {
         description:
-            "Seattle Rep. Missy Franklin(N979I3) met with PAPA. Transport weighed in at 1250.22kg. Shipment priced at 2500.14",
+            "Seattle Rep. Missy Franklin (N979I3) met with PAPA. Transport weighed in at 1250.22kg. Shipment priced at $2500.14",
         minutes: 6111,
         depart: true
     },
@@ -371,7 +371,7 @@ const fulfillmentSEAMCO = [
     },
     {
         description:
-            "Transport on schedule for QA check by Orlando Rep. Ryan Murphy(2OBOQT) ",
+            "Transport on schedule for QA check by Orlando Rep. Ryan Murphy (2OBOQT) ",
         minutes: 350,
         depart: false
     },
@@ -391,7 +391,7 @@ const fulfillmentSFOMIA = [
     },
     {
         description:
-            "Seattle Rep. Kathleen Baker(N979I3) met with SIERRA. Transport weighed in at 2858.59kg. Shipment priced at 4100.23",
+            "Seattle Rep. Kathleen Baker (N979I3) met with SIERRA. Transport weighed in at 2858.59kg. Shipment priced at $4100.23",
         minutes: 6000,
         depart: true
     },
@@ -419,7 +419,7 @@ const fulfillmentSFOMIA = [
     },
     {
         description:
-            "Transport on schedule for QA check by Miami Rep. Paul Biedermann(2OBOQT) ",
+            "Transport on schedule for QA check by Miami Rep. Paul Biedermann (2OBOQT) ",
         minutes: 180,
         depart: false
     },
@@ -439,7 +439,7 @@ const fulfillmentSFODCA = [
     },
     {
         description:
-            "Seattle Rep. Blake Pieroni(N979I3) met with UNIFORM. Transport weighed in at 2345.22kg. Shipment priced at 3634.17",
+            "Seattle Rep. Blake Pieroni (N979I3) met with UNIFORM. Transport weighed in at 2345.22kg. Shipment priced at $3634.17",
         minutes: 6547,
         depart: true
     },
