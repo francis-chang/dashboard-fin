@@ -27,6 +27,11 @@ export const Global = createGlobalStyle`
         font-family: Chivo;
         src: url('./assets/fonts/Chivo/Chivo-Regular.ttf');
     }
+
+    @font-face {
+        font-family: Rubik;
+        src: url('./assets/fonts/Rubik-Regular.ttf');
+    }
     
     body{
         margin: 0;
