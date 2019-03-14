@@ -3,14 +3,14 @@ import {
     faArrowCircleLeft,
     faArrowCircleRight
 } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useRef, useState } from "react";
 import { animated, useSpring } from "react-spring";
 import {
+    FilterButton,
     ListBody,
     ListOnGrid,
     ListTitle,
-    ListTitleArrow
+    ListTitleTitle
 } from "../ComponentStyles";
 import FilterList from "./FilterList";
 import Listing from "./Listing";
@@ -54,7 +54,13 @@ const List: React.FC = () => {
 
     return (
         <ListOnGrid>
-            <ListTitle
+            <ListTitle>
+                <ListTitleTitle>Shipments</ListTitleTitle>
+                <FilterButton onClick={setMouseAndNullCurrent}>
+                    Filter
+                </FilterButton>
+            </ListTitle>
+            {/* <ListTitle
                 onMouseOver={() => setmouseHover(true)}
                 onMouseOut={() => setmouseHover(false)}
                 onClick={setMouseAndNullCurrent}
@@ -72,7 +78,7 @@ const List: React.FC = () => {
                         />
                     </ListTitleArrow>
                 </animated.div>
-            </ListTitle>
+            </ListTitle> */}
 
             <ListBody ref={listBodyRef}>
                 <animated.div style={animateFilterBody}>

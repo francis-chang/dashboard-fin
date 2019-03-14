@@ -23,9 +23,8 @@ const FulfillmentMiddle = styled.div`
 
 const FulfillmentTitle = styled.div`
     color: #eef3f7;
-    font-size: 1.3rem;
+    font-size: 1.7rem;
     height: 30%;
-    transform: translateY(-0.35rem);
 `;
 
 const FulfillmentID = styled.div`
@@ -41,6 +40,9 @@ const FulfillmentWeights = styled.div`
     border-radius: 4px;
     background-color: #ffb366;
     margin-right: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 const FulfillmentSpecsContainer = styled.div`
     display: flex;
@@ -83,13 +85,13 @@ const Totals = styled.div`
 const Total = styled.div`
     width: 100%;
     border-radius: 4px;
-    background-color: #00cc66;
-    color: #182a34;
+    color: #eef3f7;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
     padding: 0.2rem 0rem;
+    border-bottom: 1px solid #eef3f7;
     margin: 0.2rem 0rem;
 `;
 

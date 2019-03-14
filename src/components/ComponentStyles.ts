@@ -187,19 +187,41 @@ export const ListOnGrid = styled.div`
 `;
 
 export const ListTitle = styled.div`
-    background-color: #203746;
-    width: 100%;
-    border-bottom: 0.3rem solid #dce8ef;
-    padding: 0.5rem;
+    background-color: #182a34;
+    width: 95%;
     display: flex;
-    align-items: center;
-    font-size: 2.3rem;
-    min-height: 3.3rem;
-    max-height: 3.3rem;
-    box-sizing: border-box;
-    cursor: pointer;
-    overflow: hidden;
+
+    min-height: 3rem;
+    max-height: 3rem;
+    padding-bottom: 0.1rem;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-bottom: 4px solid #eef3f7;
+    margin: 0 auto;
+`;
+
+export const ListTitleTitle = styled.div`
+    text-transform: uppercase;
+    font-size: 2.2rem;
+    color: #eef3f7;
+    padding-left: 0.5rem;
     user-select: none;
+`;
+
+export const FilterButton = styled.div`
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    color: #eef3f7;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #eef3f7;
+        color: #182a34;
+        transition-duration: 250ms;
+    }
 `;
 
 export const ListBody = styled.div`
@@ -231,7 +253,7 @@ export const ListingTitleName = styled.div`
 `;
 export const ListingTitleID = styled.div`
     font-size: 1rem;
-    color: #b9d0df;
+    color: #182a34;
 `;
 
 export const ListingFromTo = styled.div`
@@ -398,7 +420,7 @@ export const MapInfoTitle = styled.div`
     font-size: 1.5rem;
     text-transform: uppercase;
     text-align: center;
-    color: #b9d0df;
+    color: #182a34;
 `;
 
 export const MapInfoAltitudeContainer = styled.div`
@@ -414,12 +436,12 @@ export const LocationContainer = styled.div`
     height: 50%;
     display: flex;
     flex-direction: column;
-    color: #eef3f7;
+    color: #182a34;
 `;
 export const MapInfoCoordinate = styled.div`
     width: 100%;
     font-size: 1.5rem;
-    color: #eef3f7;
+    color: #182a34;
     text-align: center;
 `;
 
@@ -552,7 +574,7 @@ export const FulfillmentDateListingDate = styled.div`
 
 export const FulfillmentDateListingETA = styled.div`
     font-size: 1rem;
-    color: #b9d0df;
+    color: #182a34;
     display: flex;
     align-items: center;
     margin-bottom: 0.2rem;
@@ -567,7 +589,7 @@ export const MapInfoArriveDepartContainer = styled.div`
     width: 33%;
     display: flex;
     flex-direction: column;
-    color: #eef3f7;
+    color: #182a34;
     justify-content: center;
 `;
 
@@ -590,13 +612,13 @@ export const MapInfoArriveLeftTitle = styled.div`
     text-align: center;
     font-size: 1.5rem;
     text-transform: uppercase;
-    color: #b9d0df;
+    color: #182a34;
 `;
 export const MapInfoArriveLeftAbbr = styled.div`
     width: 100%;
     font-size: 2.5rem;
     text-align: center;
-    color: #ffb366;
+    color: #182a34;
 `;
 export const MapInfoArriveLeftTime = styled.div`
     width: 100%;
@@ -607,12 +629,12 @@ export const MapInfoArriveRight = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border-left: 3px solid #b9d0df;
+    border-left: 3px solid #182a34;
     margin: 0.5rem 0;
     padding-left: 0.5rem;
-    color: #b9d0df;
+    color: #182a34;
 `;
 export const MapInfoArriveRightAirport = styled.div`
     font-size: 1.3rem;
-    color: #eef3f7;
+    color: #182a34;
 `;

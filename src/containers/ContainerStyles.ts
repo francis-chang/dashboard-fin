@@ -106,39 +106,39 @@ export const Global = createGlobalStyle`
 
     .odom-background{
         fill: none;
-        stroke: #eef3f7;
+        stroke: #182a34;
         stroke-width: 3px;
         shape-rendering: auto;
     }
 
     .odom-foreground {
-        fill: #ffb366;
+        fill: #182a34;
         shape-rendering: auto;
     }
 
     .odom-label{
         font-size: 2.2rem;
-        fill: #eef3f7;
+        fill: #182a34;
         text-anchor: middle;
     }
 
     .y-axis{
-        color: #eef3f7;
+        color: #182a34;
         font-size: .8rem;
     }
     
     .alt-rect-outer{
         fill: none;
-        stroke: #eef3f7;
+        stroke: #182a34;
         stroke-width: 3px;
     }
 
     .alt-rect-inner{
-        fill: #ffb366;
+        fill: #182a34;
     }
 
     .map-info-exit {
-        color: #eef3f7;
+        color: #182a34;
         &:hover {
             transform: rotate(90deg);
             color: #ff5050;
