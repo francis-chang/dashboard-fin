@@ -84,7 +84,6 @@ const Totals = styled.div`
 `;
 const Total = styled.div`
     width: 100%;
-    border-radius: 4px;
     color: #eef3f7;
     display: flex;
     align-items: center;
@@ -94,6 +93,8 @@ const Total = styled.div`
     border-bottom: 1px solid #eef3f7;
     margin: 0.2rem 0rem;
 `;
+
+const TotalHover = styled.div``;
 
 interface Props {}
 

@@ -15,6 +15,21 @@ const FulfillmentContainer = styled.div`
     display: flex;
 `;
 
+const NonSelectedShipment = styled.div`
+    width: 80%;
+    height: 40%;
+    margin: 0.5rem 0.5rem;
+    padding: 0.5rem 0.5rem;
+    background-color: #182a34;
+    border-radius: 4px;
+    font-size: 2.5rem;
+    color: #eef3f7;
+    text-transform: uppercase;
+    text-align: center;
+    display: flex;
+    align-items: center;
+`;
+
 const fulloptions = {
     weekday: "long",
     year: "numeric",
@@ -112,7 +127,12 @@ export const FullfillmentList: React.FC<Props> = () => {
 
     return (
         <>
-            <FullfillmentCargo>hi</FullfillmentCargo>
+            {!currentShipment && (
+                <NonSelectedShipment>
+                    Select a Shipment to view cargo and fulfillment information
+                </NonSelectedShipment>
+            )}
+            <FullfillmentCargo />
             <FulfillmentContainer>
                 {currentShipment && (
                     <>
