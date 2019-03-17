@@ -23,6 +23,39 @@ import styled, { createGlobalStyle } from "styled-components";
 
 export const Global = createGlobalStyle`
 
+/* appear - on page load */
+.fade-appear {
+    opacity: 0;
+    z-index: 1;
+}
+.fade-appear.fade-appear-active {
+  opacity: 1;
+  transition: opacity 300ms linear;
+}
+
+/* enter */
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+.fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms linear 300ms;
+}
+
+/* exit */
+.fade-exit {
+    opacity: 1;
+}
+.fade-exit.fade-exit-active {
+    opacity: 0;
+    transition: opacity 300ms linear;
+}
+.fade-exit-done {
+  opacity: 0;
+}
+
+
     @font-face {
         font-family: Chivo;
         src: url('./assets/fonts/Chivo/Chivo-Regular.ttf');
