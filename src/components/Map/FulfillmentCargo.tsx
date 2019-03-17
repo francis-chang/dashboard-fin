@@ -111,7 +111,7 @@ export const FullfillmentCargo: React.FC<Props> = () => {
             {currentShipment &&
                 currentShipment.items.map(item => {
                     return (
-                        <FulfillmentItemContainer>
+                        <FulfillmentItemContainer key={item.id}>
                             <FulfillmentItemCount>
                                 {item.count}
                             </FulfillmentItemCount>
