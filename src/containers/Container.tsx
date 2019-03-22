@@ -1,6 +1,6 @@
 import { Router } from "@reach/router";
-import React, { useState } from "react";
-import { useTransition } from "react-spring";
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 import NavBar from "../components/NavBar/NavBar";
 import { Global, Grid } from "./ContainerStyles";
 import FinanceContainer from "./FinanceContainer";
@@ -8,18 +8,72 @@ import Route from "./Route";
 import ShipmentContainer from "./ShipmentContainer";
 
 const Container: React.FC = () => {
-    const [visible, setVisible] = useState(true);
+    const [listener, setListener] = useState(false);
+    const [notInResolution, setNotInResolution] = useState(false);
 
-    const containerTransition = useTransition(visible, null, {
-        from: { opacity: 0 },
-        enter: { opacity: 1 },
-        leave: { opacity: 0 }
+    useEffect(() => {
+        if (!listener) {
+            if (
+                document.body.clientWidth < 1700 ||
+                document.body.clientWidth > 2000
+            ) {
+                setNotInResolution(true);
+            }
+            if (
+                document.body.clientWidth <= 2000 &&
+                document.body.clientWidth >= 1700
+            ) {
+                setNotInResolution(false);
+            }
+            window.addEventListener("resize", () => {
+                if (
+                    document.body.clientWidth < 1700 ||
+                    document.body.clientWidth > 2000
+                ) {
+                    setNotInResolution(true);
+                }
+                if (
+                    document.body.clientWidth <= 2000 &&
+                    document.body.clientWidth >= 1700
+                ) {
+                    setNotInResolution(false);
+                }
+            });
+
+            setListener(true);
+        }
     });
+
+    const ResoMessage = styled.div`
+        position: absolute;
+        display: flex;
+        top: 0;
+        left: 50%;
+        justify-content: center;
+        font-size: 2rem;
+        z-index: 20;
+        width: 800px;
+        margin-left: -400px;
+        background-color: #ff5050;
+        text-align: center;
+
+        padding: 1rem 0rem;
+        color: #eef3f7;
+    `;
+
     return (
         <Grid>
             <Global />
             <NavBar />
-
+            {notInResolution && (
+                <ResoMessage>
+                    This site is not responsive <br />
+                    The best width resolution is between 1500px and 2000px{" "}
+                    <br />
+                    You can check out my other work for responsive
+                    implementations <br />
+                </ResoMessage>
+            )}
             <Router>
                 <Route path="/tracking" component={ShipmentContainer} />
                 <Route path="/finance" component={FinanceContainer} />

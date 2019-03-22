@@ -481,7 +481,7 @@ const fulfillmentSFODCA = [
 const items = [
     {
         name: "UNIVERSE 10 PHONES",
-        id: "TRXQBRBO9S",
+        id: "asdf",
         count: 3000,
         v: "35.136in³ (575.775cm³)",
         w: "6.14oz (174 grams)",
@@ -490,7 +490,7 @@ const items = [
     },
     {
         name: "UNIVERSE 9 PHONES",
-        id: "TRXQBRBO9S",
+        id: "wert",
         count: 2500,
         v: "40.225in³ (611.48cm³)",
         w: "7.1oz (192 grams)",
@@ -499,7 +499,7 @@ const items = [
     },
     {
         name: "NEBULA GT PHONES",
-        id: "TRXQBRBO9S",
+        id: "TRXQBRBhtrsO9S",
         count: 2400,
         v: "38.255in³ (600.45cm³)",
         w: "7.3oz (204 grams)",
@@ -508,7 +508,7 @@ const items = [
     },
     {
         name: "NEBULA XR PHONES",
-        id: "TRXQBRBO9S",
+        id: "TRXQBRBwerO9S",
         count: 1500,
         v: "34.154in³ (542.34cm³)",
         w: "5.8oz (164.21 grams)",
