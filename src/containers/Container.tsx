@@ -14,7 +14,7 @@ const Container: React.FC = () => {
     useEffect(() => {
         if (!listener) {
             if (
-                document.body.clientWidth < 1700 ||
+                document.body.clientWidth < 1500 ||
                 document.body.clientWidth > 2000
             ) {
                 setNotInResolution(true);
@@ -27,14 +27,14 @@ const Container: React.FC = () => {
             }
             window.addEventListener("resize", () => {
                 if (
-                    document.body.clientWidth < 1700 ||
+                    document.body.clientWidth < 1500 ||
                     document.body.clientWidth > 2000
                 ) {
                     setNotInResolution(true);
                 }
                 if (
                     document.body.clientWidth <= 2000 &&
-                    document.body.clientWidth >= 1700
+                    document.body.clientWidth >= 1500
                 ) {
                     setNotInResolution(false);
                 }
@@ -70,8 +70,8 @@ const Container: React.FC = () => {
                     This site is not responsive <br />
                     The best width resolution is between 1500px and 2000px{" "}
                     <br />
-                    You can check out my other work for responsive
-                    implementations <br />
+                    Be sure to resize to a good resolution and REFRESH the page
+                    <br />
                 </ResoMessage>
             )}
             <Router>
